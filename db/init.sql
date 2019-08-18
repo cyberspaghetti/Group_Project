@@ -9,8 +9,6 @@
 --   OIDS=FALSE
 -- );
 
-
-
 -- CREATE TABLE "servers" (
 -- 	"server_id" serial NOT NULL,
 -- 	"server_name" VARCHAR,
@@ -20,8 +18,6 @@
 -- ) WITH (
 --   OIDS=FALSE
 -- );
-
-
 
 -- CREATE TABLE "socket_messages" (
 -- 	"socket_message_id" serial NOT NULL,
@@ -33,8 +29,6 @@
 --   OIDS=FALSE
 -- );
 
-
-
 -- CREATE TABLE "socket_rooms" (
 -- 	"socket_room_id" serial,
 -- 	"room_name" VARCHAR UNIQUE,
@@ -42,8 +36,6 @@
 -- ) WITH (
 --   OIDS=FALSE
 -- );
-
-
 
 -- CREATE TABLE "news_feed" (
 -- 	"news_post_id" serial NOT NULL,
@@ -57,12 +49,7 @@
 -- );
 
 
-
 -- CREATE TABLE "server_users_junction" (
 -- 	"server_junction_id" serial NOT NULL,
--- 	"member_id" int NOT NULL,
--- 	"server_id" int NOT NULL,
--- 	CONSTRAINT "server_users_junction_pk" PRIMARY KEY ("server_junction_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+-- 	"user_id" int NOT NULL,
+-- 	"server_id" int NOT NULL);
