@@ -9,7 +9,7 @@ class Homepage extends Component {
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
     console.log('dash',this.props)
     return <div>YOU ARE ON THE DASH</div>;
-  }a
+  }
 }
 
 function mapStateToProps(state) {
