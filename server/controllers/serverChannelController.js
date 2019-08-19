@@ -1,10 +1,11 @@
 module.exports = {
     createServerChannel: async (req, res, next) => {
       const dbInstance = req.app.get('db');
-      const { server_id, server_name, server_image, owner_id } = req.body
-      const serverChannelId = await dbInstance.create_server_channel([server_id, server_name, server_image, owner_id])
-      await dbInstance.create_server_users_junction(owner_id, serverChannelId[0].id)
-      const data = await dbInstance.get_server_channel_by_user_id(owner_id)
+      const { server_id, server_name, server_image, user_id } = req.body
+      console.log(req.body);
+      const serverChannelId = await dbInstance.create_server_channel([server_id, server_name, server_image, user_id])
+      await dbInstance.create_server_users_junction(server_id, user_id)
+      const data = await dbInstance.get_server_channel_by_user_id(user_id)
       res.status(200).send(data)
   
     },
