@@ -1,5 +1,6 @@
+
 require("dotenv").config();
-const scc = require('./controllers/serverChannelController')
+const scc = require('./controllers/serverChannelController');
 const express = require("express");
 const { json } = require("body-parser");
 const session = require("express-session");
@@ -104,12 +105,11 @@ app.post("/api/redirect", (req, res, next) => {
 //Server Channel Endpoints
 app.post('/api/createServerChannel', scc.createServerChannel);
 app.get('/api/serverChannel/:id', scc.getServerChannel);
-app.delete('/api/deleteTeamMember/:userId', scc.deleteServerChannelMember);
-app.get('/api/allTeams', scc.getServerChannel);
-app.get('/api/teamMembers/:id', scc.getServerChannelMembers);
-app.put('/api/addTeamMember', scc.addServerChannelMember)
+app.delete('/api/deleteChannelUser/:userId', scc.deleteServerChannelMember);
+app.get('/api/getAllChannels', scc.getServerChannel);
+app.get('/api/getChannelUsers/:id', scc.getServerChannelMembers);
+app.put('/api/addUserToChannel', scc.addServerChannelMember)
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
-
