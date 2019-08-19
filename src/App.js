@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import routes from './routes';
-
-
+import ServerChannelTest from './components/Test/ServerChannelTest'
 function App() {
   return (
-    <div>
-     {routes}
+    <div className="App">
     </div>
   );
 }

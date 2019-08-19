@@ -1,66 +1,38 @@
-<<<<<<< HEAD
-CREATE TABLE users
-(
-    id SERIAL PRIMARY KEY,
-    auth0_id VARCHAR NOT NULL,
-    email VARCHAR NOT NULL,
-    profile_name TEXT NOT NULL,
-    picture TEXT NOT NULL
-);
-=======
+
 -- CREATE TABLE "users" (
--- 	"user_id" serial NOT NULL,
--- 	"user_name" VARCHAR,
--- 	"user_password" VARCHAR,
--- 	"user_email" VARCHAR,
--- 	"user_image" VARCHAR,
--- 	CONSTRAINT "users_pk" PRIMARY KEY ("user_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+--  "user_id" serial NOT NULL,
+--  "user_name" VARCHAR,
+--  "user_password" VARCHAR,
+--  "user_email" VARCHAR,
+--  "user_image" VARCHAR,
+-- "auth0_id" varchar);
+
 
 -- CREATE TABLE "servers" (
 -- 	"server_id" serial NOT NULL,
 -- 	"server_name" VARCHAR,
 -- 	"server_image" VARCHAR,
--- 	"owner_id" VARCHAR,
--- 	CONSTRAINT "servers_pk" PRIMARY KEY ("server_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+-- 	"owner_id" VARCHAR);
 
 -- CREATE TABLE "socket_messages" (
 -- 	"socket_message_id" serial NOT NULL,
 -- 	"room_id" VARCHAR,
 -- 	"user_id" VARCHAR,
--- 	"message" VARCHAR,
--- 	CONSTRAINT "socket_messages_pk" PRIMARY KEY ("socket_message_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+-- 	"message" VARCHAR);
 
 -- CREATE TABLE "socket_rooms" (
 -- 	"socket_room_id" serial,
--- 	"room_name" VARCHAR UNIQUE,
--- 	CONSTRAINT "socket_rooms_pk" PRIMARY KEY ("socket_room_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+-- 	"room_name" VARCHAR UNIQUE);
 
 -- CREATE TABLE "news_feed" (
--- 	"news_post_id" serial NOT NULL,
+-- 	"news_post_id" serial,
 -- 	"server_id" VARCHAR,
 -- 	"news_post" VARCHAR,
 -- 	"news_post_date" VARCHAR,
--- 	"news_post_image" VARCHAR,
--- 	CONSTRAINT "news_feed_pk" PRIMARY KEY ("news_post_id")
--- ) WITH (
---   OIDS=FALSE
--- );
+-- 	"news_post_image" VARCHAR);
 
 
 -- CREATE TABLE "server_users_junction" (
--- 	"server_junction_id" serial NOT NULL,
--- 	"user_id" int NOT NULL,
--- 	"server_id" int NOT NULL);
->>>>>>> master
+-- 	"server_junction_id" serial,
+-- 	"user_id" int,
+-- 	"server_id" int);

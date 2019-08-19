@@ -1,2 +1,2 @@
-insert into server_users_junctuion(user_id, owner_id)
+insert into server_users_junction(server_id, user_id)
 VALUES($1, $2)
