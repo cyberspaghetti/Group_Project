@@ -103,12 +103,12 @@ app.post("/api/redirect", (req, res, next) => {
   res.status(200).send(returnStr);
 });
 //Server Channel Endpoints
-app.post('/api/createServerChannel', scc.createServerChannel);
-app.get('/api/serverChannel/:id', scc.getServerChannel);
-app.delete('/api/deleteChannelUser/:userId', scc.deleteServerChannelMember);
-app.get('/api/getAllChannels', scc.getServerChannel);
-app.get('/api/getChannelUsers/:id', scc.getServerChannelMembers);
-app.put('/api/addUserToChannel', scc.addServerChannelMember)
+app.post('/api/createServer', scc.createServerChannel);
+app.get('/api/server/:id', scc.getServerChannel);
+app.delete('/api/deleteServerUser/:userId', scc.deleteServerChannelMember);
+app.get('/api/servers', scc.getServerChannel);
+app.get('/api/serverUsers/:id', scc.getServerChannelMembers);
+app.put('/api/addUserToServer', scc.addServerChannelMember)
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
