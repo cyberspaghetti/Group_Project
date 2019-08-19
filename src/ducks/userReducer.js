@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //action types
-import { LOGOUT, GET_USER } from "./actionTypes";
+import { LOGOUT, GET_USER, EDIT_USER } from "./actionTypes";
 
 const initialState = {
   user: {},
@@ -19,7 +19,22 @@ export const getUser = () => {
 export const logout = () => {
   return {
     type: LOGOUT,
-    payload: axios.post(`/api/logout`)
+    payload: axios.delete(`/api/logout`)
+  };
+};
+
+export const editUser = (auth0_id, new_user_name, new_user_image) => {
+  console.log("hit reducer", auth0_id, new_user_name, new_user_image);
+  let updatedUser = axios
+    .put(`/api/editUser`, {
+      auth0_id,
+      new_user_name,
+      new_user_image
+    })
+    .then(res => res.data);
+  return {
+    type: EDIT_USER,
+    payload: updatedUser
   };
 };
 
@@ -38,6 +53,8 @@ export default function(state = initialState, action) {
       };
     case LOGOUT + "_FULFILLED":
       return { user: {}, loggedIn: false };
+    case EDIT_USER + "_FULFILLED":
+      return { ...state, user: payload };
     default:
       return state;
   }

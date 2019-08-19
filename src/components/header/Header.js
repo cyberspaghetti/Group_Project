@@ -14,12 +14,17 @@ class Header extends Component {
     window.location.href = "http://localhost:4000/api/login";
   }
 
+  logout = () => {
+    // this.props.logout()
+    window.location.href = "http://localhost:4000/api/logout";
+  }
+
   render() {
     console.log(this.props);
     return (
       <div>
         <button onClick={this.userLogin}>Login</button>
-        <button>Logout</button>
+        <button onClick={this.logout}>Logout</button>
       </div>
     );
   }

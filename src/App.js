@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import ServerChannelTest from './components/Test/ServerChannelTest'
+import React from "react";
+import "./App.css";
+import routes from "./routes";
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+  return <div>{routes}</div>;
 }
-
 export default App;
