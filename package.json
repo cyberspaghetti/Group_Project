@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.2",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
@@ -16,6 +17,7 @@
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
+    "redux-promise-middleware": "^6.1.1",
     "socket.io": "^2.2.0",
     "toastify": "^2.0.0"
   },
@@ -24,13 +26,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "main": "./server/index",
-  "proxy": "http://localhost:4000",
-  "nodemonConfig": {
-    "ignore": [
-      "src"
-    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,6 +40,13 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "main": "./server/index",
+  "proxy": "http://localhost:3040",
+  "nodemonConfig": {
+    "ignore": [
+      "src"
     ]
   }
 }
