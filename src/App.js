@@ -4,7 +4,6 @@ import ServerChannelTest from './components/Test/ServerChannelTest'
 function App() {
   return (
     <div className="App">
-      <ServerChannelTest></ServerChannelTest>
     </div>
   );
 }
