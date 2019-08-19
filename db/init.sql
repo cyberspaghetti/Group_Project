@@ -7,12 +7,11 @@
 --  "user_image" VARCHAR,
 -- "auth0_id" varchar);
 
-
 -- CREATE TABLE "servers" (
--- 	"server_id" serial NOT NULL,
+-- 	"server_id" serial PRIMARY KEY not null,
 -- 	"server_name" VARCHAR,
 -- 	"server_image" VARCHAR,
--- 	"owner_id" VARCHAR);
+-- 	"user_id" VARCHAR);
 
 -- CREATE TABLE "socket_messages" (
 -- 	"socket_message_id" serial NOT NULL,
