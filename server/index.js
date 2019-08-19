@@ -1,10 +1,12 @@
-
 require("dotenv").config();
-const scc = require('./controllers/serverChannelController');
+
 const express = require("express");
 const { json } = require("body-parser");
 const session = require("express-session");
 const massive = require("massive");
+
+const scc = require("./controllers/serverChannelController");
+const uc = require("./controllers/userController");
 
 //passport stuff/auth0
 const passport = require("passport");
@@ -47,7 +49,7 @@ passport.use(
       callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-      console.log(profile)
+      console.log(profile);
       app
         .get("db")
         .get_user_by_auth_id([profile.id])
@@ -98,6 +100,14 @@ app.get(
   }
 );
 
+app.get(`/api/logout`, (req, res) => {
+  req.logout();
+
+  let returnTo = 'http://localhost:3000/'
+
+  res.redirect(`https://${process.env.DOMAIN}/v2/logout?returnTo=${returnTo}&client_id=${process.env.CLIENT_ID}`);
+});
+
 app.post("/api/redirect", (req, res, next) => {
   returnStr = req.body.place;
   res.status(200).send(returnStr);
@@ -109,6 +119,10 @@ app.delete('/api/deleteServerUser/:userId', scc.deleteServerUser);
 app.get('/api/servers', scc.getServers);
 app.get('/api/serverUsers/:id', scc.getServerUsers);
 app.put('/api/addUserToServer', scc.addServerUser)
+
+//user endpoints
+app.put(`/api/editUser`, uc.editUser);
+app.delete(`/api/logout`, uc.logout);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

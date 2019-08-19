@@ -1,0 +1,17 @@
+.dark-dash{
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(39, 39, 39, 0.9);
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+  }
+
+  .user-edit {
+    margin: 0 auto;
+    margin-top: 38vh;
+    background-color: rgb(255, 255, 255);
+    width: 95vw;
+    border-radius: 7%;
+  }

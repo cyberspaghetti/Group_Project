@@ -1,5 +1,6 @@
 export const LOGOUT = "LOGOUT";
 export const GET_USER = "GET_USER";
+export const EDIT_USER = 'EDIT_USER'
 
 // Server action types
 export const SERVER_REGISTRATION = 'SERVER_REGISTRATION';
