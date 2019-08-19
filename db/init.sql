@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+CREATE TABLE users
+(
+    id SERIAL PRIMARY KEY,
+    auth0_id VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
+    profile_name TEXT NOT NULL,
+    picture TEXT NOT NULL
+);
+=======
 -- CREATE TABLE "users" (
 -- 	"user_id" serial NOT NULL,
 -- 	"user_name" VARCHAR,
@@ -53,3 +63,4 @@
 -- 	"server_junction_id" serial NOT NULL,
 -- 	"user_id" int NOT NULL,
 -- 	"server_id" int NOT NULL);
+>>>>>>> master
