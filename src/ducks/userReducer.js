@@ -1,18 +1,18 @@
 import axios from "axios";
 
 //action types
-import { LOGIN, LOGOUT } from "./actionTypes";
+import { LOGOUT, GET_USER } from "./actionTypes";
 
 const initialState = {
   user: {},
   loggedIn: false
 };
 
-export const userData = () => {
-  let user = axios.get("/api/user-data").then(res => res.data.user);
+export const getUser = () => {
+  let data = axios.get("/api/getUser").then(res => res.data);
   return {
-    type: LOGIN,
-    payload: user
+    type: GET_USER,
+    payload: data
   };
 };
 
@@ -26,8 +26,16 @@ export const logout = () => {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case LOGIN + "_FULFILLED":
-      return { ...state, user: payload, loggedIn: true };
+    case GET_USER + "_PENDING":
+      return {
+        ...state
+      };
+    case GET_USER + "_FULFILLED":
+      return {
+        ...state,
+        user: payload,
+        loggedIn: true
+      };
     case LOGOUT + "_FULFILLED":
       return { user: {}, loggedIn: false };
     default:

@@ -1,42 +1,35 @@
 import React, { Component } from "react";
-import { userData, logout } from "../../ducks/userReducer";
+import { logout, getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
+import axios from "axios";
 
 class Header extends Component {
+  constructor() {
+    super();
 
-
-  login = () => {
-    const redirectUri = encodeURIComponent(
-      `${window.location.origin}/auth/callback`
-    );
-    window.location = `https://${
-      process.env.REACT_APP_AUTH0_DOMAIN
-    }/authorize?client_id=${
-      process.env.REACT_APP_AUTH0_CLIENT_ID
-    }&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
+    this.userLogin = this.userLogin.bind(this);
   }
 
-  logout = () => {
-    this.props.logout();
+   userLogin() {
+    window.location.href = "http://localhost:4000/api/login";
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        <div className="section">
-          <button onClick={this.login}>Log in</button>{" "}
-          <button onClick={this.logout}>Log out</button>
-        </div>
+        <button onClick={this.userLogin}>Login</button>
+        <button>Logout</button>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { user: state.user.user };
+  return {};
 }
 
 export default connect(
   mapStateToProps,
-  { userData, logout }
+  { logout, getUser }
 )(Header);

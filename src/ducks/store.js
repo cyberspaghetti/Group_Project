@@ -10,5 +10,6 @@ const rootReducer = combineReducers({
 });
 
 export default createStore(
-  rootReducer
+  rootReducer,
+    applyMiddleware(promiseMiddleware)
 );

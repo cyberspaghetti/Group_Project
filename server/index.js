@@ -1,32 +1,107 @@
+require("dotenv").config();
+
 const express = require("express");
-const bodyParser = require("body-parser");
+const { json } = require("body-parser");
 const session = require("express-session");
 const massive = require("massive");
 
-const uc = require("./controllers/userController");
+//passport stuff/auth0
+const passport = require("passport");
+const Auth0Strategy = require("passport-auth0");
 
-require("dotenv").config();
-massive(process.env.CONNECTION_STRING).then(db => app.set("db", db));
+let returnStr = "/";
+
+const port = 4000;
 
 const app = express();
-app.use(bodyParser.json());
+
+massive(process.env.CONNECTION_STRING)
+  .then(db => {
+    app.set("db", db);
+  })
+  .catch(err => console.log("massive-err", err));
+
+app.use(json());
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+    resave: false,
     saveUninitialized: false,
-    resave: false
+    cookie: {
+      maxAge: 10000000
+    }
   })
 );
 
-app.use(express.static(`${__dirname}/../build`));
+app.use(passport.initialize());
+app.use(passport.session());
 
-//auth0 endpoints----------------------------
-app.get("/auth/callback", uc.authCallback);
-app.post("/api/logout", uc.logout);
-app.get("/api/user-data", uc.checkLoggedIn, uc.userData);
-//--------------------------------------------
+passport.use(
+  new Auth0Strategy(
+    {
+      domain: process.env.DOMAIN,
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: "/api/login"
+    },
+    function(accessToken, refreshToken, extraParams, profile, done) {
+      console.log(profile)
+      app
+        .get("db")
+        .get_user_by_auth_id([profile.id])
+        .then(response => {
+          if (!response[0]) {
+            app
+              .get("db")
+              .create_user_by_auth_id([
+                profile.id,
+                profile.emails[0].value,
+                profile.name.givenName,
+                profile.picture
+              ])
+              .then(created => {
+                return done(null, created[0]);
+              });
+          } else {
+            return done(null, response[0]);
+          }
+        });
+    }
+  )
+);
 
-const SERVER_PORT = process.env.SERVER_PORT || 3040;
-app.listen(SERVER_PORT, () => {
-  console.log("Server listening on port " + SERVER_PORT);
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+app.get("/api/getUser", (req, res, next) => {
+  if (req.user) {
+    console.log("is a user");
+    res.status(200).json(req.user);
+    // call steven so he can have a look
+  } else res.sendStatus(500);
+});
+
+app.get(
+  "/api/login",
+  passport.authenticate("auth0", {
+    failureRedirect: `http://localhost:3000/#/`
+  }),
+  (req, res) => {
+    res.redirect(`http://localhost:3000/#/`);
+  }
+);
+
+app.post("/api/redirect", (req, res, next) => {
+  returnStr = req.body.place;
+  res.status(200).send(returnStr);
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });
