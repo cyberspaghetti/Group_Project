@@ -13,5 +13,7 @@ const rootReducer = combineReducers({
 
 export default createStore(
   rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(
     applyMiddleware(promiseMiddleware)
-);
+  )
+  )
