@@ -1,26 +1,24 @@
 import React, { Component } from "react";
-import Header from '../header/Header'
-import { Redirect } from "react-router-dom";
+import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 class Homepage extends Component {
+
   render() {
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
-    return (
-      <div>
-        <Header />
-        YOU ARE ON THE HOMEPAGE NOW..
-      </div>
-    );
-  }
+    console.log('dash',this.props)
+    return <div>YOU ARE ON THE DASH</div>;
+  }a
 }
 
 function mapStateToProps(state) {
-    return { user: state.user };
-  }
+  return {
+    user : state.user
+  };
+}
 
-  export default connect(
-    mapStateToProps,
-    { }
-  )(Homepage);
-  
+export default connect(
+  mapStateToProps,
+  { getUser }
+)(Homepage);
