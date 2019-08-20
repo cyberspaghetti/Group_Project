@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { editUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import "./homepage.css";
+import ServersMap from '../views/ServersMap'
+import ServerRegistration from '../registration/ServerRegistration'
 
+import "./homepage.css";
 import Header from "../header/Header";
 
 class Homepage extends Component {
@@ -50,6 +52,10 @@ class Homepage extends Component {
     console.log("dash1", this.state.user_name);
     return (
       <div>
+        Server Registration
+        <ServerRegistration/>
+        Servers Mapped
+        <ServersMap/>
         <Header />
          YOU ARE ON THE DASH
         {this.state.editing ? (
