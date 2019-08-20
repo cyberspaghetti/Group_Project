@@ -122,6 +122,7 @@ app.post("/api/redirect", (req, res, next) => {
 //user endpoints
 app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
+app.get('/api/users', uc.getUsers)
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);

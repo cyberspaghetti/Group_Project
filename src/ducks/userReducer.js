@@ -1,11 +1,23 @@
 import axios from "axios";
 
 //action types
-import { LOGOUT, GET_USER, EDIT_USER } from "./actionTypes";
+import { LOGOUT, GET_USER, EDIT_USER, GET_USERS } from "./actionTypes";
 
 const initialState = {
   user: {},
+  users: {},
   loggedIn: false
+};
+
+export const getUsers = () => {
+  console.log('hit users');
+  let data = axios.get('/api/users')
+    .then(res => res.data);
+    console.log('res.date', data);
+  return {
+    type: GET_USERS,
+    payload: data
+  };
 };
 
 export const getUser = () => {
@@ -38,21 +50,20 @@ export const editUser = (auth0_id, new_user_name, new_user_image) => {
   };
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_USER + "_PENDING":
-      return {
-        ...state
-      };
+      return { ...state };
     case GET_USER + "_FULFILLED":
-      return {
-        ...state,
-        user: payload,
-        loggedIn: true
-      };
+      return { ...state, user: payload, loggedIn: true };
+    case GET_USERS + "_PENDING":
+      return { ...state };
+    case GET_USERS + "_FULFILLED":
+      console.log('users payload',payload);
+      return { ...state, users: payload };
     case LOGOUT + "_FULFILLED":
-      return { user: {}, loggedIn: false };
+      return { user: {}, users: {}, loggedIn: false };
     case EDIT_USER + "_FULFILLED":
       return { ...state, user: payload };
     default:

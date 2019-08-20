@@ -13,5 +13,15 @@ module.exports = {
   logout(req, res) {
     req.session.destroy();
     res.sendStatus(200);
-  }
+  },
+
+   getUsers: async (req, res, next) => {
+    const dbInstance = req.app.get('db');
+    console.log('hit server users')
+    let users = await dbInstance.get_users()
+    console.log('users data', users)
+    res.status(200).send(users)
+  },
+
+
 };
