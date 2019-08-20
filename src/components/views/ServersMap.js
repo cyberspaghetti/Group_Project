@@ -19,6 +19,12 @@ class ServerMap extends Component {
             })
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps !== this.props){
+            this.render()
+        }
+    }
+
     render() {
         console.log('serversmapped',this.props)
         let { servers } = this.state
