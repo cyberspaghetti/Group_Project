@@ -7,8 +7,9 @@ const massive = require("massive");
 
 const scc = require("./controllers/serverChannelController");
 const uc = require("./controllers/userController");
+const rc = require("./controllers/roomController");
 
-//passport stuff/auth0
+//passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 
@@ -103,27 +104,39 @@ app.get(
 app.get(`/api/logout`, (req, res) => {
   req.logout();
 
-  let returnTo = 'http://localhost:3000/'
+  let returnTo = "http://localhost:3000/";
 
-  res.redirect(`https://${process.env.DOMAIN}/v2/logout?returnTo=${returnTo}&client_id=${process.env.CLIENT_ID}`);
+  res.redirect(
+    `https://${process.env.DOMAIN}/v2/logout?returnTo=${returnTo}&client_id=${
+      process.env.CLIENT_ID
+    }`
+  );
 });
 
 app.post("/api/redirect", (req, res, next) => {
   returnStr = req.body.place;
   res.status(200).send(returnStr);
 });
-//Server Channel Endpoints
-app.post('/api/createServer', scc.createServer);
-app.get('/api/server/:id', scc.getServer);
-app.delete('/api/deleteServerUser/:userId', scc.deleteServerUser);
-app.get('/api/servers', scc.getServers);
-app.get('/api/serverUsers/:id', scc.getServerUsers);
-app.put('/api/addUserToServer', scc.addServerUser)
+//-----------------------------------------------------------------------
 
 //user endpoints
 app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
 app.get('/api/users', uc.getUsers)
+
+//Server Channel Endpoints
+app.post("/api/createServer", scc.createServer);
+app.get("/api/server/:id", scc.getServer);
+app.delete("/api/deleteServerUser/:userId", scc.deleteServerUser);
+app.get("/api/servers", scc.getServers);
+app.get("/api/serverUsers/:id", scc.getServerUsers);
+app.put("/api/addUserToServer", scc.addServerUser);
+
+//room endpoints
+app.post(`/api/createRoom`, rc.createRoom);
+app.get(`/api/getRooms/:server_id`, rc.getRooms);
+
+//sockets---------
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
