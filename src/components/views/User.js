@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 export default class User extends Component {
-
+    
     render() {
-        console.log(this.props);
+        console.log('users in user',this.props);
         return (
             <div className='image-container'>
                 <img src={this.props.users.user_image} />
