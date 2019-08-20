@@ -48,5 +48,5 @@ export default function (state = initialState, action) {
             return { ...state, server: {}, servers: {}, serverUsers: {}, error: false, redirect: false };
         default:
             return state;
-    }
-}
+    };
+};

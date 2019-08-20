@@ -123,6 +123,7 @@ app.put('/api/addUserToServer', scc.addServerUser)
 //user endpoints
 app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
+app.get('/api/users', uc.getUsers)
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
