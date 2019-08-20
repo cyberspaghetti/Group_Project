@@ -7,7 +7,6 @@ module.exports = {
       await dbInstance.create_server_users_junction(serverId[0].server_id, user_id)
       const data = await dbInstance.get_server_by_user_id(user_id)
       res.status(200).send(data)
-  
     },
 
     getServer: (req, res, next) => {
@@ -37,7 +36,6 @@ module.exports = {
   
     getServers: (req, res, next) => {
       const dbInstance = req.app.get('db');
-  
       dbInstance.get_servers()
         .then(servers => res.status(200).send(servers))
         .catch(err => {
@@ -64,7 +62,6 @@ module.exports = {
         userId,
         +serverId,
       ]);
-     
       res.send(serverUsers);
     }
   }
