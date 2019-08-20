@@ -25,7 +25,6 @@ class ServerMap extends Component {
     }
 
     render() {
-        console.log('serversmapped',this.props)
         let { servers } = this.state
         return (
             <div className='hero-container'>{servers.map(server => {

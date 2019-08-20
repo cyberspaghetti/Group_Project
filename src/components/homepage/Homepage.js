@@ -4,18 +4,16 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import ServersMap from '../views/ServersMap'
 import ServerRegistration from '../registration/ServerRegistration'
-
+import UsersMap from '../views/UsersMap'
 import "./homepage.css";
 import Header from "../header/Header";
 
 class Homepage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       user_name: props.user.user.user_name,
       user_image: props.user.user.user_image,
-
       editing: false
     };
   }
@@ -36,28 +34,26 @@ class Homepage extends Component {
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvlhaYgj0EeSjYPBSHNY3xacbupTZ_EnCvlSWoyJB7jMa1wuhdeA";
   }
 
-  cancel = () => {};
+  cancel = () => { };
 
   saveEdit = () => {
     const { user_name, user_image } = this.state;
-    console.log("props", this.props);
     this.props.editUser(this.props.user.user.auth0_id, user_name, user_image);
     this.setState({ editing: false });
   };
 
   render() {
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
-    console.log(this.props);
-    console.log("dash", this.props.user.user.user_name);
-    console.log("dash1", this.state.user_name);
     return (
       <div>
         Server Registration
-        <ServerRegistration/>
-        Servers Mapped
-        <ServersMap/>
+        <ServerRegistration />
+        Servers Mapped for searching for and adding servers
+        <ServersMap />
+        Users Mapped for user component searching for and adding friends
+        <UsersMap/>
         <Header />
-         YOU ARE ON THE DASH
+        YOU ARE ON THE DASH
         {this.state.editing ? (
           <section className="dark-dash">
             <div className="user-edit">
