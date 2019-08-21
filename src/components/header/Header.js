@@ -6,11 +6,9 @@ import axios from "axios";
 class Header extends Component {
   constructor() {
     super();
-
-    this.userLogin = this.userLogin.bind(this);
   }
 
-   userLogin() {
+   userLogin = () => {
     window.location.href = "http://localhost:4000/api/login";
   }
 
