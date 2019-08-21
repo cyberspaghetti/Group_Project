@@ -1,0 +1,22 @@
+.App {
+  flex-grow: 1;
+}
+.tool-bar {
+  background: #52586d;
+}
+.icon-btn {
+  margin-right: 2;
+}
+.news {
+  flex-grow: 1;
+}
+.header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.logout-parent {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
