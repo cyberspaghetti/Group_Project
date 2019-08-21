@@ -10,10 +10,8 @@ const initialState = {
 };
 
 export const getUsers = () => {
-  console.log('hit users');
   let data = axios.get('/api/users')
     .then(res => res.data);
-    console.log('res.date', data);
   return {
     type: GET_USERS,
     payload: data
@@ -36,7 +34,6 @@ export const logout = () => {
 };
 
 export const editUser = (auth0_id, new_user_name, new_user_image) => {
-  console.log("hit reducer", auth0_id, new_user_name, new_user_image);
   let updatedUser = axios
     .put(`/api/editUser`, {
       auth0_id,
@@ -60,7 +57,6 @@ export default function (state = initialState, action) {
     case GET_USERS + "_PENDING":
       return { ...state };
     case GET_USERS + "_FULFILLED":
-      console.log('users payload',payload);
       return { ...state, users: payload };
     case LOGOUT + "_FULFILLED":
       return { user: {}, users: {}, loggedIn: false };

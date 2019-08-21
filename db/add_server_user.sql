@@ -1,4 +1,7 @@
-insert into server_users_junctuion(user_id, owner_id)
+-- this adds a user to a specific server by taking in user_id and the server id of the server
+-- then returns the server information
+
+insert into server_users_junctuion(user_id, server_id)
 VALUES($1, $2);
 
 SELECT

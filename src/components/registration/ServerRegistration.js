@@ -25,7 +25,6 @@ class ServerRegistration extends Component {
     };
 
     render() {
-        console.log('props in server register', this.props);
         let { server_name, server_image } = this.state
         // let { error, redirect, user} = this.props;
         // if (!user || error || redirect) return <Redirect to="/login" />;

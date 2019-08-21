@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Server from "./Server";
 import { getServers } from "../../ducks/serverReducer";
 
+// this component maps over ./server which are the servers that are apart of the specific user
+// the specific user id is grabbed from redux 
 class ServerMap extends Component {
   constructor() {
     super();
@@ -10,7 +12,7 @@ class ServerMap extends Component {
       servers: []
     };
   }
-
+// neeed to change to specific users to grab server
   componentDidMount() {
     this.props.getServers().then(res => {
       this.setState({ servers: res.value });
