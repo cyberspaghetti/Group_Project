@@ -9,8 +9,8 @@ export default class Server extends Component {
           className="image-container"
           alt=""
         />
-        {/* <div onClick={() => this.props.selectServer(this.props.server.server_id)}>{this.props.server.server_name}</div> */}
-        <div onCLick={() => this.props.location.push(`/${this.props.server.server_id}`)}>{this.props.server.server_name}</div>
+        <div onClick={() => this.props.selectServer(this.props.server.server_id)}>{this.props.server.server_name}</div>
+        {/* <div onCLick={() => this.props.location.push(`/${this.props.server.server_id}`)}>{this.props.server.server_name}</div> */}
       </div>
     );
   }
