@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SERVER_REGISTRATION, GET_SERVER, GET_SERVERS, GET_SERVER_USERS, DELETE_SERVER_USER, ADD_SERVER_USER, LOGOUT_SERVER } from './actionTypes';
-​
+
 const initialState = {
     server: {},
     servers: {},
@@ -8,7 +8,7 @@ const initialState = {
     error: false,
     redirect: false
 };
-​
+
 export const serverRegister = (server_name, server_image, user_id) => {
     console.log(server_name, server_image, user_id);
     let data = axios
@@ -19,7 +19,7 @@ export const serverRegister = (server_name, server_image, user_id) => {
         payload: data
     };
 };
-​
+
 export const getServers = () => {
     let data = axios.get('/api/servers').then(res => {
         console.log('GET_SERVERS data', res.data)
@@ -30,7 +30,7 @@ export const getServers = () => {
         payload: data
     };
 };
-​
+
 export default function (state = initialState, action) {
     let { type, payload } = action;
     switch (type) {

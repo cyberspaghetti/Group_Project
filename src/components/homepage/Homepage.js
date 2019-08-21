@@ -3,11 +3,8 @@ import { editUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import ServersMap from '../views/ServersMap'
-import ServerRegistration from '../registration/ServerRegistration'
-import UsersMap from '../views/UsersMap'
 import "./homepage.css";
 import Header from "../header/Header";
-import RoomsMap from '../views/RoomsMap'
 
 class Homepage extends Component {
   constructor(props) {
