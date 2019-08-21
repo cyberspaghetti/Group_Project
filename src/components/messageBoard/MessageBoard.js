@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./TextChannel.css";
+import "./messageBoard.css";
 
-class TextChannel extends Component {
+class MessageBoard extends Component {
   render() {
     return <div className="text-channel-containerz"></div>;
   }
 }
 
-export default TextChannel;
+export default MessageBoard;

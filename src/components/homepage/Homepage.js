@@ -7,10 +7,9 @@ import ServerRegistration from "../registration/ServerRegistration";
 import UsersMap from "../views/UsersMap";
 import "./homepage.css";
 // import Header from "../header/Header";
-import Rooms from '../rooms/Rooms'
+import Rooms from "../rooms/Rooms";
 
-
-import News from '../../materialUI/components/News'
+import News from "../../materialUI/components/News";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -137,11 +136,13 @@ function Homepage(props) {
     setOpen(false);
   }
 
-  function selectServer(server_id) {
-    props.history.push(`/home/${server_id}`)
+  function selectServer(server_id, room_id) {
+    props.history.push(`/home/${server_id}/${room_id}`)
   }
 
-  function selectRoom() { };
+  function selectRoom(server_id, room_id) { 
+    props.history.push(`/home/${server_id}/${room_id}`)
+  };
 
   function logout() {
     // props.logout()
@@ -218,8 +219,12 @@ function Homepage(props) {
         <main className={classes.content}>
           <div className={classes.toolbar} />
         </main>
-        <Rooms selectedServer={props.match.params.selectedServer} />
+        <Rooms
+          selectedServer={props.match.params.selectedServer}
+          selectRoom={selectRoom}
+        />
         <FriendsList />
+        
       </div>
     );
   } else if (props.match.params.selectedServer == 0) {

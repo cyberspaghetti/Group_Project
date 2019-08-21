@@ -8,9 +8,9 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
-import TextChannel from '../../materialUI/components/TextChannel'
+import MessageBoard from "../messageBoard/MessageBoard";
 
-import RoomsMap from '../JeordinTest/RoomsMap'
+import RoomsMap from "../JeordinTest/RoomsMap";
 
 const useStyles = makeStyles({
   root: {
@@ -54,16 +54,17 @@ export default function Rooms(props) {
             <AddIcon />
           </IconButton>
         </div>
-          <List >
-            <ListItem style={listItemStyle} button>
-             <RoomsMap selectedServer={props.selectedServer}/>
-            </ListItem>
-          </List>
-     
-      
+        <List>
+          <ListItem style={listItemStyle} button>
+            <RoomsMap
+              selectedServer={props.selectedServer}
+              selectRoom={props.selectRoom}
+            />
+          </ListItem>
+        </List>
       </div>
-      {/* {props.children ? props.children : null} */}
-      <Route path="/rooms/general" component={TextChannel} />
+
+      <MessageBoard />
     </div>
   );
 }
