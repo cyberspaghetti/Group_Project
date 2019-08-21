@@ -9,21 +9,21 @@ export default class Server extends Component {
   render() {
     return (
 
-        <ListItem button className='list-item-text'>
-          <div className="image-container">
-            <img
-              src=''
-              alt=""
-            />
-            <div
-              onClick={() =>
-                this.props.selectServer(this.props.server.server_id)
-              }
-            >
-              {this.props.server.server_name}
-            </div>
+      <ListItem button className='list-item-text'>
+        <div className="image-container">
+          <img
+            src=''
+            alt=""
+          />
+          <div
+            onClick={() =>
+              this.props.selectServer(this.props.server.server_id)
+            }
+          >
+            {this.props.server.server_name}
           </div>
-        </ListItem>
+        </div>
+      </ListItem>
     );
   }
 }

@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import FriendsMap from '../views/FriendsMap'
 import "./FriendsList.css";
 const useStyles = makeStyles({
   root: {
@@ -39,7 +40,7 @@ export default function FriendsList() {
       </div>
       <List className="channel-names-container">
         <ListItem style={listItemStyle} button>
-          {`friend image`}
+          <FriendsMap/>
         </ListItem>
       </List>
     </div>
