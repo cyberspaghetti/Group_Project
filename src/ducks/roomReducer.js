@@ -9,7 +9,6 @@ const initialState = {
 // app.get(`/api/getRooms`, rc.getRooms);
 
 export const getRooms = server_id => {
-  console.log(server_id)
   let rooms = axios.get(`/api/getRooms/${server_id}`).then(res => res.data);
   return {
     type: GET_ROOMS,

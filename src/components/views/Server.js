@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+//this is the component for a specified server it grabs props from the parent module that is uses it and displays the server information 
 export default class Server extends Component {
   render() {
     return (

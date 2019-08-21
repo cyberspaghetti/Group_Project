@@ -10,7 +10,6 @@ const initialState = {
 };
 
 export const serverRegister = (server_name, server_image, user_id) => {
-    console.log(server_name, server_image, user_id);
     let data = axios
         .post('/api/createServer', { server_name, server_image, user_id })
         .then(res => res.data);
@@ -22,7 +21,6 @@ export const serverRegister = (server_name, server_image, user_id) => {
 
 export const getAllServers = () => {
     let data = axios.get('/api/servers').then(res => {
-        console.log('GET_SERVERS data', res.data)
         return res.data
     });
     return {
