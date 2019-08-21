@@ -9,6 +9,7 @@ const initialState = {
 // app.get(`/api/getRooms`, rc.getRooms);
 
 export const getRooms = server_id => {
+  console.log(server_id)
   let rooms = axios.get(`/api/getRooms/${server_id}`).then(res => res.data);
   return {
     type: GET_ROOMS,
@@ -32,6 +33,10 @@ export default function(state = initialState, action) {
     case GET_ROOMS + "_FULFILLED":
       return {
         rooms: payload
+      };
+      case GET_ROOMS + "_PENDING":
+      return {
+        ...state
       };
     case CREATE_ROOM + "_FULFILLED":
       return {

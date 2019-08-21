@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 //reducers
 import { createRoom, getRooms } from "../../ducks/roomReducer";
 
+//components
+import Room from "./Room";
+
 class RoomsMap extends Component {
   constructor() {
     super();
@@ -14,16 +17,20 @@ class RoomsMap extends Component {
   }
 
   componentDidMount = () => {
-    let rooms = this.props.getRooms();
-    this.setState({
-      rooms
-    });
+    this.props.getRooms(14)
+    .then(res => {
+      this.setState({rooms: res.value})
+    })
   };
 
   render() {
+    console.log("eyo", this.state.rooms);
+    let { rooms } = this.state;
     return (
       <section className="full-room-holder">
-        <div />
+        {this.state.rooms.map(obj => {
+          return <Room obj={obj} key={obj.socket_room_id} />;
+        })}
       </section>
     );
   }
