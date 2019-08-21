@@ -27,7 +27,7 @@ class ServerMap extends Component {
     let { servers } = this.state;
     return (
       <div className="hero-container">
-          <div onClick={() => this.props.selectServer(0)}>Home</div>
+        <div onClick={() => this.props.selectServer(0)}>Home</div>
         {servers.map(server => {
           return (
             <Server
