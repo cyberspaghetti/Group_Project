@@ -126,10 +126,11 @@ app.get('/api/users', uc.getUsers)
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
-app.get("/api/server/:id", scc.getServer);
+app.get("/api/server/:id", scc.getUserServer);
+app.get("/api/serverName/:id", scc.getServerName);
 app.delete("/api/deleteServerUser/:userId", scc.deleteServerUser);
 app.get("/api/servers", scc.getServers);
-app.get("/api/serverUsers/:id", scc.getServerUsers);
+app.get("/api/serverUsers/:serverId", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
 //room endpoints
