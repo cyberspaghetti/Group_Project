@@ -7,11 +7,11 @@ module.exports = {
     res.send(updatedRooms);
   },
 
-  getRooms(req, res) {
+ async getRooms(req, res) {
     let { server_id } = req.params;
     const db = req.app.get("db");
     //gets all rooms within a specific server
-    let serverRooms = db.get_rooms(server_id);
+    let serverRooms = await db.get_rooms(+server_id);
     res.send(serverRooms);
   }
 
