@@ -9,22 +9,22 @@ import Room from "./Room";
 
 class RoomsMap extends Component {
   constructor() {
-    super();
-
+    super()
     this.state = {
       rooms: []
     };
   }
 
-  componentDidMount = () => {
-    this.props.getRooms(14)
-    .then(res => {
-      this.setState({rooms: res.value})
-    })
+  componentDidUpdate = prevProps => {
+    if (prevProps.selectedServer !== this.props.selectedServer) {
+      this.props.getRooms(this.props.selectedServer).then(res => {
+        this.setState({ rooms: res.value });
+      });
+    }
   };
-
+  // <RoomsMap selectRoom={this.selectRoom} selectedServer={this.selectedServer}/>
   render() {
-    console.log("eyo", this.state.rooms);
+    console.log("eyo", this.props);
     let { rooms } = this.state;
     return (
       <section className="full-room-holder">
