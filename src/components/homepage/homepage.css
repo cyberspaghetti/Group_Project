@@ -1,45 +1,84 @@
 .menu-btn {
   margin-right: 2px;
   color: white;
- }
- .add-server-btn {
+}
+
+.add-server-btn {
   width: 100%;
   margin: 10px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
- }
- .drawer {
+}
+
+.drawer {
   flex-shrink: 0;
- }
- .menu-header {
+}
+
+.menu-header {
   height: 63px;
   align-items: center;
   display: flex;
- }
- .arrow-btn {
+}
+
+.arrow-btn {
   color: white;
- }
- .list-item-text {
+}
+
+.list-item-text {
   color: white;
   font-size: 1.2rem;
   text-decoration: none;
- }
- .tool-bar {
+}
+
+.image-test {
+  background: black;
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+  margin-right: 5px;
+  padding: 0px;
+}
+
+.image-test:hover {
+  border-radius: 20px;
+  transition: ease-in-out;
+  transition-duration: 200ms;
+}
+
+.server-name-style {
+  padding-left: 15px;
+  color: white;
+}
+
+.tool-bar {
   background: #52586d;
- }
- .icon-btn {
+}
+
+.icon-btn {
   margin-right: 2;
- }
- .news {
+}
+
+.news {
   flex-grow: 1;
- }
- .header {
+}
+
+.header {
   display: flex;
   align-items: center;
- }
- .logout-parent {
+}
+
+.logout-parent {
   display: flex;
   justify-content: flex-end;
   width: 90%;
- }
+}
+
+.news-icon {
+  background: black;
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+  margin-right: 7px;
+  padding: 0px;
+}

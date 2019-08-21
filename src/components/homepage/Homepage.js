@@ -88,7 +88,6 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar
   },
   content: {
-    // flexGrow: 1,
     background: "#414656",
     display: "flex"
   },
@@ -112,7 +111,9 @@ const buttonStyle = {
 
 const listItemStyle = {
   color: "white",
-  fontSize: "1.2rem"
+  fontSize: "1.2rem",
+  padding: '0px'
+  // margin: '0px 7px'
 };
 
 const chevronStyle = {

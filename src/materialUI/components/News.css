@@ -1,10 +1,10 @@
 .news-background {
   background: #52586d;
   height: 100vh;
-  position: absolute;
-  top: 64px;
-  left: 72px;
   width: 85.1vw;
+  position: absolute;
+  left: 72px;
+  top: 64px;
 }
 
 .news-title {
@@ -13,8 +13,9 @@
   justify-content: center;
   padding: 19px 0px;
   color: white;
-  background: #3d4251;
+  background: #3d4251
 }
+
 .cards-container {
   width: 100%;
   display: flex;
