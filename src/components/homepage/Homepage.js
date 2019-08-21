@@ -27,10 +27,9 @@ import ListItem from "@material-ui/core/ListItem";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
-// import Rooms from "./Rooms";
 import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
-import "./homepage.css";
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -92,8 +91,6 @@ const useStyles = makeStyles(theme => ({
     // flexGrow: 1,
     background: "#414656",
     display: "flex"
-    // justifyContent: 'flex-end',
-    // width: 215
   },
   drawerPaper: {
     background: "#313442"

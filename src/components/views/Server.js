@@ -11,9 +11,8 @@ export default class Server extends Component {
     return (
 
         <ListItem button className='list-item-text'>
-          <div className="image-container">
             <img
-              src=''
+              src='this.props.server.server_image'
               alt=""
             />
             <div
@@ -23,8 +22,7 @@ export default class Server extends Component {
             >
               {this.props.server.server_name}
             </div>
-          </div>
-          </ListItem>
-    )
+        </ListItem>
+    );
   }
 }
