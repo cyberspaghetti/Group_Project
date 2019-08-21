@@ -8,6 +8,7 @@ export default (
   <Switch>
     <Route exact path="/" component={LandingPage} />
     <Route path="/home/:selectedServer" component={Homepage} />
+    
     <Route exact path="/registerServer" component={ServerRegister} />
   </Switch>
 );

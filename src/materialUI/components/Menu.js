@@ -1,16 +1,4 @@
-import React, { Component } from "react";
-import { editUser } from "../../ducks/userReducer";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import ServersMap from "../views/ServersMap";
-import ServerRegistration from "../registration/ServerRegistration";
-import UsersMap from "../views/UsersMap";
-import "./homepage.css";
-// import Header from "../header/Header";
-import Rooms from '../rooms/Rooms'
-
-
-import News from '../../materialUI/components/News'
+import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -28,10 +16,10 @@ import ListItem from "@material-ui/core/ListItem";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
-// import Rooms from "./Rooms";
-import FriendsList from "../friendsList/FriendsList";
+import Rooms from "./Rooms";
+import FriendsList from "./FriendsList";
 import { Link } from "react-router-dom";
-import "./homepage.css";
+import "./Menu.css";
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -124,7 +112,7 @@ const chevronStyle = {
   color: "white"
 };
 
-function Homepage(props) {
+export default function Menu() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -136,152 +124,11 @@ function Homepage(props) {
   function handleDrawerClose() {
     setOpen(false);
   }
-  // constructor(props) {
-  //   super(props);
-  //   state = {
-  //     user_name: props.user.user.user_name,
-  //     user_image: props.user.user.user_image,
-  //     editing: false,
 
-  //     selectedServer: 0,
-  //     selectedRoom: 0
-  //   };
-  // }
-  
-
-
-  // function handleChange(e){
-  //   const { name, value } = e.target;
-  //   setState({ [name]: value });
-  // };
-
-  // addDefaultSrc(ev) {
-  //   ev.target.src =
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvlhaYgj0EeSjYPBSHNY3xacbupTZ_EnCvlSWoyJB7jMa1wuhdeA";
-  // }
-
-  // cancel = () => {};
-
-  // saveEdit = () => {
-  //   const { user_name, user_image } = state;
-  //   props.editUser(props.user.user.auth0_id, user_name, user_image);
-  //   setState({ editing: false });
-  // };
-
-  // componentDidMount = () => {
-  //   if (!props.user.user.user_name) {
-  //     setState({ editing: true })
-  //   }
-  //   // props.history.push(`/home/${0}`)
-  // };
-  
-
-
-
-  function selectServer(server_id){
-    props.history.push(`/home/${server_id}`)
-  }
-
-  
-
-  function selectRoom(){};
-
-  function logout(){
-    // props.logout()
-    window.location.href = "http://localhost:4000/api/logout";
-  }
-
-    if (!props.user.loggedIn) return <Redirect to="/" />;
-    if (props.match.params.selectedServer != 0) {
-      return (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar className="tool-bar">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
-          ​
-          <Typography variant="h6" noWrap>
-            Logo
-          </Typography>
-          <div className="logout-parent">
-            <Button variant="contained" style={buttonStyle} onClick={logout}>
-              Logout
-            </Button>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-            [classes.drawerPaper]: true
-          })
-        }}
-        open={open}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon style={chevronStyle} />
-            ) : (
-              <ChevronLeftIcon style={chevronStyle} />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <div className="add-server-btn">
-          {/* <Button variant="contained" style={buttonStyle}>
-            Add Server
-          </Button> */}
-          <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
-            <AddIcon>
-            <ServerRegistration />
-            </AddIcon>
-          </Fab>
-        </div>
-        <Divider />
-            <ServersMap selectServer={selectServer} />
-        <Divider />
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-      </main>
-      <Rooms selectedServer={props.match.params.selectedServer}/>
-      <FriendsList />
-          {/* <RoomsMap
-            selectRoom={selectRoom}
-            selectedServer={props.match.params.selectedServer}
-          /> */}
-          {/* <UsersMap serverId={props.match.params.selectedServer} /> */}
-          
-        </div>
-      ); 
-    } else if (props.match.params.selectedServer == 0) {
-      return (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open
@@ -357,24 +204,6 @@ function Homepage(props) {
         <div className={classes.toolbar} />
       </main>
       <FriendsList />
-          {/* <RoomsMap
-            selectRoom={selectRoom}
-            selectedServer={props.match.params.selectedServer}
-          /> */}
-          {/* <UsersMap serverId={props.match.params.selectedServer} /> */}
-          <News/>
-        </div>
-      );
-    }
+    </div>
+  );
 }
-
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  { editUser }
-)(Homepage);
