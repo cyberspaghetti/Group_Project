@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 //reducers
 import { createRoom, getRooms } from "../../ducks/roomReducer";
-
 //components
 import Room from "./Room";
-
 class RoomsMap extends Component {
   constructor() {
     super()
@@ -42,11 +39,9 @@ class RoomsMap extends Component {
     );
   }
 }
-
 function mapStateToProps(state) {
   return {};
 }
-
 export default connect(
   mapStateToProps,
   { getRooms, createRoom }

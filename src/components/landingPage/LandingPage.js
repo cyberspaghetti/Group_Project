@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../header/Header";
+
 import { getUser } from "../../ducks/userReducer";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -12,11 +12,16 @@ class LandingPage extends Component {
     }
   }
 
+  userLogin = () => {
+    window.location.href = "http://localhost:4000/api/login";
+  }
+
   render() {
+    console.log(this.props);
     if (this.props.user.loggedIn) return <Redirect to="/home/0" />;
     return (
       <div>
-        <Header />
+        <button onClick={this.userLogin}>Login</button>
         this is landing page
       </div>
     );
