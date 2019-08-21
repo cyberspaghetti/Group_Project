@@ -7,7 +7,7 @@ import ServerRegister from "./components/registration/ServerRegistration";
 export default (
   <Switch>
     <Route exact path="/" component={LandingPage} />
-    <Route path="/home/:selectedServer" component={Homepage} />
+    <Route path="/home/:selectedServer/:selectedRoom" component={Homepage} />
     
     <Route exact path="/registerServer" component={ServerRegister} />
   </Switch>

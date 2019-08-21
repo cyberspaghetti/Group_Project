@@ -17,7 +17,7 @@ export default class Server extends Component {
             />
             <div
               onClick={() =>
-                this.props.selectServer(this.props.server.server_id)
+                this.props.selectServer(this.props.server.server_id, 0)
               }
             >
               {this.props.server.server_name}
