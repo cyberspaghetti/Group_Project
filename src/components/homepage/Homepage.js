@@ -135,50 +135,14 @@ function Homepage(props) {
   function handleDrawerClose() {
     setOpen(false);
   }
-  // constructor(props) {
-  //   super(props);
-  //   state = {
-  //     user_name: props.user.user.user_name,
-  //     user_image: props.user.user.user_image,
-  //     editing: false,
-
-  //     selectedServer: 0,
-  //     selectedRoom: 0
-  //   };
-  // }
-
-  // function handleChange(e){
-  //   const { name, value } = e.target;
-  //   setState({ [name]: value });
-  // };
-
-  // addDefaultSrc(ev) {
-  //   ev.target.src =
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvlhaYgj0EeSjYPBSHNY3xacbupTZ_EnCvlSWoyJB7jMa1wuhdeA";
-  // }
-
-  // cancel = () => {};
-
-  // saveEdit = () => {
-  //   const { user_name, user_image } = state;
-  //   props.editUser(props.user.user.auth0_id, user_name, user_image);
-  //   setState({ editing: false });
-  // };
-
-  // componentDidMount = () => {
-  //   if (!props.user.user.user_name) {
-  //     setState({ editing: true })
-  //   }
-  //   // props.history.push(`/home/${0}`)
-  // };
 
   function selectServer(server_id, room_id) {
-    props.history.push(`/home/${server_id}/${room_id}`);
+    props.history.push(`/home/${server_id}/${room_id}`)
   }
 
-  function selectRoom(server_id, room_id) {
-    props.history.push(`/home/${server_id}/${room_id}`);
-  }
+  function selectRoom(server_id, room_id) { 
+    props.history.push(`/home/${server_id}/${room_id}`)
+  };
 
   function logout() {
     // props.logout()
@@ -194,8 +158,7 @@ function Homepage(props) {
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
-          })}
-        >
+          })}>
           <Toolbar className="tool-bar">
             <IconButton
               color="inherit"
@@ -204,18 +167,16 @@ function Homepage(props) {
               edge="start"
               className={clsx(classes.menuButton, {
                 [classes.hide]: open
-              })}
-            >
+              })}>
               <MenuIcon />
             </IconButton>
-            ​
             <Typography variant="h6" noWrap>
               Logo
-            </Typography>
+          </Typography>
             <div className="logout-parent">
               <Button variant="contained" style={buttonStyle} onClick={logout}>
                 Logout
-              </Button>
+            </Button>
             </div>
           </Toolbar>
         </AppBar>
@@ -239,20 +200,13 @@ function Homepage(props) {
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon style={chevronStyle} />
               ) : (
-                <ChevronLeftIcon style={chevronStyle} />
-              )}
+                  <ChevronLeftIcon style={chevronStyle} />
+                )}
             </IconButton>
           </div>
           <Divider />
           <div className="add-server-btn">
-            {/* <Button variant="contained" style={buttonStyle}>
-            Add Server
-          </Button> */}
-            <Fab
-              style={addButtonStyle}
-              aria-label="add"
-              className={classes.fab}
-            >
+            <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
               <AddIcon>
                 <ServerRegistration />
               </AddIcon>
@@ -270,11 +224,7 @@ function Homepage(props) {
           selectRoom={selectRoom}
         />
         <FriendsList />
-        {/* <RoomsMap
-            selectRoom={selectRoom}
-            selectedServer={props.match.params.selectedServer}
-          /> */}
-        {/* <UsersMap serverId={props.match.params.selectedServer} /> */}
+        
       </div>
     );
   } else if (props.match.params.selectedServer == 0) {
@@ -285,8 +235,7 @@ function Homepage(props) {
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
-          })}
-        >
+          })}>
           <Toolbar className="tool-bar">
             <IconButton
               color="inherit"
@@ -295,18 +244,16 @@ function Homepage(props) {
               edge="start"
               className={clsx(classes.menuButton, {
                 [classes.hide]: open
-              })}
-            >
+              })}>
               <MenuIcon />
             </IconButton>
-            ​
             <Typography variant="h6" noWrap>
               Logo
-            </Typography>
+          </Typography>
             <div className="logout-parent">
               <Button variant="contained" style={buttonStyle} onClick={logout}>
                 Logout
-              </Button>
+            </Button>
             </div>
           </Toolbar>
         </AppBar>
@@ -330,20 +277,13 @@ function Homepage(props) {
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon style={chevronStyle} />
               ) : (
-                <ChevronLeftIcon style={chevronStyle} />
-              )}
+                  <ChevronLeftIcon style={chevronStyle} />
+                )}
             </IconButton>
           </div>
           <Divider />
           <div className="add-server-btn">
-            {/* <Button variant="contained" style={buttonStyle}>
-            Add Server
-          </Button> */}
-            <Fab
-              style={addButtonStyle}
-              aria-label="add"
-              className={classes.fab}
-            >
+            <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
               <AddIcon>
                 <ServerRegistration />
               </AddIcon>
@@ -361,11 +301,6 @@ function Homepage(props) {
           <div className={classes.toolbar} />
         </main>
         <FriendsList />
-        {/* <RoomsMap
-            selectRoom={selectRoom}
-            selectedServer={props.match.params.selectedServer}
-          /> */}
-        {/* <UsersMap serverId={props.match.params.selectedServer} /> */}
         <News />
       </div>
     );
