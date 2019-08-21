@@ -24,7 +24,6 @@ class RoomsMap extends Component {
   };
   // <RoomsMap selectRoom={this.selectRoom} selectedServer={this.selectedServer}/>
   render() {
-    console.log("eyo", this.props);
     let { rooms } = this.state;
     return (
       <section className="full-room-holder">
