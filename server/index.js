@@ -8,6 +8,7 @@ const massive = require("massive");
 const scc = require("./controllers/serverChannelController");
 const uc = require("./controllers/userController");
 const rc = require("./controllers/roomController");
+const fc = require("./controllers/friendsController");
 
 //passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
@@ -123,6 +124,9 @@ app.post("/api/redirect", (req, res, next) => {
 app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
 app.get('/api/users', uc.getUsers)
+
+//Friends end points
+app.get('/api/getFriends/:user_id', fc.getFriends)
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
