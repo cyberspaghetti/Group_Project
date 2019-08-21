@@ -18,4 +18,6 @@ export const GET_SERVER_NAME = 'GET_SERVER_NAME'
 export const GET_ROOMS = "GET_ROOMS";
 export const CREATE_ROOM = "CREATE_ROOM";
 
+//friend action types
 
+export const GET_FRIENDS = 'GET_FRIENDS'

@@ -8,7 +8,7 @@ import "../homepage/homepage.css";
 
 const listItemStyleServer = {
   padding: "0px",
-  marginLeft: '7px'
+  marginLeft: "7px"
 };
 
 export default class Server extends Component {
@@ -18,20 +18,20 @@ export default class Server extends Component {
   }
 
   render() {
+    console.log("propsosopr", this.props);
     return (
       <ListItem
         button
-        style={listItemStyleServer}
-        onClick={() => this.props.selectServer(this.props.server.server_id)}
         className="list-item-text"
+        onClick={() => this.props.selectServer(this.props.server.server_id, 0)}
       >
         <img
-          className="image-test"
           src="this.props.server.server_image"
-          alt="server-pic"
+          alt=""
           onError={this.addDefaultSrc}
+          className="image-test"
         />
-        <div className='server-name-style'>{this.props.server.server_name}</div>
+        <div>{this.props.server.server_name}</div>
       </ListItem>
     );
   }

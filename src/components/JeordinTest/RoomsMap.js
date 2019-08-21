@@ -33,7 +33,7 @@ class RoomsMap extends Component {
     return (
       <section className="full-room-holder">
         {rooms.map(obj => {
-          return <Room obj={obj} key={obj.socket_room_id} />;
+          return <Room obj={obj} key={obj.socket_room_id} selectedServer={this.props.selectedServer} selectRoom={this.props.selectRoom}/>;
         })}
       </section>
     );
