@@ -58,6 +58,7 @@ class Homepage extends Component {
   selectRoom = () => {};
 
   render() {
+   console.log(this.props);
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
     if (this.state.selectedServer !== 0) {
       return (
