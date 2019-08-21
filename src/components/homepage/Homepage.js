@@ -17,17 +17,12 @@ class Homepage extends Component {
       user_image: props.user.user.user_image,
       editing: false,
 
-      //props function/selecting---------------
       selectedServer: 0,
       selectedRoom: 0
     };
   }
+  
 
-  componentDidMount = () => {
-    if (!this.props.user.user.user_name) {
-      this.setState({ editing: true });
-    }
-  };
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -47,20 +42,28 @@ class Homepage extends Component {
     this.setState({ editing: false });
   };
 
-  //props function/selecting---------------
-  selectServer = server_id => {
-    console.log("hit", server_id);
-    this.setState({
-      selectedServer: server_id
-    });
+  componentDidMount = () => {
+    if (!this.props.user.user.user_name) {
+      this.setState({ editing: true })
+    }
+    // this.props.history.push(`/home/${0}`)
   };
+  
+
+
+
+  selectServer = server_id => {
+    this.props.history.push(`/home/${server_id}`)
+  }
+
+  
 
   selectRoom = () => {};
 
   render() {
-   console.log(this.props);
+   console.log('props on homepage',typeof(this.props.match.params.selectedServer));
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
-    if (this.state.selectedServer !== 0) {
+    if (this.props.match.params.selectedServer != 0) {
       return (
         <div>
           <Header />
@@ -73,7 +76,7 @@ class Homepage extends Component {
             selectedServer={this.state.selectedServer}
           />
           Users Mapped for user component searching for and adding friends
-          <UsersMap />
+          <UsersMap serverId={this.props.match.params.selectedServer} />
           YOU ARE ON THE DASH
           {this.state.editing ? ( //edit user profile----------------------------
             <section className="dark-dash">
@@ -95,8 +98,8 @@ class Homepage extends Component {
             </section>
           ) : null}
         </div>
-      ); //-----------------------------------------------------------------------
-    } else if (this.state.selectedServer == 0) {
+      ); 
+    } else if (this.props.match.params.selectedServer == 0) {
       return (
         <div>
           <Header />

@@ -17,7 +17,7 @@ class RoomsMap extends Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.selectedServer !== this.props.selectedServer) {
-      this.props.getRooms(this.props.selectedServer).then(res => {
+      this.props.getRooms(this.props.match.params.selectedServer).then(res => {
         this.setState({ rooms: res.value });
       });
     }
