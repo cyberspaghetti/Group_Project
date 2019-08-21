@@ -5,10 +5,13 @@ import promiseMiddleware from "redux-promise-middleware";
 //reducers
 import userReducer from "./userReducer";
 import serverReducer from "./serverReducer";
+import friendReducer from './friendReducer'
 
 const rootReducer = combineReducers({
   user: userReducer,
+  friends: friendReducer,
   server: serverReducer
+  
 });
 
 export default createStore(
