@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Server from "./Server";
 import List from "@material-ui/core/List";
-import { getServers } from "../../ducks/serverReducer";
+import { getAllServers } from "../../ducks/serverReducer";
 
 // this component maps over ./server which are the servers that are apart of the specific user
 // the specific user id is grabbed from redux 
@@ -15,7 +15,7 @@ class ServerMap extends Component {
   }
 // neeed to change to specific users to grab server
   componentDidMount() {
-    this.props.getServers().then(res => {
+    this.props.getAllServers().then(res => {
       this.setState({ servers: res.value });
     });
   }
@@ -55,5 +55,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getServers }
+  { getAllServers }
 )(ServerMap);
