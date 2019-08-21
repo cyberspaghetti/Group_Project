@@ -20,7 +20,7 @@ export const serverRegister = (server_name, server_image, user_id) => {
     };
 };
 
-export const getServers = () => {
+export const getAllServers = () => {
     let data = axios.get('/api/servers').then(res => {
         console.log('GET_SERVERS data', res.data)
         return res.data
