@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Server from "./Server";
-import { getServers } from "../../ducks/serverReducer";
+import { getAllServers } from "../../ducks/serverReducer";
 
 class ServerMap extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class ServerMap extends Component {
   }
 
   componentDidMount() {
-    this.props.getServers().then(res => {
+    this.props.getAllServers().then(res => {
       this.setState({ servers: res.value });
     });
   }
@@ -50,5 +50,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getServers }
+  { getAllServers }
 )(ServerMap);
