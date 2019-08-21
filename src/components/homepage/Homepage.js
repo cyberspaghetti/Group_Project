@@ -7,6 +7,7 @@ import ServerRegistration from '../registration/ServerRegistration'
 import UsersMap from '../views/UsersMap'
 import "./homepage.css";
 import Header from "../header/Header";
+import RoomsMap from '../views/RoomsMap'
 
 class Homepage extends Component {
   constructor(props) {
@@ -43,15 +44,11 @@ class Homepage extends Component {
   };
 
   render() {
+   console.log(this.props);
     if (!this.props.user.loggedIn) return <Redirect to="/" />;
     return (
       <div>
-        Server Registration
-        <ServerRegistration />
-        Servers Mapped for searching for and adding servers
-        <ServersMap />
-        Users Mapped for user component searching for and adding friends
-        <UsersMap/>
+        <ServersMap/>
         <Header />
         YOU ARE ON THE DASH
         {this.state.editing ? (

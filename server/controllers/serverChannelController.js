@@ -9,7 +9,7 @@ module.exports = {
       res.status(200).send(data)
     },
 
-    getServer: (req, res, next) => {
+    getUserServer: (req, res, next) => {
       const dbInstance = req.app.get('db');
       dbInstance.get_server_by_user_id(req.params.id)
         .then(server => {
@@ -23,16 +23,12 @@ module.exports = {
   
     getServerUsers: async (req, res, next) => {
       const dbInstance = req.app.get('db');
-      const { user_id } = req.params
-      dbInstance.get_server_users(req.params.id)
-        .then(users => {
-          res.status(200).send(users)
-        })
-        .catch(err => {
-          res.status(500).send({ errorMessage: "get users is broken" });
-          console.log(err)
-        });
-    },
+      const { id } = req.params
+      let data = await dbInstance.get_server_users(+req.params.serverId)
+              res.send(data)
+              console.log('this is the data', data)
+  },
+  
   
     getServers: (req, res, next) => {
       const dbInstance = req.app.get('db');
@@ -43,7 +39,15 @@ module.exports = {
           console.log(err)
         });
     },
+
+    getServerName: async (req, res, next) => {
+      const dbInstance = req.app.get('db');
+      let data = await dbInstance.get_server_name(req.params.id)
+      res.send(data)
+      console.log('this is the data', data)
+    },
   
+
     async deleteServerUser(req, res) {
       let { userId } = req.params;
       let { serverId } = req.query

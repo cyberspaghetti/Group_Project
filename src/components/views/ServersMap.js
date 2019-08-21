@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Server from './Server'
-import { getServers } from '../../ducks/serverReducer';
-
+import { getAllServers } from '../../ducks/serverReducer';
+import { Link } from 'react-router-dom'
 class ServerMap extends Component {
     constructor() {
         super()
@@ -12,7 +12,7 @@ class ServerMap extends Component {
     }
 
     componentDidMount() {
-        this.props.getServers()
+        this.props.getAllServers()
             .then(res => {
                 this.setState({ servers: res.value });
             })
@@ -25,11 +25,12 @@ class ServerMap extends Component {
     }
 
     render() {
+        console.log('serversmap this props',  this.props)
         let { servers } = this.state
         return (
             <div className='hero-container'>{servers.map(server => {
                 return (
-                    <Server server={server} key={servers.id} className='server-container'/>
+                <Link><Server server={server} key={servers.id} className='server-container'/></Link>
                 )
             })}
             </div>
@@ -44,5 +45,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { getServers}
+    { getAllServers}
 )(ServerMap);
