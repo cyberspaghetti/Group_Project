@@ -14,20 +14,28 @@ class RoomsMap extends Component {
       rooms: []
     };
   }
-
-  componentDidUpdate = prevProps => {
-    if (prevProps.selectedServer !== this.props.selectedServer) {
-      this.props.getRooms(this.props.match.params.selectedServer).then(res => {
+  
+  componentDidMount = () => {
+    this.props.getRooms(this.props.selectedServer).then(res => {
+      this.setState({ rooms: res.value });
+    })
+  }
+  
+  componentDidUpdate = prevProps => { 
+      if (prevProps.selectedServer != this.props.selectedServer ) {
+        console.log('hitihtihi')
+      this.props.getRooms(this.props.selectedServer).then(res => {
         this.setState({ rooms: res.value });
       });
     }
   };
   // <RoomsMap selectRoom={this.selectRoom} selectedServer={this.selectedServer}/>
   render() {
+    console.log("eyo", this.props.selectedServer);
     let { rooms } = this.state;
     return (
       <section className="full-room-holder">
-        {this.state.rooms.map(obj => {
+        {rooms.map(obj => {
           return <Room obj={obj} key={obj.socket_room_id} />;
         })}
       </section>

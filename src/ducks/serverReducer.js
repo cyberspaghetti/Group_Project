@@ -18,8 +18,8 @@ export const serverRegister = (server_name, server_image, user_id) => {
         payload: data
     };
 };
-// gets all servers not specific used to display the servers to join
-export const getServers = () => {
+
+export const getAllServers = () => {
     let data = axios.get('/api/servers').then(res => {
         return res.data
     });
