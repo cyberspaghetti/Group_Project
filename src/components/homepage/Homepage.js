@@ -213,12 +213,15 @@ function Homepage(props) {
         <main className={classes.content}>
           <div className={classes.toolbar} />
         </main>
+        {props.match.params.selectedServer == 0 ? (
+        <News />
+      ) : (
         <Rooms
           selectedServer={props.match.params.selectedServer}
+          selectedRoom={props.match.params.selectedRoom}
           selectRoom={selectRoom}
         />
-
-        {props.match.params.selectedServer == 0 ? <News /> : null}
+      )}
         
         <FriendsList />
         
