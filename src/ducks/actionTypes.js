@@ -19,8 +19,13 @@ export const GET_ROOMS = "GET_ROOMS";
 export const CREATE_ROOM = "CREATE_ROOM";
 
 //friend action types
-
-export const GET_FRIENDS = "GET_FRIENDS";
+export const GET_FRIENDS = 'GET_FRIENDS'
+export const ADD_FRIEND = 'ADD_FRIEND'
+export const DELETE_FRIEND = 'DELETE_FRIEND'
 
 //sockets
 export const GET_ROOM_NAME = "GET_ROOM_NAME";
+//Post action types
+export const GET_ALL_POSTS = 'GET_ALL_POSTS'
+export const ADD_POST = 'ADD_POST'
+export const DELETE_POST = 'DELETE_POST'

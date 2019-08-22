@@ -9,6 +9,7 @@ const scc = require("./controllers/serverChannelController");
 const uc = require("./controllers/userController");
 const rc = require("./controllers/roomController");
 const fc = require("./controllers/friendsController");
+const pc = require("./controllers/postController");
 
 //sockets
 const socket = require("socket.io");
@@ -128,8 +129,15 @@ app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
 app.get("/api/users", uc.getUsers);
 
-//Friends end points
+//Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
+app.put("/api/addFriend/:user_id", fc.addFriend);
+app.delete("/api/deleteFriend/:user_id", fc.deleteFriend);
+
+//Post EndPoints
+app.get("/api/getPosts/:user_id", pc.getUsersPosts);
+app.put("/api/addPost/:user_id", pc.addPost);
+app.delete("/api/deletePost/:user_id", pc.deletePost);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
@@ -140,7 +148,7 @@ app.get("/api/servers", scc.getServers);
 app.get("/api/serverUsers/:serverId", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
-//room endpoints
+//room Endpoints
 app.post(`/api/createRoom`, rc.createRoom);
 app.get(`/api/getRooms/:server_id`, rc.getRooms);
 
