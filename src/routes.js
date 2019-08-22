@@ -9,7 +9,7 @@ export default (
   <Switch>
     <Route exact path="/" component={LandingPage} />
     <Route path="/home/:selectedServer/:selectedRoom" component={Homepage} />
-    <Route path="/newsFeed" component={PostsMap} />
-    <Route exact path="/register" component={ServerRegistration} />
+    {/* <Route path="/newsFeed" component={PostsMap} />
+    <Route exact path="/register" component={ServerRegistration} /> */}
   </Switch>
 );
