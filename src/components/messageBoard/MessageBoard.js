@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import io from "socket.io-client";
 
+import Divider from "@material-ui/core/Divider";
+
+import { getUsers } from "../../ducks/userReducer";
 import { getRoomName } from "../../ducks/serverReducer";
 
 import "./messageBoard.css";
+import Axios from "axios";
 
 class MessageBoard extends Component {
   constructor() {
@@ -28,6 +33,8 @@ class MessageBoard extends Component {
     this.socket.on("message sent", data => {
       this.updateMessages(data);
     });
+
+    this.props.getUsers();
   };
 
   componentWillUnmount = () => {
@@ -90,19 +97,60 @@ class MessageBoard extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">
           {this.state.messages.map(messageObj => {
             {
-              return (
-                <section className="messages">
-                  <section className="message-layer2">
-                    {messageObj.message}
+              if (messageObj.user_id == this.props.user.user.user_id) {
+                return (
+                  <section className="messages">
+                    <section className="message-layer2">
+                      <Divider />
+                      <img
+                        className="messaging-picture"
+                        src={this.props.user.user.user_image}
+                      />
+                      <section className="messaging-sender">
+                        {" "}
+                        {this.props.user.user.user_name} {""}{" "}
+                      </section>
+
+                      <section className="message-color">
+                        {" "}
+                        {messageObj.message}{" "}
+                      </section>
+                    </section>
                   </section>
-                </section>
-              );
+                );
+              } else {
+                let correctPerson = this.props.user.users.find(function(
+                  element
+                ) {
+                  return element.user_id == messageObj.user_id;
+                });
+                return (
+                  <section className="messages">
+                    <section className="message-layer2">
+                      <Divider />
+                      <img
+                        className="messaging-picture"
+                        src={correctPerson.user_image}
+                      />
+                      <section className="messaging-sender-not-user">
+                        {" "}
+                        {correctPerson.user_name} {""}{" "}
+                      </section>
+
+                      <section className="message-color">
+                        {" "}
+                        {messageObj.message}{" "}
+                      </section>
+                    </section>
+                  </section>
+                );
+              }
             }
           })}
         </section>
@@ -130,5 +178,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getRoomName }
+  { getRoomName, getUsers }
 )(MessageBoard);
