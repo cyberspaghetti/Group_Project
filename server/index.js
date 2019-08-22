@@ -125,8 +125,10 @@ app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
 app.get("/api/users", uc.getUsers);
 
-//Friends end points
+//Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
+app.put("/api/addFriend/:user_id", fc.getFriends);
+app.delete("/api/deleteFriend/:user_id", fc.getFriends);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
@@ -137,7 +139,7 @@ app.get("/api/servers", scc.getServers);
 app.get("/api/serverUsers/:serverId", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
-//room endpoints
+//room Endpoints
 app.post(`/api/createRoom`, rc.createRoom);
 app.get(`/api/getRooms/:server_id`, rc.getRooms);
 

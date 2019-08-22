@@ -21,3 +21,5 @@ export const CREATE_ROOM = "CREATE_ROOM";
 //friend action types
 
 export const GET_FRIENDS = 'GET_FRIENDS'
+export const ADD_FRIEND = 'ADD_FRIEND'
+export const DELETE_FRIEND = 'DELETE_FRIEND'
