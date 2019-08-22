@@ -147,92 +147,87 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        >
-          <Toolbar className="tool-bar">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open
-              })}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              Logo
-            </Typography>
-            <div className="logout-parent">
-              <Button variant="contained" style={buttonStyle} onClick={logout}>
-                Logout
-              </Button>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open
+        })}
+      >
+        <Toolbar className="tool-bar">
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            className={clsx(classes.menuButton, {
+              [classes.hide]: open
+            })}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            Logo
+          </Typography>
+          <div className="logout-parent">
+            <Button variant="contained" style={buttonStyle} onClick={logout}>
+              Logout
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open
+        })}
+        classes={{
+          paper: clsx({
             [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
-              [classes.drawerPaper]: true
-            })
-          }}
-          open={open}
-        >
-          <div className={classes.toolbar}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon style={chevronStyle} />
-              ) : (
-                <ChevronLeftIcon style={chevronStyle} />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <div className="add-server-btn">
-            <Fab
-              style={addButtonStyle}
-              aria-label="add"
-              className={classes.fab}
-            >
-              <AddIcon>
-                <ServerRegistration />
-              </AddIcon>
-            </Fab>
-          </div>
-          <Divider />
-          <ServersMap selectServer={selectServer} />
-          <Divider />
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-        </main>
-        <Rooms
-          selectedServer={props.match.params.selectedServer}
-          selectRoom={selectRoom}
-        />
+            [classes.drawerClose]: !open,
+            [classes.drawerPaper]: true
+          })
+        }}
+        open={open}
+      >
+        <div className={classes.toolbar}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon style={chevronStyle} />
+            ) : (
+              <ChevronLeftIcon style={chevronStyle} />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <div className="add-server-btn">
+          <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
+            <AddIcon>
+              <ServerRegistration />
+            </AddIcon>
+          </Fab>
+        </div>
+        <Divider />
+        <ServersMap selectServer={selectServer} />
+        <Divider />
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+      </main>
+      <Rooms
+        selectedServer={props.match.params.selectedServer}
+        selectedRoom={props.match.params.selectedRoom}
+        selectRoom={selectRoom}
+      />
 
-        {props.match.params.selectedServer == 0 ? <News /> : null}
-        
-        <FriendsList />
-        
-        
-      </div>
-    );
+      {props.match.params.selectedServer == 0 ? <News /> : null}
+
+      <FriendsList />
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
