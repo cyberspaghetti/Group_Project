@@ -28,11 +28,17 @@ const useStyles = makeStyles({
 const addButton = {
   color: "#ccc"
 };
+
 const listItemStyle = {
   color: "#ccc",
   fontSize: ".9rem",
-  paddingLeft: "35px"
+  padding: "0px"
 };
+
+const roomListStyle = {
+  width: '100%'
+}
+
 export default function Rooms(props) {
   const classes = useStyles();
   return (
@@ -54,8 +60,8 @@ export default function Rooms(props) {
             <AddIcon />
           </IconButton>
         </div>
-        <List>
-          <ListItem style={listItemStyle} button>
+        <List style={roomListStyle}>
+          <ListItem style={listItemStyle}>
             <RoomsMap
               selectedServer={props.selectedServer}
               selectRoom={props.selectRoom}

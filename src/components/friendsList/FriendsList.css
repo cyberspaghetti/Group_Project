@@ -9,6 +9,7 @@
     top: 64px;
     position: fixed;
    }
+
    .friends-list-title {
       width: 100%;
       height: 70px;
@@ -18,6 +19,7 @@
       padding: 38px 0px;
       background: #373c49;
    }
+   
    .friends-list {
       display: flex;
       align-items: center;
