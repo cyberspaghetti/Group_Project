@@ -30,7 +30,7 @@ import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
 import FriendsMap from "../friendsMap/FriendsMap";
 
-const drawerWidth = 287;
+const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -169,12 +169,21 @@ function Homepage(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
+<<<<<<< HEAD
             Singularity
           </Typography>
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>
               Logout
             </Button>
+=======
+            Logo
+            </Typography>
+          <div className="logout-parent">
+            <Button variant="contained" style={buttonStyle} onClick={logout}>
+              Logout
+              </Button>
+>>>>>>> 195cd38ad309f75188d9635cb8c64e802ca440bc
           </div>
         </Toolbar>
       </AppBar>
@@ -198,13 +207,22 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
+<<<<<<< HEAD
               <ChevronLeftIcon style={chevronStyle} />
             )}
+=======
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
+>>>>>>> 195cd38ad309f75188d9635cb8c64e802ca440bc
           </IconButton>
         </div>
         <Divider />
         <div className="add-server-btn">
+<<<<<<< HEAD
               <ServerRegistration />
+=======
+          <ServerRegistration ></ServerRegistration>
+>>>>>>> 195cd38ad309f75188d9635cb8c64e802ca440bc
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -216,12 +234,21 @@ function Homepage(props) {
       {props.match.params.selectedServer == 0 ? (
         <News />
       ) : (
+<<<<<<< HEAD
         <Rooms
           selectedServer={props.match.params.selectedServer}
           selectedRoom={props.match.params.selectedRoom}
           selectRoom={selectRoom}
         />
       )}
+=======
+          <Rooms
+            selectedServer={props.match.params.selectedServer}
+            selectedRoom={props.match.params.selectedRoom}
+            selectRoom={selectRoom}
+          />
+        )}
+>>>>>>> 195cd38ad309f75188d9635cb8c64e802ca440bc
       <FriendsList />
     </div>
   );
@@ -237,3 +264,6 @@ export default connect(
   mapStateToProps,
   { editUser }
 )(Homepage);
+
+
+
