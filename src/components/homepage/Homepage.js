@@ -30,7 +30,7 @@ import Button from "@material-ui/core/Button";
 import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 287;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
