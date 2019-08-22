@@ -9,6 +9,7 @@ const scc = require("./controllers/serverChannelController");
 const uc = require("./controllers/userController");
 const rc = require("./controllers/roomController");
 const fc = require("./controllers/friendsController");
+const pc = require("./controllers/postController");
 
 //passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
@@ -127,8 +128,13 @@ app.get("/api/users", uc.getUsers);
 
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
-app.put("/api/addFriend/:user_id", fc.getFriends);
-app.delete("/api/deleteFriend/:user_id", fc.getFriends);
+app.put("/api/addFriend/:user_id", fc.addFriend);
+app.delete("/api/deleteFriend/:user_id", fc.deleteFriend);
+
+//Post EndPoints
+app.get("/api/getPosts/:user_id", pc.getUsersPosts);
+app.put("/api/addPost/:user_id", pc.addPost);
+app.delete("/api/deletePost/:user_id", pc.deletePost);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
