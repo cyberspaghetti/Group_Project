@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_POST, GET_ALL_POSTS, ADD_POST, DELETE_POST } from './actionTypes';
+import { CREATE_POST, GET_ALL_POSTS, EDIT_POST, DELETE_POST } from './actionTypes';
 
 const initialState = {
     post: {},
@@ -8,9 +8,9 @@ const initialState = {
     redirect: false
 };
 
-export const createPost = (post_name, post_image, user_id) => {
+export const createPost = (server_id, news_post_title, news_post_body, news_post_date, news_post_image) => {
     let data = axios
-        .post('/api/createPost', { post_name, post_image, user_id })
+        .post('/api/createPost', { server_id, news_post_title, news_post_body, news_post_date, news_post_image })
         .then(res => res.data);
     return {
         type: CREATE_POST,
@@ -19,6 +19,7 @@ export const createPost = (post_name, post_image, user_id) => {
 };
 
 export const getAllPosts = () => {
+    console.log('hit get all posts reducer');
     let data = axios.get('/api/getAllPosts').then(res => {
         return res.data
     });
@@ -28,21 +29,21 @@ export const getAllPosts = () => {
     };
 };
 
-export function addPost(userId, postId) {
-    console.log('add Post reducer', userId, postId)
+export function editPost( server_id, news_post_title, news_post_body, news_post_date, news_post_image) {
+    console.log('add Post reducer', server_id, news_post_title, news_post_body, news_post_date, news_post_image)
     let data = axios
-        .put(`/api/addPost/${userId}?postId=${postId}`)
+        .put(`/api/editPost/:newsPostId`, { server_id, news_post_title, news_post_body, news_post_date, news_post_image})
         .then(res => res.data);
     console.log(data)
     return {
-        type: ADD_POST,
+        type: EDIT_POST,
         payload: data
     };
 };
 
-export function deletePost(userId, postId) {
-    console.log('deletePost Reducer', userId, postId)
-    let data = axios.delete(`/api/deletePost/${userId}?postId=${postId}`)
+export function deletePost(serverId, postId) {
+    console.log('deletePost Reducer', serverId, postId)
+    let data = axios.delete(`/api/deletePost/${serverId}?postId=${postId}`)
         .then(res => res.data)
     console.log('res delete data', data)
     return {
@@ -57,8 +58,15 @@ export default function (state = initialState, action) {
         case GET_ALL_POSTS + '_PENDING':
             return { ...state, redirect: false, error: false };
         case GET_ALL_POSTS + '_FULFILLED':
+                console.log('hit get all posts paylod reducer', payload);
             return { ...state, posts: payload, error: false };
         case GET_ALL_POSTS + '_REJECTED':
+            return { ...state, redirect: true, error: payload };
+        case EDIT_POST + '_PENDING':
+            return { ...state, redirect: false, error: false };
+        case EDIT_POST + '_FULFILLED':
+            return { ...state, posts: payload, error: false };
+        case EDIT_POST + '_REJECTED':
             return { ...state, redirect: true, error: payload };
         case CREATE_POST + '_FULFILLED':
             return { post: payload, redirect: false, error: false };

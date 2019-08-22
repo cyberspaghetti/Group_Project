@@ -44,17 +44,12 @@ CREATE TABLE "socket_rooms" (
 );
 
 
-
-CREATE TABLE "news_feed" (
-	"news_post_id" serial,
+  CREATE TABLE "news_feed" (
+	"news_posts_id" serial PRIMARY KEY,
 	"server_id" integer,
-	"news_post" varchar,
-	"news_post_date" varchar,
+	"news_post_title" varchar,
 	"news_post_image" varchar,
-	CONSTRAINT "news_feed_pk" PRIMARY KEY ("news_post_id")
-) WITH (
-  OIDS=FALSE
-);
+	"news_post_date" varchar);
 
 
 
