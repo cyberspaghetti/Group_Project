@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+
+const singleRoomStyle = {
+  padding: '5px 100px 5px 35px',
+  width: '300px'
+}
 
 class Room extends Component {
   constructor() {
@@ -13,7 +20,9 @@ class Room extends Component {
     return (
       <div>
         <section onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.obj.socket_room_id)}>
+          <ListItem style={singleRoomStyle} button>
           {this.props.obj.room_name}
+          </ListItem>
         </section>
       </div>
     );
