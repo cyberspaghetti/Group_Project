@@ -132,9 +132,10 @@ app.put("/api/addFriend/:user_id", fc.addFriend);
 app.delete("/api/deleteFriend/:user_id", fc.deleteFriend);
 
 //Post EndPoints
-app.get("/api/getPosts/:user_id", pc.getUsersPosts);
-app.put("/api/addPost/:user_id", pc.addPost);
-app.delete("/api/deletePost/:user_id", pc.deletePost);
+app.get("/api/getAllPosts", pc.getAllPosts);
+app.put("/api/createPost/:serverId", pc.createPost);
+app.put("/api/editPost/:newsPostId", pc.createPost);
+app.delete("/api/deletePost/:serverId", pc.deletePost);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);

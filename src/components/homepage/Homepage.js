@@ -9,7 +9,7 @@ import "./homepage.css";
 // import Header from "../header/Header";
 import Rooms from "../rooms/Rooms";
 
-import News from "../../materialUI/components/News";
+import News from "../Posts/News";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
