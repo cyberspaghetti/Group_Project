@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Server from "../specificServer/SpecificServer";
+import SpecificServer from "../specificServer/SpecificServer";
 import List from "@material-ui/core/List";
 import ListItem from '@material-ui/core/ListItem'
 import { getAllServers } from "../../ducks/serverReducer";
@@ -14,7 +14,8 @@ const newsIconStyle = {
 
 const listStyle = {
   padding: '0px',
-  margin: '9px 0px'
+  margin: '9px 0px',
+  width: '100%'
 }
 
 // this component maps over ./server which are the servers that are apart of the specific user
@@ -55,7 +56,7 @@ class ServerMap extends Component {
         {servers.map(server => {
           return (
             <List style={listStyle}>
-              <Server
+              <SpecificServer
                 server={server}
                 key={servers.id}
                 className="server-container"
