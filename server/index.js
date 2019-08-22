@@ -90,7 +90,6 @@ passport.deserializeUser(function(obj, done) {
 
 app.get("/api/getUser", (req, res, next) => {
   if (req.user) {
-    console.log("is a user");
     res.status(200).json(req.user);
     // call steven so he can have a look
   } else res.sendStatus(500);
