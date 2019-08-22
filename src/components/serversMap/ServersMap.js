@@ -44,14 +44,15 @@ class ServerMap extends Component {
     let { servers } = this.state;
     return (
       <div className="hero-container">
-        <ListItem button className='menu-news' style={newsIconStyle}>
+        <ListItem button style={newsIconStyle}>
+          <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
           <img
             src="https://images-workbench.99static.com/oe8mL8VlMNvQP6dLBIKXN812mMM=/0x0:1000x1000/fit-in/500x500/filters:fill(white,true)/99designs-contests-attachments/87/87933/attachment_87933369"
             alt=""
-            onClick={() => this.props.selectServer(0, 0)}
             className="news-icon"
           />
           <div>News</div>
+          </div>
         </ListItem>
         {servers.map(server => {
           return (
