@@ -30,7 +30,7 @@ import Button from "@material-ui/core/Button";
 import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
 
-const drawerWidth = 287;
+const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -170,11 +170,11 @@ function Homepage(props) {
           </IconButton>
           <Typography variant="h6" noWrap>
             Logo
-          </Typography>
+            </Typography>
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>
               Logout
-            </Button>
+              </Button>
           </div>
         </Toolbar>
       </AppBar>
@@ -198,13 +198,13 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
-              <ChevronLeftIcon style={chevronStyle} />
-            )}
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
           </IconButton>
         </div>
         <Divider />
         <div className="add-server-btn">
-          <ServerRegistration />
+          <ServerRegistration ></ServerRegistration>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -213,17 +213,15 @@ function Homepage(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
       </main>
-
       {props.match.params.selectedServer == 0 ? (
         <News />
       ) : (
-        <Rooms
-          selectedServer={props.match.params.selectedServer}
-          selectedRoom={props.match.params.selectedRoom}
-          selectRoom={selectRoom}
-        />
-      )}
-
+          <Rooms
+            selectedServer={props.match.params.selectedServer}
+            selectedRoom={props.match.params.selectedRoom}
+            selectRoom={selectRoom}
+          />
+        )}
       <FriendsList />
     </div>
   );
@@ -239,3 +237,6 @@ export default connect(
   mapStateToProps,
   { editUser }
 )(Homepage);
+
+
+
