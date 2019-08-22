@@ -9,7 +9,6 @@ import { getUsers } from "../../ducks/userReducer";
 import { getRoomName } from "../../ducks/serverReducer";
 
 import "./messageBoard.css";
-import Axios from "axios";
 
 class MessageBoard extends Component {
   constructor() {
@@ -97,7 +96,7 @@ class MessageBoard extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log('for the love of go',this.props);
     return (
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">

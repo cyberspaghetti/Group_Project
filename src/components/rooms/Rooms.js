@@ -8,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
-import MessageBoard from "../messageBoard/MessageBoard";
+import MessageBoard from '../messageBoard/MessageBoard'
 
 import RoomsMap from "../roomsMap/RoomsMap";
 
@@ -34,6 +34,7 @@ const listItemStyle = {
   paddingLeft: "35px"
 };
 export default function Rooms(props) {
+  console.log('roooooms')
   const classes = useStyles();
   return (
     <div className="rooms-container">
