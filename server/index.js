@@ -48,7 +48,7 @@ passport.use(
       domain: process.env.DOMAIN,
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/api/login"
+      callbackURL: "/api/login",
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       console.log(profile);
@@ -123,10 +123,10 @@ app.post("/api/redirect", (req, res, next) => {
 //user endpoints
 app.put(`/api/editUser`, uc.editUser);
 app.delete(`/api/logout`, uc.logout);
-app.get('/api/users', uc.getUsers)
+app.get("/api/users", uc.getUsers);
 
 //Friends end points
-app.get('/api/getFriends/:user_id', fc.getFriends)
+app.get("/api/getFriends/:user_id", fc.getFriends);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);

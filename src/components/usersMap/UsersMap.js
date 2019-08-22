@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import User from './User'
+import User from '../user/User'
 import { getUsers } from '../../ducks/userReducer';
 
 

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { editUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import ServersMap from "../views/ServersMap";
+import ServersMap from "../serversMap/ServersMap";
 import ServerRegistration from "../registration/ServerRegistration";
-import UsersMap from "../views/UsersMap";
+import UsersMap from "../usersMap/UsersMap";
 import "./homepage.css";
 // import Header from "../header/Header";
 import Rooms from "../rooms/Rooms";
@@ -29,7 +29,6 @@ import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
-
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -112,7 +111,7 @@ const buttonStyle = {
 const listItemStyle = {
   color: "white",
   fontSize: "1.2rem",
-  padding: '0px'
+  padding: "0px"
   // margin: '0px 7px'
 };
 
@@ -135,12 +134,12 @@ function Homepage(props) {
   }
 
   function selectServer(server_id, room_id) {
-    props.history.push(`/home/${server_id}/${room_id}`)
+    props.history.push(`/home/${server_id}/${room_id}`);
   }
 
-  function selectRoom(server_id, room_id) { 
-    props.history.push(`/home/${server_id}/${room_id}`)
-  };
+  function selectRoom(server_id, room_id) {
+    props.history.push(`/home/${server_id}/${room_id}`);
+  }
 
   function logout() {
     // props.logout()
@@ -148,7 +147,6 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
-  if (props.match.params.selectedServer != 0) {
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -156,7 +154,8 @@ function Homepage(props) {
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
-          })}>
+          })}
+        >
           <Toolbar className="tool-bar">
             <IconButton
               color="inherit"
@@ -165,16 +164,17 @@ function Homepage(props) {
               edge="start"
               className={clsx(classes.menuButton, {
                 [classes.hide]: open
-              })}>
+              })}
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
               Logo
-          </Typography>
+            </Typography>
             <div className="logout-parent">
               <Button variant="contained" style={buttonStyle} onClick={logout}>
                 Logout
-            </Button>
+              </Button>
             </div>
           </Toolbar>
         </AppBar>
@@ -198,13 +198,17 @@ function Homepage(props) {
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon style={chevronStyle} />
               ) : (
-                  <ChevronLeftIcon style={chevronStyle} />
-                )}
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
             </IconButton>
           </div>
           <Divider />
           <div className="add-server-btn">
-            <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
+            <Fab
+              style={addButtonStyle}
+              aria-label="add"
+              className={classes.fab}
+            >
               <AddIcon>
                 <ServerRegistration />
               </AddIcon>
@@ -221,88 +225,14 @@ function Homepage(props) {
           selectedServer={props.match.params.selectedServer}
           selectRoom={selectRoom}
         />
+
+        {props.match.params.selectedServer == 0 ? <News /> : null}
+        
         <FriendsList />
+        
         
       </div>
     );
-  } else if (props.match.params.selectedServer == 0) {
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}>
-          <Toolbar className="tool-bar">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open
-              })}>
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              Logo
-          </Typography>
-            <div className="logout-parent">
-              <Button variant="contained" style={buttonStyle} onClick={logout}>
-                Logout
-            </Button>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
-              [classes.drawerPaper]: true
-            })
-          }}
-          open={open}
-        >
-          <div className={classes.toolbar}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon style={chevronStyle} />
-              ) : (
-                  <ChevronLeftIcon style={chevronStyle} />
-                )}
-            </IconButton>
-          </div>
-          <Divider />
-          <div className="add-server-btn">
-            <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
-              <AddIcon>
-                <ServerRegistration />
-              </AddIcon>
-            </Fab>
-          </div>
-          <Divider />
-          <List>
-            <ListItem className="list-item-text" style={listItemStyle} button>
-              <ServersMap selectServer={selectServer} />
-            </ListItem>
-          </List>
-          <Divider />
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-        </main>
-        <FriendsList />
-        <News />
-      </div>
-    );
-  }
 }
 
 function mapStateToProps(state) {
