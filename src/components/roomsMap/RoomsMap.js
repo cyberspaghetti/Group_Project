@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 //reducers
 import { createRoom, getRooms } from "../../ducks/roomReducer";
 //components
-import Room from "./Room";
+import Room from "../room/Room";
 class RoomsMap extends Component {
   constructor() {
     super()
