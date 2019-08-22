@@ -10,6 +10,8 @@ import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
 import TextChannel from './TextChannel'
 
+import RoomsMap from '../../components/roomsMap/RoomsMap'
+
 const useStyles = makeStyles({
   root: {
     background: "#3d4251",
