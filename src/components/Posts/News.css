@@ -1,6 +1,6 @@
 .news-background {
   background: #52586d;
-  height: 100vh;
+  min-height: 100vh;
   width: 85.1vw;
   position: absolute;
   left: 72px;
@@ -19,6 +19,12 @@
 .cards-container {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 20px;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

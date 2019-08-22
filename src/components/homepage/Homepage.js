@@ -8,7 +8,7 @@ import UsersMap from "../usersMap/UsersMap";
 import "./homepage.css";
 import Rooms from "../rooms/Rooms";
 
-import News from "../../materialUI/components/News";
+import News from "../Posts/News";
 import clsx from "clsx";
 import { makeStyles, useTheme} from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -204,11 +204,7 @@ function Homepage(props) {
         </div>
         <Divider />
         <div className="add-server-btn">
-          <Fab style={addButtonStyle} aria-label="add" className={classes.fab}>
-            <AddIcon>
               <ServerRegistration />
-            </AddIcon>
-          </Fab>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -217,11 +213,15 @@ function Homepage(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
       </main>
-      <Rooms
-        selectedServer={props.match.params.selectedServer}
-        selectRoom={selectRoom}
-      />
-      {props.match.params.selectedServer == 0 ? <News /> : null}
+      {props.match.params.selectedServer == 0 ? (
+        <News />
+      ) : (
+        <Rooms
+          selectedServer={props.match.params.selectedServer}
+          selectedRoom={props.match.params.selectedRoom}
+          selectRoom={selectRoom}
+        />
+      )}
       <FriendsList />
     </div>
   );

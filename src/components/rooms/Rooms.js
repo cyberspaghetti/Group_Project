@@ -10,7 +10,7 @@ import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
 import MessageBoard from "../messageBoard/MessageBoard";
 
-import RoomsMap from "../JeordinTest/RoomsMap";
+import RoomsMap from "../roomsMap/RoomsMap";
 
 const useStyles = makeStyles({
   root: {
@@ -50,7 +50,7 @@ export default function Rooms(props) {
             label: classes.label
           }}
         >
-          {`server name`}
+          {props.selectedServer}
         </Button>
       </div>
       <div className="text-channel-container">
@@ -70,7 +70,10 @@ export default function Rooms(props) {
         </List>
       </div>
 
-      <MessageBoard />
+      <MessageBoard
+        selectedServer={props.selectedServer}
+        selectedRoom={props.selectedRoom}
+      />
     </div>
   );
 }

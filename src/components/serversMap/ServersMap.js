@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Server from "../specificServer/SpecificServer";
+import SpecificServer from "../specificServer/SpecificServer";
 import List from "@material-ui/core/List";
-import ListItem from '@material-ui/core/ListItem'
+import ListItem from "@material-ui/core/ListItem";
 import { getAllServers } from "../../ducks/serverReducer";
 import "../homepage/homepage.css";
 
 const newsIconStyle = {
-  padding: '0px',
-  color: 'white',
-  marginTop: '9px'
-}
+  padding: "0px",
+  color: "white",
+  marginTop: "9px"
+};
 
 const listStyle = {
-  padding: '0px',
-  margin: '9px 0px'
-}
+  padding: "0px",
+  margin: "9px 0px",
+  width: "100%"
+};
 
 // this component maps over ./server which are the servers that are apart of the specific user
 // the specific user id is grabbed from redux
@@ -43,19 +44,20 @@ class ServerMap extends Component {
     let { servers } = this.state;
     return (
       <div className="hero-container">
-        <ListItem button className='menu-news' style={newsIconStyle}>
-          <img
-            src="https://images-workbench.99static.com/oe8mL8VlMNvQP6dLBIKXN812mMM=/0x0:1000x1000/fit-in/500x500/filters:fill(white,true)/99designs-contests-attachments/87/87933/attachment_87933369"
-            alt=""
-            onClick={() => this.props.selectServer(0, 0)}
-            className="news-icon"
-          />
-          <div>News</div>
+        <ListItem button style={newsIconStyle}>
+          <div onClick={() => this.props.selectServer(0, 0)} className='menu-news'>
+            <img
+              src="https://images-workbench.99static.com/oe8mL8VlMNvQP6dLBIKXN812mMM=/0x0:1000x1000/fit-in/500x500/filters:fill(white,true)/99designs-contests-attachments/87/87933/attachment_87933369"
+              alt=""
+              className="news-icon"
+            />
+            <div>News</div>
+          </div>
         </ListItem>
         {servers.map(server => {
           return (
             <List style={listStyle}>
-              <Server
+              <SpecificServer
                 server={server}
                 key={servers.id}
                 className="server-container"
