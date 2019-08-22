@@ -1,7 +1,31 @@
 .text-channel-containerz {
-    background: #52586d;
-    width: 1418px;
-    height: 100vh;
-    position: absolute;
-    left: 215px;
+  background: #52586d;
+  width: 62vw;
+  height: 100vh;
+  position: absolute;
+  left: 215px;
 }
+
+.mapped-message-holder {
+    margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  width: 62vw;
+  height: 80vh;  
+}
+
+.message-footer {
+    background-position: 0% 0%;
+    position: fixed;
+    height: 8vh;
+    width: 100vw;
+    bottom: 0pt;
+    background-color: #52586d;
+  }
+  
+  .message-input {
+    margin-top: 2vh;
+    background-attachment: scroll;
+    height: 3vh;
+  }

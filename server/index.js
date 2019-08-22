@@ -11,6 +11,9 @@ const rc = require("./controllers/roomController");
 const fc = require("./controllers/friendsController");
 const pc = require("./controllers/postController");
 
+//sockets
+const socket = require("socket.io");
+
 //passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
@@ -49,7 +52,7 @@ passport.use(
       domain: process.env.DOMAIN,
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/api/login",
+      callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       console.log(profile);
@@ -152,6 +155,46 @@ app.get(`/api/getRooms/:server_id`, rc.getRooms);
 
 //sockets---------
 
-app.listen(port, () => {
-  console.log(`Listening on port: ${port}`);
+app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
+
+const io = socket(
+  app.listen(port, () => {
+    console.log(`Listening on port: ${port}`);
+  })
+);
+
+io.on("connection", socket => {
+  console.log("CONNECTED TO SOCKET");
+
+  socket.on("enter room", async data => {
+    let { selectedRoom, selectedServer, roomName } = data;
+    const db = app.get("db");
+    console.log("You just joined ", selectedRoom);
+    const [existingRoom] = await db.look_for_room(selectedRoom);
+    console.log("exist", existingRoom);
+    if (!existingRoom) await db.create_room(roomName, selectedServer);
+    let messages = await db.get_messages(selectedRoom, selectedServer);
+    console.log("messages", messages);
+    socket.join(selectedRoom);
+    io.in(selectedRoom).emit("room entered", messages);
+  });
+
+  //send messages
+  socket.on("send message", async data => {
+    const { selectedRoom, selectedServer, message, sender } = data;
+    console.log(selectedServer);
+    const db = app.get("db");
+    await db.send_message(+selectedRoom, message, +sender, +selectedServer);
+    let messages = await db.get_messages(selectedRoom, selectedServer);
+    if (messages.length <= 1)
+      io.to(selectedRoom).emit("room entered", messages);
+    console.log("messages", messages);
+    io.to(data.selectedRoom).emit("message sent", messages);
+  });
+
+  //disconnected
+  socket.on("disconnect", () => {
+    console.log("Disconnected from room");
+  });
 });
+//socket ----------------------

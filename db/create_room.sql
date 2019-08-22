@@ -5,4 +5,4 @@ values
 
 select *
 from socket_rooms
-where server_id = $2;
+where room_name = $1;
