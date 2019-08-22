@@ -11,7 +11,7 @@ const listItemStyleServer = {
   marginLeft: "7px"
 };
 
-export default class Server extends Component {
+export default class SpecificServer extends Component {
   addDefaultSrc(ev) {
     ev.target.src =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvlhaYgj0EeSjYPBSHNY3xacbupTZ_EnCvlSWoyJB7jMa1wuhdeA";
