@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import "./landingpage.css"
+import "./landingpage.css";
 
 const buttonStyle = {
   background: "#7e8699",
