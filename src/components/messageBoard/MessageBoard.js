@@ -99,6 +99,7 @@ class MessageBoard extends Component {
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">
           {this.state.messages.map(messageObj => {
+            // eslint-disable-next-line no-lone-blocks
             {
               if (messageObj.user_id == this.props.user.user.user_id) {
                 return (
@@ -118,6 +119,8 @@ class MessageBoard extends Component {
                         {" "}
                         {messageObj.message}{" "}
                       </section>
+                      <button className='put-socket'>Edit Message</button>
+                      <button className='put-socket'>Delete</button>
                     </section>
                   </section>
                 );
