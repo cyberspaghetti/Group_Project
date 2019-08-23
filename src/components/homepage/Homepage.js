@@ -241,7 +241,7 @@ function Homepage(props) {
             onChange={e => changeNewRoom(e.target.value)}
 
             />
-            <Button onClick={() => props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id)}>SUBMIT</Button> 
+            <Button onClick={() => props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id).then()}>SUBMIT</Button> 
             <Button onClick={toggle} style={buttonStyle}>
               CANCEL
             </Button>
