@@ -51,8 +51,8 @@ export default function Cards(props) {
   const theme = useTheme();
   return (
     <div>
-      <Grid container className={classes.root} spacing={2}>
-        <Grid container justify='center' spacing={spacing}>
+      <Grid items className={classes.root} spacing={2}>
+        <Grid items justify='center' spacing={spacing}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
