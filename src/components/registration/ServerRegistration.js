@@ -16,11 +16,11 @@ class ServerRegistration extends Component {
         }
     }
 
-    handleServerName = value => {
-        this.setState({
-            server_name: value
-        })
-    };
+  
+    handleServerChange = e => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+      };
 
     registerServer = () => {
         let { server_name, server_image } = this.state;
@@ -33,7 +33,7 @@ class ServerRegistration extends Component {
     
 
     render() {
-        let { server_image } = this.state
+        let { server_image, server_name } = this.state
 
         const buttonStyle = {
             background: '#7e8699',
@@ -44,9 +44,9 @@ class ServerRegistration extends Component {
             <div className='border-of-component'>
                 <title>Register server</title>
                 <h1>Server Name</h1>
-                <input onChange={e => this.handleServerName(e.target.value)} />
+                <input onChange={this.handleServerChange} value={server_name} name='server_name'/>
                 <h1>Server Image</h1>
-                <input value={server_image} onChange={this.handleChange} name="server_image" />
+                <input value={server_image} onChange={this.handleServerChange} name="server_image" />
                 <Button style={buttonStyle} onClick={this.registerServer}>Register</Button>
             </div>
             </div>

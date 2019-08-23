@@ -1,9 +1,8 @@
 import axios from "axios";
-
 import { GET_FRIENDS, ADD_FRIEND, DELETE_FRIEND } from "./actionTypes";
 
 const initialState = {
-    friends: {}
+    friends: []
 };
 
 
@@ -25,7 +24,8 @@ export function addFriend(userId, friendId, accepted) {
     };
 };
 
-export function deleteFriend(userId, friendId) {
+export function removeFriend(userId, friendId) {
+    console.log('hit reducer', userId, friendId);
     let data = axios.delete(`/api/deleteFriend/${userId}?friendId=${friendId}`)
         .then(res => res.data)
     return {

@@ -23,7 +23,6 @@ class LandingPage extends Component {
   };
 
   render() {
-    console.log(this.props);
     if (this.props.user.loggedIn) return <Redirect to="/home/0/0" />;
     return (
       <div className="login-container">

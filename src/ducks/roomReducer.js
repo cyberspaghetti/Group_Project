@@ -3,7 +3,7 @@ import axios from "axios";
 import { GET_ROOMS, CREATE_ROOM } from "./actionTypes";
 
 const initialState = {
-  rooms: {}
+  rooms: []
 };
 
 // app.get(`/api/getRooms`, rc.getRooms);
