@@ -11,6 +11,7 @@ module.exports = {
       let { userId } = req.params;
       let { friendId } = req.query
       const db = req.app.get('db');
+      console.log(userId, friendId)
       let friendsList = await db.delete_friend([
         +userId,
         +friendId,

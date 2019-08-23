@@ -7,16 +7,16 @@ import {
   DELETE_SERVER_USER,
   ADD_SERVER_USER,
   LOGOUT_SERVER,
-  GET_ROOM_NAME
+  GET_ROOM_NAME,
 } from "./actionTypes";
 
 const initialState = {
   server: {},
-  servers: {},
-  serverUsers: {},
+  servers: [],
+  serverUsers: [],
   error: false,
   redirect: false,
-  name: ""
+  name: "",
 };
 
 export const serverRegister = (server_name, server_image, user_id) => {
@@ -55,11 +55,12 @@ export default function(state = initialState, action) {
     case GET_SERVERS + "_PENDING":
       return { ...state, redirect: false, error: false };
     case GET_SERVERS + "_FULFILLED":
+      console.log('server payload',payload);
       return { ...state, servers: payload, error: false };
     case GET_SERVERS + "_REJECTED":
       return { ...state, redirect: true, error: payload };
     case SERVER_REGISTRATION + "_FULFILLED":
-      return { server: payload, redirect: false, error: false };
+      return { servers: payload, redirect: false, error: false };
     case SERVER_REGISTRATION + "_REJECTED":
       return { ...state, error: payload };
     case LOGOUT_SERVER + "_FULFILLED":

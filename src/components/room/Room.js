@@ -8,19 +8,14 @@ const singleRoomStyle = {
   width: '300px'
 }
 
-class Room extends Component {
-  constructor() {
-    super();
-
-    this.state = {};
-  }
+export default class Room extends Component {
 
   render() {
     return (
       <div>
-        <section onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.obj.socket_room_id)}>
+        <section onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.rooms.socket_room_id)}>
           <ListItem style={singleRoomStyle} button>
-          {this.props.obj.room_name}
+          {this.props.rooms.room_name}
           </ListItem>
         </section>
       </div>
@@ -28,11 +23,3 @@ class Room extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(
-  mapStateToProps,
-  {}
-)(Room);

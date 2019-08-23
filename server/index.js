@@ -133,7 +133,7 @@ app.get("/api/users", uc.getUsers);
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
 app.put("/api/addFriend/:user_id", fc.addFriend);
-app.delete("/api/deleteFriend/:user_id", fc.deleteFriend);
+app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);

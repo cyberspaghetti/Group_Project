@@ -6,11 +6,13 @@ import promiseMiddleware from "redux-promise-middleware";
 import userReducer from "./userReducer";
 import serverReducer from "./serverReducer";
 import friendReducer from './friendReducer'
+import roomReducer from './roomReducer'
 
 const rootReducer = combineReducers({
   user: userReducer,
   friends: friendReducer,
-  server: serverReducer
+  server: serverReducer,
+  rooms: roomReducer
   
 });
 
