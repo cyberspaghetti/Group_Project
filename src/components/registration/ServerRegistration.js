@@ -5,68 +5,50 @@ import { Redirect, Link } from 'react-router-dom'
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
+import './serverRegistration.css'
 
 class ServerRegistration extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            server_name: '',
             server_image: '',
-            editing: false
+            server_name: ''
         }
     }
 
-    edit = () => {
-        this.setState({ editing: !this.state.editing })
-    };
-
-    handleChange = e => {
-        let { name, value } = e.target;
+  
+    handleServerChange = e => {
+        const { name, value } = e.target;
         this.setState({ [name]: value });
-    };
+      };
 
     registerServer = () => {
         let { server_name, server_image } = this.state;
         let { user_id } = this.props.user.user
         this.props.serverRegister(server_name, server_image, user_id)
-        this.edit()
+        this.props.addServer()
 
     };
 
-
-
+    
 
     render() {
-        let { server_name, server_image } = this.state
-        let { editing } = this.state
-        const addButtonStyle = {
-            background: "#00B9FF",
-            color: "white",
-        };
+        let { server_image, server_name } = this.state
+
+        const buttonStyle = {
+            background: '#7e8699',
+            color: 'white'
+        }
         return (
-            <div>
-                {editing
-                    ?
-                    <div>
-                        <div className='border-of-component'>
-                            <title>Register server</title>
-                            <h1>Server Name</h1>
-                            <input value={server_name} onChange={this.handleChange} name="server_name" />
-                            <h1>Server Image</h1>
-                            <input value={server_image} onChange={this.handleChange} name="server_image" />
-                        </div>
-                        <button onClick={this.registerServer}>Register</button>
-                    </div>
-                    :
-                    <div className="add-server-btn">
-                        <Fab
-                            style={addButtonStyle}
-                            onClick={this.edit}
-                            aria-label="add">
-                            <AddIcon></AddIcon>
-                        </Fab>
-                    </div>
-                }
+            <div className='server-registration-container'>
+            <div className='border-of-component'>
+                <title>Register server</title>
+                <h1>Server Name</h1>
+                <input onChange={this.handleServerChange} value={server_name} name='server_name'/>
+                <h1>Server Image</h1>
+                <input value={server_image} onChange={this.handleServerChange} name="server_image" />
+                <Button style={buttonStyle} onClick={this.registerServer}>Register</Button>
+            </div>
             </div>
         )
     }
