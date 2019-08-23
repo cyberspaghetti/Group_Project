@@ -169,7 +169,7 @@ function Homepage(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Logo
+            Singularity
             </Typography>
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>

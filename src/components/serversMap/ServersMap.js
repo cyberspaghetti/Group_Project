@@ -5,6 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from '@material-ui/core/ListItem'
 import { getAllServers } from "../../ducks/serverReducer";
 import "../homepage/homepage.css";
+import newsIconLogo from './astronaut1largeTransparent.png'
 
 const newsIconStyle = {
   padding: '0px',
@@ -47,7 +48,7 @@ class ServerMap extends Component {
         <ListItem button style={newsIconStyle}>
           <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
           <img
-            src="https://images-workbench.99static.com/oe8mL8VlMNvQP6dLBIKXN812mMM=/0x0:1000x1000/fit-in/500x500/filters:fill(white,true)/99designs-contests-attachments/87/87933/attachment_87933369"
+            src={newsIconLogo}
             alt=""
             className="news-icon"
           />
