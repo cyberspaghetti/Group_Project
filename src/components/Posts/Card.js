@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid'
+import "./News.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -70,7 +71,9 @@ export default function Cards(props) {
         </CardActionArea>
         <CardActions>
           <Button size="small" style={cardButton}>
+            <div className='vist-server-btn'>
             Visit Server
+            </div>
           </Button>
         </CardActions>
       </Card>
