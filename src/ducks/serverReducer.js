@@ -12,8 +12,8 @@ import {
 
 const initialState = {
   server: {},
-  servers: {},
-  serverUsers: {},
+  servers: [],
+  serverUsers: [],
   error: false,
   redirect: false,
   name: ""
@@ -55,6 +55,7 @@ export default function(state = initialState, action) {
     case GET_SERVERS + "_PENDING":
       return { ...state, redirect: false, error: false };
     case GET_SERVERS + "_FULFILLED":
+      console.log('server payload',payload);
       return { ...state, servers: payload, error: false };
     case GET_SERVERS + "_REJECTED":
       return { ...state, redirect: true, error: payload };
