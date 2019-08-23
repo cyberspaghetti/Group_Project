@@ -39,7 +39,6 @@ const roomListStyle = {
 }
 
 export default function Rooms(props) {
-  console.log('roooooms')
   const classes = useStyles();
   return (
     <div className="rooms-container">

@@ -35,7 +35,6 @@ module.exports = {
     const { id } = req.params;
     let data = await dbInstance.get_server_users(+req.params.serverId);
     res.send(data);
-    console.log("this is the data", data);
   },
 
   getServers: (req, res, next) => {
@@ -53,7 +52,6 @@ module.exports = {
     const dbInstance = req.app.get("db");
     let data = await dbInstance.get_server_name(req.params.id);
     res.send(data);
-    console.log("this is the data", data);
   },
 
   async deleteServerUser(req, res) {

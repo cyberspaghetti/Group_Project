@@ -19,7 +19,6 @@ export const createPost = (server_id, news_post_title, news_post_body, news_post
 };
 
 export const getAllPosts = () => {
-    console.log('hit get all posts reducer');
     let data = axios.get('/api/getAllPosts').then(res => {
         return res.data
     });
@@ -30,11 +29,9 @@ export const getAllPosts = () => {
 };
 
 export function editPost( server_id, news_post_title, news_post_body, news_post_date, news_post_image) {
-    console.log('add Post reducer', server_id, news_post_title, news_post_body, news_post_date, news_post_image)
     let data = axios
         .put(`/api/editPost/:newsPostId`, { server_id, news_post_title, news_post_body, news_post_date, news_post_image})
         .then(res => res.data);
-    console.log(data)
     return {
         type: EDIT_POST,
         payload: data
@@ -42,10 +39,8 @@ export function editPost( server_id, news_post_title, news_post_body, news_post_
 };
 
 export function deletePost(serverId, postId) {
-    console.log('deletePost Reducer', serverId, postId)
     let data = axios.delete(`/api/deletePost/${serverId}?postId=${postId}`)
         .then(res => res.data)
-    console.log('res delete data', data)
     return {
         type: DELETE_POST,
         payload: data
@@ -58,7 +53,6 @@ export default function (state = initialState, action) {
         case GET_ALL_POSTS + '_PENDING':
             return { ...state, redirect: false, error: false };
         case GET_ALL_POSTS + '_FULFILLED':
-                console.log('hit get all posts paylod reducer', payload);
             return { ...state, posts: payload, error: false };
         case GET_ALL_POSTS + '_REJECTED':
             return { ...state, redirect: true, error: payload };

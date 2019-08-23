@@ -39,7 +39,6 @@ class ServerRegistration extends Component {
     render() {
         let { server_name, server_image } = this.state
         let { editing } = this.state
-        console.log('props from register', this.props)
         const addButtonStyle = {
             background: "#00B9FF",
             color: "white",

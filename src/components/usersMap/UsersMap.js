@@ -23,7 +23,6 @@ class UsersMap extends Component {
 
     render() {
         let { users } = this.state
-        console.log('this state', this.props)
         return (
             <div className='users-container'>{users.map(users => {
                 return (
