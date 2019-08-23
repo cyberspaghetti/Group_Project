@@ -17,8 +17,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 400,
     minWidth: 400,
-    height: 360,
-    margin: 4
+    height: 360
   },
   media: {
     height: 200
@@ -59,7 +58,7 @@ export default function Cards(props) {
             image={props.posts.news_post_image}
             title="image"
           />
-          <CardContent>
+          <CardContent >
             <Typography gutterBottom variant="h5" component="h2">
               {props.posts.news_post_title}
             </Typography>

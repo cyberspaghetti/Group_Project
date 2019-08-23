@@ -6,7 +6,6 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import './serverRegistration.css'
-
 class ServerRegistration extends Component {
     constructor(props) {
         super(props)
@@ -15,26 +14,20 @@ class ServerRegistration extends Component {
             server_name: ''
         }
     }
-
   
     handleServerChange = e => {
         const { name, value } = e.target;
         this.setState({ [name]: value });
       };
-
     registerServer = () => {
         let { server_name, server_image } = this.state;
         let { user_id } = this.props.user.user
         this.props.serverRegister(server_name, server_image, user_id)
         this.props.addServer()
-
     };
-
     
-
     render() {
         let { server_image, server_name } = this.state
-
         const buttonStyle = {
             background: '#7e8699',
             color: 'white'
@@ -57,9 +50,7 @@ class ServerRegistration extends Component {
 function mapStateToProps(state) {
     return { server: state.server, user: state.user };
 }
-
 export default connect(
     mapStateToProps,
     { serverRegister }
 )(ServerRegistration);
-
