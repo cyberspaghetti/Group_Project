@@ -8,12 +8,20 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid'
+
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
   card: {
-    maxWidth: 450
+    maxWidth: 400,
+    minWidth: 400,
+    height: 360,
+    margin: 4
   },
   media: {
-    height: 215
+    height: 200
   },
   content: {
     flexGrow: 1,
@@ -37,10 +45,13 @@ const cardButton = {
 };
 
 export default function Cards(props) {
+  const [spacing, setSpacing] = React.useState(2)
   const classes = useStyles();
   const theme = useTheme();
   return (
     <div>
+      <Grid container className={classes.root} spacing={2}>
+        <Grid container justify='center' spacing={spacing}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
@@ -63,7 +74,8 @@ export default function Cards(props) {
           </Button>
         </CardActions>
       </Card>
+      </Grid>
+      </Grid>
     </div>
   );
 }
-
