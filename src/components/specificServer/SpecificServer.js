@@ -28,7 +28,7 @@ export default class SpecificServer extends Component {
         onClick={() => this.props.selectServer(this.props.servers.server_id, 0)}
       >
         <img
-          src="this.props.server.server_image"
+          src={this.props.servers.server_image}
           alt=""
           onError={this.addDefaultSrc}
           className="server-image"
