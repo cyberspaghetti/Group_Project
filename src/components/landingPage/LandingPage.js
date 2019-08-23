@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-
 import { getUser } from "../../ducks/userReducer";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import "./landingpage.css";
