@@ -25,7 +25,6 @@ class MessageBoard extends Component {
   componentDidMount = () => {
     this.socket = io();
     this.socket.on("room entered", data => {
-      console.log("hit emit");
       this.joinSuccess(data);
     });
 
@@ -96,11 +95,11 @@ class MessageBoard extends Component {
   };
 
   render() {
-    console.log('for the love of go',this.props);
     return (
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">
           {this.state.messages.map(messageObj => {
+            // eslint-disable-next-line no-lone-blocks
             {
               if (messageObj.user_id == this.props.user.user.user_id) {
                 return (
@@ -120,6 +119,8 @@ class MessageBoard extends Component {
                         {" "}
                         {messageObj.message}{" "}
                       </section>
+                      <button className='put-socket'>Edit Message</button>
+                      <button className='put-socket'>Delete</button>
                     </section>
                   </section>
                 );

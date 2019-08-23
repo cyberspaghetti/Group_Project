@@ -48,7 +48,6 @@ export default function Cards(props) {
   const [spacing, setSpacing] = React.useState(2)
   const classes = useStyles();
   const theme = useTheme();
-  console.log('console in cards', props);
   return (
     <div>
       <Grid container className={classes.root} spacing={2}>

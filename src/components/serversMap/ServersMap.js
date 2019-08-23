@@ -22,17 +22,11 @@ const listStyle = {
 // this component maps over ./server which are the servers that are apart of the specific user
 // the specific user id is grabbed from redux
 class ServerMap extends Component {
-  constructor() {
-    super();
-    this.state = {
-      servers: []
-    };
-  }
+ 
   // neeed to change to specific users to grab server
   componentDidMount() {
-    this.props.getAllServers().then(res => {
-      this.setState({ servers: res.value });
-    });
+    console.log('hit component did')
+    this.props.getAllServers()
   }
 
   componentDidUpdate(prevProps) {
@@ -42,34 +36,31 @@ class ServerMap extends Component {
   }
 
   render() {
-    let { servers } = this.state;
-    return (
-      <div className="hero-container">
-        <ListItem button style={newsIconStyle}>
-          <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
-          <img
-            src={newsIconLogo}
-            alt=""
-            className="news-icon"
-          />
-          <div>News</div>
-          </div>
-        </ListItem>
-        {servers.map(server => {
-          return (
-            <List style={listStyle}>
-              <SpecificServer
-                server={server}
-                key={servers.id}
-                className="server-container"
-                selectServer={this.props.selectServer}
-                className="server_list"
-              />
+    console.log('props in server', this.props);
+    let servers = 'loading'
+    if (this.props.server.servers) {
+      return (
+        <div className="hero-container">
+          <ListItem button style={newsIconStyle}>
+            <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
+              <img src="https://images-workbench.99static.com/oe8mL8VlMNvQP6dLBIKXN812mMM=/0x0:1000x1000/fit-in/500x500/filters:fill(white,true)/99designs-contests-attachments/87/87933/attachment_87933369"
+                alt="" className="news-icon" />
+              <div>News</div>
+            </div>
+          </ListItem>
+          {servers = this.props.server.servers.map(servers => {
+            return (<List style={listStyle}>
+              <SpecificServer servers={servers} key={servers.server_id} className='server-container' selectServer={this.props.selectServer} className="server_list" />
             </List>
-          );
-        })}
+            )
+          })}
+        </div>
+      )
+    }
+    return (
+      <div className='friends-container'>{servers}
       </div>
-    );
+    )
   }
 }
 

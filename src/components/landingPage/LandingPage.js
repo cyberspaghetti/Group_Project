@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-
 import { getUser } from "../../ducks/userReducer";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import "./landingpage.css";
@@ -25,7 +23,6 @@ class LandingPage extends Component {
   };
 
   render() {
-    console.log(this.props);
     if (this.props.user.loggedIn) return <Redirect to="/home/0/0" />;
     return (
       <div className="login-container">

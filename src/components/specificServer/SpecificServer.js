@@ -19,13 +19,13 @@ export default class SpecificServer extends Component {
   }
 
   render() {
-    console.log("propsosopr", this.props);
+    console.log('this props in specific server', this.props)
     return (
       <ListItem
         button
         className="list-item-text"
         style={listItemStyleServer}
-        onClick={() => this.props.selectServer(this.props.server.server_id, 0)}
+        onClick={() => this.props.selectServer(this.props.servers.server_id, 0)}
       >
         <img
           src="this.props.server.server_image"
@@ -33,7 +33,7 @@ export default class SpecificServer extends Component {
           onError={this.addDefaultSrc}
           className="server-image"
         />
-        <div>{this.props.server.server_name}</div>
+        <div>{this.props.servers.server_name}</div>
       </ListItem>
     );
   }

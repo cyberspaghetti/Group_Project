@@ -88,3 +88,25 @@
   font-size: 1.2rem;
   color: white;
 }
+
+.add-room{
+  margin-top: 20vh;
+  z-index: 10000;
+  position: absolute;
+  font-size: 50px;
+  width: 60vw;
+  height: 10vh;
+  background-color: white;
+}
+
+.dark-dash {
+  position: absolute;
+  z-index: 9999;
+  background-color: rgba(39, 39, 39, 0.9);
+  top: 0;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+}

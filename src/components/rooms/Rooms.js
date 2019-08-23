@@ -8,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
-import MessageBoard from '../messageBoard/MessageBoard'
+import MessageBoard from "../messageBoard/MessageBoard";
 
 import RoomsMap from "../roomsMap/RoomsMap";
 
@@ -31,16 +31,16 @@ const addButton = {
 const listItemStyle = {
   color: "#ccc",
   fontSize: ".9rem",
-  padding: "0px",
+  padding: "0px"
 };
 
 const roomListStyle = {
-  width: '100%',
-}
+  width: "100%"
+};
 
 export default function Rooms(props) {
-  console.log('roooooms')
   const classes = useStyles();
+
   return (
     <div className="rooms-container">
       <div className="server-name">
@@ -53,15 +53,16 @@ export default function Rooms(props) {
           {props.selectedServer}
         </Button>
       </div>
+      
       <div className="text-channel-container">
         <div className="text-channels-title">
           {`TEXT CHANNELS`}
           <IconButton style={addButton}>
-            <AddIcon />
+            <AddIcon onClick={props.toggle} />
           </IconButton>
         </div>
         <List style={roomListStyle}>
-          <ListItem style={listItemStyle} >
+          <ListItem style={listItemStyle}>
             <RoomsMap
               selectedServer={props.selectedServer}
               selectRoom={props.selectRoom}
@@ -69,7 +70,6 @@ export default function Rooms(props) {
           </ListItem>
         </List>
       </div>
-
       <MessageBoard
         selectedServer={props.selectedServer}
         selectedRoom={props.selectedRoom}

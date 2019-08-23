@@ -1,35 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Friend from '../friends/Friends'
-import { getFriends } from '../../ducks/friendReducer';
+import { getFriends, removeFriend } from '../../ducks/friendReducer';
 
 
 // this component maps over ./Friend which are the friends of the specific user
 class FriendsMap extends Component {
-    constructor() {
-        super()
-        this.state = {
-            friends: []
+
+
+    componentDidMount() {
+        console.log('hit comp');
+        this.props.getFriends(this.props.user.user.user_id)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.friends.friends !== this.props.friends.friends) {
+            console.log('are we hittin dis')
+            this.render()
         }
     }
 
-    componentDidMount() {
-        this.props.getFriends(this.props.user.user.user_id)
-            .then(res => {
-                this.setState({ friends: res.value });
-            })
+    remove = (user_id, friend_id) => {
+        console.log(user_id, friend_id);
+        this.props.removeFriend(user_id, friend_id)
     }
 
     render() {
-        console.log('userid for friends', this.props);
-        let { friends } = this.state
-        console.log('this staten in friends', this.props)
-        return (
-            <div className='friends-container'>{friends.map(friends => {
+        console.log('9999999999999', this.props)
+        let friends = 'loading'
+        if (this.props.friends) {
+            friends = this.props.friends.friends.map(friends => {
                 return (
-                    <Friend friends={friends} key={friends.id} className='friend-container' />
+                    <Friend friends={friends} key={friends.friend_id} className='friend-container' remove={this.remove} />
                 )
-            })}
+            })
+        }
+        
+        return (
+            <div className='friends-container'>{friends}
             </div>
         )
     }
@@ -42,5 +50,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { getFriends}
+    { getFriends, removeFriend }
 )(FriendsMap);

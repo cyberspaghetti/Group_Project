@@ -1,14 +1,12 @@
 import axios from "axios";
-
 import { GET_FRIENDS, ADD_FRIEND, DELETE_FRIEND } from "./actionTypes";
 
 const initialState = {
-    friends: {}
+    friends: []
 };
 
 
 export const getFriends = user_id => {
-    console.log('hit friends', user_id)
     let payload = axios.get(`/api/getFriends/${user_id}`).then(res => res.data);
     return {
         type: GET_FRIENDS,
@@ -17,22 +15,19 @@ export const getFriends = user_id => {
 };
 
 export function addFriend(userId, friendId, accepted) {
-    console.log('add friend reducer', userId, friendId, accepted)
     let data = axios
         .put(`/api/addFriend/${userId}?friendId=${friendId}?accepted=${true}`)
         .then(res => res.data);
-    console.log(data)
     return {
         type: ADD_FRIEND,
         payload: data
     };
 };
 
-export function deleteFriend(userId, friendId) {
-    console.log('deleteFriend Reducer', userId, friendId)
+export function removeFriend(userId, friendId) {
+    console.log('hit reducer', userId, friendId);
     let data = axios.delete(`/api/deleteFriend/${userId}?friendId=${friendId}`)
         .then(res => res.data)
-    console.log('res delete data', data)
     return {
         type: DELETE_FRIEND,
         payload: data
@@ -45,7 +40,6 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
         case GET_FRIENDS + "_FULFILLED":
-            console.log('friends payload', payload);
             return { friends: payload };
         case GET_FRIENDS + "_PENDING":
             return { ...state };

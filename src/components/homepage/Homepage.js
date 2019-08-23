@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { editUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { createRoom } from "../../ducks/roomReducer";
 import ServersMap from "../serversMap/ServersMap";
 import ServerRegistration from "../registration/ServerRegistration";
 import UsersMap from "../usersMap/UsersMap";
@@ -120,10 +121,28 @@ const chevronStyle = {
   color: "white"
 };
 
+
+
 function Homepage(props) {
+  const [serverToggle, setServerToggle] = React.useState(false)
+
+  function addServer() {
+    console.log('hit')
+    setServerToggle(serverToggle === false ? true : false )
+  }
+  console.log(serverToggle)
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [toggleState, setToggleState] = React.useState("off");
+
+  const [newRoom, changeNewRoom] = React.useState('')
+
+  function toggle() {
+    console.log("hit the toggle");
+    setToggleState(toggleState === "off" ? "on" : "off");
+  }
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -174,7 +193,7 @@ function Homepage(props) {
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>
               Logout
-              </Button>
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
@@ -198,13 +217,18 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
-                <ChevronLeftIcon style={chevronStyle} />
-              )}
+              <ChevronLeftIcon style={chevronStyle} />
+            )}
           </IconButton>
         </div>
         <Divider />
         <div className="add-server-btn">
-          <ServerRegistration ></ServerRegistration>
+        <Fab
+         style={addButtonStyle}
+         onClick={addServer}
+         aria-label="add">
+       <AddIcon></AddIcon>
+       </Fab>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -216,12 +240,34 @@ function Homepage(props) {
       {props.match.params.selectedServer == 0 ? (
         <News />
       ) : (
-          <Rooms
-            selectedServer={props.match.params.selectedServer}
-            selectedRoom={props.match.params.selectedRoom}
-            selectRoom={selectRoom}
-          />
-        )}
+        <Rooms
+          selectedServer={props.match.params.selectedServer}
+          selectedRoom={props.match.params.selectedRoom}
+          selectRoom={selectRoom}
+          toggle={toggle}
+        />
+      )}
+      {serverToggle
+        ?
+        <ServerRegistration addServer={addServer} />
+        :
+        null}
+      {toggleState === "on" ? (
+        <section className="dark-dash">
+          <section className={`add-room`}>
+
+            <input 
+            onChange={e => changeNewRoom(e.target.value)}
+
+            />
+            <Button onClick={() =>  props.createRoom(newRoom, props.match.params.selectedServer, props.match.params.selectRoomcreateRoom).then(toggle())}>SUBMIT</Button> 
+            <Button onClick={toggle} style={buttonStyle}>
+              CANCEL
+            </Button>
+          </section>
+        </section>
+      ) : null}
+
       <FriendsList />
     </div>
   );
@@ -229,14 +275,13 @@ function Homepage(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    server: state.server,
+    editing: state.editing
   };
 }
 
 export default connect(
   mapStateToProps,
-  { editUser }
+  { editUser, createRoom }
 )(Homepage);
-
-
-
