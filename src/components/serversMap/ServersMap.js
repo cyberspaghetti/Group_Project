@@ -29,14 +29,14 @@ class ServerMap extends Component {
     this.props.getAllServers()
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.render();
-    }
-  }
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevProps.server.servers !== this.props.server.servers) {
+//         console.log('are we hittin dis')
+//         this.render()
+//     }
+// }
 
   render() {
-    console.log('props in server', this.props);
     let servers = 'loading'
     if (this.props.server.servers) {
       return (
@@ -50,7 +50,7 @@ class ServerMap extends Component {
           </ListItem>
           {servers = this.props.server.servers.map(servers => {
             return (<List style={listStyle}>
-              <SpecificServer servers={servers} key={servers.server_id} className='server-container' selectServer={this.props.selectServer} className="server_list" />
+              <SpecificServer servers={servers} key={servers.server_id} selectServer={this.props.selectServer} className="server_list" />
             </List>
             )
           })}
@@ -65,7 +65,7 @@ class ServerMap extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user, servers: state.servers, server: state.server };
+  return { user: state.user, server: state.server };
 }
 
 export default connect(

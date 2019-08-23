@@ -20,6 +20,7 @@ const initialState = {
 };
 
 export const serverRegister = (server_name, server_image, user_id) => {
+  console.log('hit in server register')
   let data = axios
     .post("/api/createServer", { server_name, server_image, user_id })
     .then(res => res.data);

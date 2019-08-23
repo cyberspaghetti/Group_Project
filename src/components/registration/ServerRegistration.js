@@ -11,8 +11,8 @@ class ServerRegistration extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            server_image: '',
-            server_name: ''
+            server_name: '',
+            server_image: ''
         }
     }
 
