@@ -16,9 +16,9 @@ export const getRooms = server_id => {
   };
 };
 
-export const createRoom = (room_name, server_id) => {
+export const createRoom = (room_name, server_id, user_id) => {
   let updatedRooms = axios
-    .post(`/api/createRoom`, { room_name, server_id })
+    .post(`/api/createRoom`, { room_name, server_id, user_id })
     .then(res => res.data);
   return {
     type: CREATE_ROOM,
