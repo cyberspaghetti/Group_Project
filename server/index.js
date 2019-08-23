@@ -17,10 +17,12 @@ const socket = require("socket.io");
 //passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-
 let returnStr = "/";
 
-const port = 4000;
+const{
+  SERVER_PORT
+} = process.env
+
 
 const app = express();
 
@@ -157,7 +159,8 @@ app.get(`/api/getRooms/:server_id`, rc.getRooms);
 app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
 
 const io = socket(
-  app.listen(port, () => {
+  app.listen(SERVER_PORT, () => {
+    console.log('server is listening on', {SERVER_PORT})
   })
 );
 
