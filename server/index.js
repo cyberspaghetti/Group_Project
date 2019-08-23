@@ -19,10 +19,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 let returnStr = "/";
 
-const{
-  SERVER_PORT
-} = process.env
-
+const { SERVER_PORT } = process.env;
 
 const app = express();
 
@@ -160,7 +157,7 @@ app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
 
 const io = socket(
   app.listen(SERVER_PORT, () => {
-    console.log('server is listening on', {SERVER_PORT})
+    console.log("server is listening on", { SERVER_PORT });
   })
 );
 
@@ -190,6 +187,14 @@ io.on("connection", socket => {
       io.to(selectedRoom).emit("room entered", messages);
     console.log("messages", messages);
     io.to(data.selectedRoom).emit("message sent", messages);
+  });
+
+  socket.on("delete message", async data => {
+    const { socket_message_id, selectedRoom, selectedServer } = data;
+    console.log('snitch', socket_message_id, selectedRoom, selectedServer )
+    const db = app.get("db");
+    let messages = await db.delete_message(+socket_message_id, selectedRoom, +selectedServer);
+    io.to(data.selectedRoom).emit('message sent', messages)
   });
 
   //disconnected
