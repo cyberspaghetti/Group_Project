@@ -39,7 +39,6 @@ const cardButton = {
 export default function Cards(props) {
   const classes = useStyles();
   const theme = useTheme();
-  console.log('console in cards', props);
   return (
     <div>
       <Card className={classes.card}>

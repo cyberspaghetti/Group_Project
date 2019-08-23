@@ -20,7 +20,6 @@ class RoomsMap extends Component {
   
   componentDidUpdate = prevProps => { 
       if (prevProps.selectedServer != this.props.selectedServer ) {
-        console.log('hitihtihi')
       this.props.getRooms(this.props.selectedServer).then(res => {
         this.setState({ rooms: res.value });
       });
@@ -28,7 +27,6 @@ class RoomsMap extends Component {
   };
   // <RoomsMap selectRoom={this.selectRoom} selectedServer={this.selectedServer}/>
   render() {
-    console.log("eyo", this.props.selectedServer);
     let { rooms } = this.state;
     return (
       <section className="full-room-holder">

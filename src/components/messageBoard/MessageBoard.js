@@ -25,7 +25,6 @@ class MessageBoard extends Component {
   componentDidMount = () => {
     this.socket = io();
     this.socket.on("room entered", data => {
-      console.log("hit emit");
       this.joinSuccess(data);
     });
 
@@ -96,7 +95,6 @@ class MessageBoard extends Component {
   };
 
   render() {
-    console.log('for the love of go',this.props);
     return (
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">

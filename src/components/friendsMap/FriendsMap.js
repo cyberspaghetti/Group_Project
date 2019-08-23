@@ -21,9 +21,7 @@ class FriendsMap extends Component {
     }
 
     render() {
-        console.log('userid for friends', this.props);
         let { friends } = this.state
-        console.log('this staten in friends', this.props)
         return (
             <div className='friends-container'>{friends.map(friends => {
                 return (

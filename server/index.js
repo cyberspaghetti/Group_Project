@@ -158,13 +158,11 @@ app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
 
 const io = socket(
   app.listen(port, () => {
-    console.log(`Listening on port: ${port}`);
   })
 );
 
 io.on("connection", socket => {
   console.log("CONNECTED TO SOCKET");
-
   socket.on("enter room", async data => {
     let { selectedRoom, selectedServer, roomName } = data;
     const db = app.get("db");

@@ -15,7 +15,6 @@ class PostsMap extends Component {
     }
 // change to people in the server
     componentDidMount() {
-        console.log('hit get posts');
         this.props.getAllPosts()
         .then(res => {
             this.setState({ posts: res.value });
@@ -24,7 +23,6 @@ class PostsMap extends Component {
 
     render() {
         let { posts } = this.state
-        console.log('this post state', this.props)
         return (
             <div className='posts-container'>{posts.map(posts => {
                 return (
