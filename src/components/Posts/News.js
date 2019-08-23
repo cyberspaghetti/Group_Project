@@ -9,7 +9,7 @@ export default class News extends Component {
         <div className="news-title">
           <Typography variant="h4">News</Typography>
         </div>
-        <div className="cards-container">
+        <div >
           <CardMap/>
         </div>
         {this.props.children ? this.props.children : null}

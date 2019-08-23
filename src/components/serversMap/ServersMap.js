@@ -5,6 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from '@material-ui/core/ListItem'
 import { getAllServers } from "../../ducks/serverReducer";
 import "../homepage/homepage.css";
+import newsIconLogo from './astronaut1largeTransparent.png'
 
 const newsIconStyle = {
   padding: '0px',
