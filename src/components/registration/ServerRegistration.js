@@ -32,7 +32,7 @@ class ServerRegistration extends Component {
         this.edit()
 
     };
- 
+
 
 
 
@@ -43,37 +43,31 @@ class ServerRegistration extends Component {
         const addButtonStyle = {
             background: "#00B9FF",
             color: "white",
-          };
+        };
         return (
             <div>
-            {editing
-                ?
-                <div>
-                    <div className='border-of-component'>
-                    <title>Register server</title>
-                    <h1>Server Name</h1>
-                    <input value={server_name} onChange={this.handleChange} name="server_name" />
-                    <h1>Server Image</h1>
-                    <input value={server_image} onChange={this.handleChange} name="server_image" />
+                {editing
+                    ?
+                    <div>
+                        <div className='border-of-component'>
+                            <title>Register server</title>
+                            <h1>Server Name</h1>
+                            <input value={server_name} onChange={this.handleChange} name="server_name" />
+                            <h1>Server Image</h1>
+                            <input value={server_image} onChange={this.handleChange} name="server_image" />
+                        </div>
+                        <button onClick={this.registerServer}>Register</button>
                     </div>
-                </div>
-
-                :
-                <div>
-                </div>
-            }
-            {editing
-                ? (<button onClick={this.registerServer}>Register</button>)
-                :
-                (     
-                <div className="add-server-btn">
-                <Fab
-                  style={addButtonStyle}
-                  onClick={this.edit}
-                  aria-label="add">
-                <AddIcon></AddIcon>
-                </Fab>
-              </div>)}
+                    :
+                    <div className="add-server-btn">
+                        <Fab
+                            style={addButtonStyle}
+                            onClick={this.edit}
+                            aria-label="add">
+                            <AddIcon></AddIcon>
+                        </Fab>
+                    </div>
+                }
             </div>
         )
     }
