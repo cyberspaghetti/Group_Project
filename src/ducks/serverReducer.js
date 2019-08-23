@@ -7,7 +7,7 @@ import {
   DELETE_SERVER_USER,
   ADD_SERVER_USER,
   LOGOUT_SERVER,
-  GET_ROOM_NAME
+  GET_ROOM_NAME,
 } from "./actionTypes";
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
   serverUsers: {},
   error: false,
   redirect: false,
-  name: ""
+  name: "",
 };
 
 export const serverRegister = (server_name, server_image, user_id) => {

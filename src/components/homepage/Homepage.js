@@ -120,7 +120,17 @@ const chevronStyle = {
   color: "white"
 };
 
+
+
 function Homepage(props) {
+  const [serverToggle, setServerToggle] = React.useState(false)
+
+  function addServer() {
+    console.log('hit')
+    setServerToggle(serverToggle === false ? true : false )
+  }
+  console.log(serverToggle)
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -204,7 +214,12 @@ function Homepage(props) {
         </div>
         <Divider />
         <div className="add-server-btn">
-          <ServerRegistration ></ServerRegistration>
+        <Fab
+          style={addButtonStyle}
+          onClick={addServer}
+          aria-label="add">
+        <AddIcon></AddIcon>
+        </Fab>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -222,6 +237,11 @@ function Homepage(props) {
             selectRoom={selectRoom}
           />
         )}
+        {serverToggle
+        ?
+        <ServerRegistration addServer={addServer} />
+        :
+        null}
       <FriendsList />
     </div>
   );
@@ -229,7 +249,9 @@ function Homepage(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    server: state.server,
+    editing: state.editing
   };
 }
 
@@ -237,6 +259,5 @@ export default connect(
   mapStateToProps,
   { editUser }
 )(Homepage);
-
 
 
