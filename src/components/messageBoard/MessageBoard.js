@@ -18,7 +18,10 @@ class MessageBoard extends Component {
       messages: [],
 
       messageInput: "",
-      room: 0
+      room: 0,
+
+      editing: false,
+      editingInput: ""
     };
   }
 
@@ -83,6 +86,29 @@ class MessageBoard extends Component {
     });
   };
 
+  edit = () => {
+    if (this.state.editing) {
+      this.setState({
+        editing: false
+      });
+    } else if (!this.state.editing) {
+      this.setState({
+        editing: true
+      });
+    }
+  };
+
+  saveChanges = () => {};
+
+  deleteMessage = socket_message_id => {
+    console.log("hit");
+    this.socket.emit("delete message", {
+      socket_message_id,
+      selectedRoom: this.state.room,
+      selectedServer: this.props.selectedServer
+    });
+  };
+
   updateMessages = messages => {
     this.setState({
       messages
@@ -110,17 +136,42 @@ class MessageBoard extends Component {
                         className="messaging-picture"
                         src={this.props.user.user.user_image}
                       />
+
                       <section className="messaging-sender">
                         {" "}
                         {this.props.user.user.user_name} {""}{" "}
                       </section>
 
-                      <section className="message-color">
-                        {" "}
-                        {messageObj.message}{" "}
-                      </section>
-                      <button className='put-socket'>Edit Message</button>
-                      <button className='put-socket'>Delete</button>
+                      {this.state.editing ? (
+                        <div>
+                          <input
+                            type="text"
+                            name="messageInput"
+                            value={this.state.editingInput}
+                            onChange={this.handleInput}
+                            className="edit-input"
+                          />
+                          <button onClick={this.saveChanges}>Save</button>
+                        </div>
+                      ) : (
+                        <section className="message-color">
+                          {" "}
+                          {messageObj.message}
+                        </section>
+                      )}
+
+                      <button
+                        className="put-socket"
+                        onClick={() =>
+                          this.deleteMessage(messageObj.socket_message_id)
+                        }
+                      >
+                        Delete
+                      </button>
+                      <button className="put-socket" onClick={this.edit}>
+                        Edit Message
+                      </button>
+                      
                     </section>
                   </section>
                 );

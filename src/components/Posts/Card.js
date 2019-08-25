@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid'
+import "./News.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,8 +51,8 @@ export default function Cards(props) {
   const theme = useTheme();
   return (
     <div>
-      <Grid container className={classes.root} spacing={2}>
-        <Grid container justify='center' spacing={spacing}>
+      <Grid items className={classes.root} spacing={2}>
+        <Grid items justify='center' spacing={spacing}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
@@ -70,7 +71,9 @@ export default function Cards(props) {
         </CardActionArea>
         <CardActions>
           <Button size="small" style={cardButton}>
+            <div className='vist-server-btn'>
             Visit Server
+            </div>
           </Button>
         </CardActions>
       </Card>
