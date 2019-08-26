@@ -134,8 +134,8 @@ app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
-app.put("/api/createPost/:serverId", pc.createPost);
-app.put("/api/editPost/:newsPostId", pc.createPost);
+app.post("/api/createPost", pc.createPost);
+// app.put("/api/editPost/:newsPostId", pc.createPost);
 app.delete("/api/deletePost/:serverId", pc.deletePost);
 
 //Server Channel Endpoints

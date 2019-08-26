@@ -8,9 +8,10 @@ const initialState = {
     redirect: false
 };
 
-export const createPost = (server_id, news_post_title, news_post_body, news_post_date, news_post_image) => {
+export const createPost = ( user_id, news_post_title, news_post_image, news_post_body, news_post_date ) => {
+    console.log('create post reducer hit', user_id, news_post_title, news_post_image, news_post_body, news_post_date)
     let data = axios
-        .post('/api/createPost', { server_id, news_post_title, news_post_body, news_post_date, news_post_image })
+        .post(`/api/createPost`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
         .then(res => res.data);
     return {
         type: CREATE_POST,
@@ -28,9 +29,9 @@ export const getAllPosts = () => {
     };
 };
 
-export function editPost( server_id, news_post_title, news_post_body, news_post_date, news_post_image) {
+export function editPost( user_id, news_post_title, news_post_image, news_post_body, news_post_date ) {
     let data = axios
-        .put(`/api/editPost/:newsPostId`, { server_id, news_post_title, news_post_body, news_post_date, news_post_image})
+        .put(`/api/editPost/:newsPostId`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
         .then(res => res.data);
     return {
         type: EDIT_POST,
@@ -38,8 +39,8 @@ export function editPost( server_id, news_post_title, news_post_body, news_post_
     };
 };
 
-export function deletePost(serverId, postId) {
-    let data = axios.delete(`/api/deletePost/${serverId}?postId=${postId}`)
+export function deletePost(userId, postId) {
+    let data = axios.delete(`/api/deletePost/${userId}?postId=${postId}`)
         .then(res => res.data)
     return {
         type: DELETE_POST,
@@ -63,6 +64,7 @@ export default function (state = initialState, action) {
         case EDIT_POST + '_REJECTED':
             return { ...state, redirect: true, error: payload };
         case CREATE_POST + '_FULFILLED':
+            console.log('hit fufilled', payload)
             return { post: payload, redirect: false, error: false };
         case CREATE_POST + '_REJECTED':
             return { ...state, error: payload };

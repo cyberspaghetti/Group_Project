@@ -17,7 +17,6 @@ class Friend extends Component {
 
     render() {
         let {friends}=this.props
-    console.log('ppppprrrooopppsss',this.props)
         return (
             <div className='image-container'>
                 <div>{friends.user_name}</div>
