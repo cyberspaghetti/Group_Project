@@ -6,8 +6,27 @@
   left: 72px;
   top: 64px;
   overflow-y: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: flex-start;
 }
 
+.display-menu{
+  color: white;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  top: 600px;
+  left: 50px;
+  background: black;
+  width: 1450px;
+  padding: 10px;
+
+}
 .news-title {
   display: flex;
   width: 100%;
@@ -27,3 +46,32 @@
 .vist-server-btn {
   margin-bottom: 5px;
 }
+
+.display-info-container{
+  display: flex;
+  color: white;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: baseline;
+  align-content: stretch;
+  text-align: center;
+}
+
+.gif-search-container{
+  width: 1000px;
+}
+
+.input-title{
+ background-color: white;
+ min-width: 100px;
+ max-width: 300px;
+ color: black;
+}
+
+.input-body{
+  background-color: white;
+  min-width: 100px;
+  max-width: 300px;
+  text-align: start;
+  color: black;
+ }
