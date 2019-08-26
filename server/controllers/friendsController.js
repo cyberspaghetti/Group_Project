@@ -20,11 +20,11 @@ module.exports = {
     },
     
     async addFriend(req, res) {
-      let { userId, friendId } = req.body;
+      let { user_id, friend_id } = req.body;
       const db = req.app.get('db');
       let friendsList = await db.add_friend([
-        userId,
-        +friendId,
+        user_id,
+        +friend_id,
       ]);
      
       res.send(friendsList);

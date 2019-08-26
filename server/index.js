@@ -129,8 +129,15 @@ app.get("/api/users", uc.getUsers);
 
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
-app.put("/api/addFriend/:user_id", fc.addFriend);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
+//under construction
+// app.put("/api/addFriend/:user_id", fc.addFriend);
+app.post(`/api/addFriend`, fc.addFriend)
+// app.get('/api/friendRequests/:user_id', fc.friendRequests)
+// app.delete('/api/rejectFriend:user_friend_junction', fc.rejectFriend)
+// app.put('/api/acceptFriend', fc.acceptFriend)
+//-------------
+
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
