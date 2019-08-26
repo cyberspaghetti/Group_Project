@@ -4,7 +4,7 @@ import "./News.css";
 import { createPost } from '../../ducks/postReducer'
 import { Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import GifSearch from '../gifSearch/GifSearch'
+import GifSearch from '../gifSearch/gifSearch'
 import { stringify } from "querystring";
 
 
@@ -22,13 +22,13 @@ class News extends Component {
     }
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate(prevProps, prevState) {
     if (this.prevState != this.state)
       this.render()
   }
 
   date = () => {
-    let {news_post_date} = this.state
+    let { news_post_date } = this.state
     let date = new Date();
     let dateToString = date.toLocaleDateString();
     return this.setState({ news_post_date: `${dateToString}` })
@@ -51,7 +51,7 @@ class News extends Component {
     console.log('thisstate in function create', user_id);
     let { news_post_title, news_post_image, news_post_body, news_post_date } = this.state;
     this.props.createPost(user_id, news_post_title, news_post_image, news_post_body, news_post_date);
-    this.render()
+
   };
 
   grabGif = (gif) => {
@@ -60,9 +60,9 @@ class News extends Component {
 
 
   render() {
-    
+
     console.log('opafsjdosfjkdsafj', this.props);
-    let { news_post_body, news_post_title, news_post_image }= this.state
+    let { news_post_body, news_post_title, news_post_image } = this.state
     let { display_menu } = this.state
     return (
       <div className="news-background">
@@ -78,9 +78,9 @@ class News extends Component {
           <div className='display-menu'>
             <div className='display-info-container'>
               Title
-            <input  onChange={this.handleChange}name="news_post_title" className="input-title" value={news_post_title}></input>
+            <input onChange={this.handleChange} name="news_post_title" className="input-title" value={news_post_title}></input>
               Message
-              <input  name="news_post_body" class="input-body" onChange={this.handleChange} value={news_post_body}></input>
+              <input name="news_post_body" class="input-body" onChange={this.handleChange} value={news_post_body}></input>
               <button onClick={this.createPost}>Create Post</button>
             </div>
             <div className='gif-search-container'>
@@ -97,7 +97,7 @@ class News extends Component {
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts, user: state.user};
+  return { posts: state.posts, user: state.user };
 }
 export default connect(
   mapStateToProps,

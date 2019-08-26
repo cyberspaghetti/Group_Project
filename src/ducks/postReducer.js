@@ -3,12 +3,12 @@ import { CREATE_POST, GET_ALL_POSTS, EDIT_POST, DELETE_POST } from './actionType
 
 const initialState = {
     post: {},
-    posts: {},
+    posts: [],
     error: false,
     redirect: false
 };
 
-export const createPost = ( user_id, news_post_title, news_post_image, news_post_body, news_post_date ) => {
+export const createPost = (user_id, news_post_title, news_post_image, news_post_body, news_post_date) => {
     console.log('create post reducer hit', user_id, news_post_title, news_post_image, news_post_body, news_post_date)
     let data = axios
         .post(`/api/createPost`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
@@ -20,16 +20,14 @@ export const createPost = ( user_id, news_post_title, news_post_image, news_post
 };
 
 export const getAllPosts = () => {
-    let data = axios.get('/api/getAllPosts').then(res => {
-        return res.data
-    });
+    let data = axios.get('/api/getAllPosts').then(res => res.data);
     return {
         type: GET_ALL_POSTS,
         payload: data
     };
 };
 
-export function editPost( user_id, news_post_title, news_post_image, news_post_body, news_post_date ) {
+export function editPost(user_id, news_post_title, news_post_image, news_post_body, news_post_date) {
     let data = axios
         .put(`/api/editPost/:newsPostId`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
         .then(res => res.data);
@@ -64,8 +62,7 @@ export default function (state = initialState, action) {
         case EDIT_POST + '_REJECTED':
             return { ...state, redirect: true, error: payload };
         case CREATE_POST + '_FULFILLED':
-            console.log('hit fufilled', payload)
-            return { post: payload, redirect: false, error: false };
+            return { posts: payload, redirect: false, error: false };
         case CREATE_POST + '_REJECTED':
             return { ...state, error: payload };
         default:

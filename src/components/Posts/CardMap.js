@@ -8,33 +8,44 @@ import './News.css'
 // this component maps over ./post which which are the posts that are apart of the specific server
 // the specific server id if from props.match.params that are passed down from homepage
 class PostsMap extends Component {
-
-
-    componentDidUpdate = (prevProps, prevState) => {
-        if (prevState != this.state)
-          this.render()
-      }
-    componentDidMount() {
-        this.props.getAllPosts()
-        .then(res => {
-            this.setState({ posts: res.value });
-            })
+    constructor() {
+        super()
+        this.state = {
+            posts: []
+        }
     }
-    
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) {
+            console.log('what in the butt', this.props.posts)
+            this.setState({
+                posts: this.props.posts.posts
+            }, () => {
+                console.log('this our state', this.state.posts)
+            })
+        }
+    }
+    componentDidMount = () => {
+        this.props.getAllPosts()
+        this.setState({ posts: this.props.posts.posts })
+    }
+
 
     render() {
-        let { posts } = this.state
+        console.log('props cardsmap', this.props)
+        let posts = 'loading'
+        console.log('weare looking here', posts);
+        if (this.props.posts.posts)
+            return (
+                <section className="cards-container">
+                    {posts = this.props.posts.posts.map(posts => {
+                        return <Cards posts={posts} key={posts.news_post_id} post={this.props.posts.posts} />;
+                    })}
+                </section>
+            );
         return (
-                <div className='cards-container'>{posts.map(posts => {
-                return (
-                    <Cards posts={posts} key={posts.id}  />
-                )
-            })}
-            </div>
-            
+            <div>{posts}</div>
         )
     }
-
 }
 
 function mapStateToProps(state) {

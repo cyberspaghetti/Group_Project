@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Gif from './Gif'
+import Gif from './gif'
 import './gif.css'
 
 

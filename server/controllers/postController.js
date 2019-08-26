@@ -4,6 +4,7 @@ module.exports = {
     const db = req.app.get("db");
     let newsPosts = await db.get_all_news_posts();
     res.send(newsPosts);
+    console.log('is this fuckig',newsPosts);
   },
 
   async getPostByUserId(req, res){
@@ -19,16 +20,17 @@ module.exports = {
     let postList = await db.delete_post([
       +news_post_id, +user_id
     ])
+    console.log('postlist', postList);
     res.send(postList);
   },
 
   async createPost(req, res) {
-    console.log('hit server', req.body)
     let { user_id, news_post_title, news_post_image, news_post_body, news_post_date } = req.body;
     const db = req.app.get('db');
     let postList = await db.create_post([
       +user_id, news_post_title, news_post_image, news_post_body, news_post_date,
     ]);
+    console.log('postlist', postList);
     res.send(postList);
   },
 
