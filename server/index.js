@@ -130,14 +130,12 @@ app.get("/api/users", uc.getUsers);
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
-//under construction
-// app.put("/api/addFriend/:user_id", fc.addFriend);
-app.post(`/api/addFriend`, fc.addFriend)
-// app.get('/api/friendRequests/:user_id', fc.friendRequests)
-// app.delete('/api/rejectFriend:user_friend_junction', fc.rejectFriend)
-// app.put('/api/acceptFriend', fc.acceptFriend)
-//-------------
 
+app.post("/api/addFriend", fc.addFriend);
+app.get('/api/friendRequests/:user_id', fc.friendRequests)
+app.delete('/api/rejectFriend/:user_friend_junction', fc.rejectFriend)
+app.put('/api/acceptFriend', fc.acceptFriend)
+//-------------
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
@@ -198,10 +196,14 @@ io.on("connection", socket => {
 
   socket.on("delete message", async data => {
     const { socket_message_id, selectedRoom, selectedServer } = data;
-    console.log('snitch', socket_message_id, selectedRoom, selectedServer )
+    console.log("snitch", socket_message_id, selectedRoom, selectedServer);
     const db = app.get("db");
-    let messages = await db.delete_message(+socket_message_id, selectedRoom, +selectedServer);
-    io.to(data.selectedRoom).emit('message sent', messages)
+    let messages = await db.delete_message(
+      +socket_message_id,
+      selectedRoom,
+      +selectedServer
+    );
+    io.to(data.selectedRoom).emit("message sent", messages);
   });
 
   //disconnected

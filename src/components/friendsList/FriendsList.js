@@ -4,8 +4,9 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
-import FriendsMap from '../friendsMap/FriendsMap'
-import './friendsList.css'
+import FriendsMap from "../friendsMap/FriendsMap";
+import FriendReqMap from "../friendReqMap/FriendReqMap";
+import "./friendsList.css";
 
 const useStyles = makeStyles({
   root: {
@@ -36,12 +37,46 @@ export default function FriendsList() {
             label: classes.label
           }}
         >
-          {`your peeps`}
+          {`New Friends`}
+        </Button>
+      </div>
+
+      <List className="channel-names-container">
+        <ListItem style={listItemStyle} button>
+          Placeholder
+        </ListItem>
+      </List>
+
+      <div className="friends-list-title">
+        <Button
+          classes={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
+          {`Your Friends`}
         </Button>
       </div>
       <List className="channel-names-container">
         <ListItem style={listItemStyle} button>
-          <FriendsMap/>
+          <FriendsMap />
+        </ListItem>
+      </List>
+
+      <div className="friends-list-title">
+        <Button
+          classes={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
+          {`Friend Requests`}
+        </Button>
+      </div>
+
+      <List className="channel-names-container">
+        <ListItem style={listItemStyle} button>
+         <FriendReqMap />
         </ListItem>
       </List>
     </div>
