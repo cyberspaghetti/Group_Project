@@ -267,8 +267,8 @@ function Homepage(props) {
           </section>
         </section>
       ) : null}
-
       <FriendsList />
+      
     </div>
   );
 }
