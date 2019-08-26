@@ -1,6 +1,6 @@
 .rooms-container {
   height: 100vh;
-  width: 215px;
+  width: 15vw;
   background: #3d4251;
   display: flex;
   margin-left: 72px;
@@ -8,6 +8,8 @@
   position: fixed;
   top: 64px;
 }
+
+
 .server-name {
   width: 100%;
   height: 70px;
@@ -26,6 +28,9 @@
   margin-top: 20px;
   overflow-y: auto;
 }
+
+.mapped-message-holder::-webkit-scrollbar { width: 0 !important }
+
 .text-channels-title {
   width: 100%;
   color: #ccc;

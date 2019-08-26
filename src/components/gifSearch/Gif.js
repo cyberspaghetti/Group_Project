@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './gif.css'
 //this is the component for the user it grabs props from the parent module that uses it and displays the specific user information 
 export default function Gif(props){ 
         return (
