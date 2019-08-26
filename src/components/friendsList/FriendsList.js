@@ -1,12 +1,12 @@
-import React from "./node_modules/react";
-import { makeStyles } from "./node_modules/@material-ui/core/styles";
-import Divider from "./node_modules/@material-ui/core/Divider";
-import Button from "./node_modules/@material-ui/core/Button";
-import ListItem from "./node_modules/@material-ui/core/ListItem";
-import List from "./node_modules/@material-ui/core/List";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
 import FriendsMap from "../friendsMap/FriendsMap";
 import FriendReqMap from "../friendReqMap/FriendReqMap";
-import "./friendsList.css";
+import "./FriendsList.css";
 
 const useStyles = makeStyles({
   root: {
