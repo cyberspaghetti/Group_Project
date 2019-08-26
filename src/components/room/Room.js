@@ -12,8 +12,8 @@ export default class Room extends Component {
 
   render() {
     return (
-      <div>
-        <section onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.rooms.socket_room_id)}>
+      <div >
+        <section className='specific-room' onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.rooms.socket_room_id)}>
           <ListItem style={singleRoomStyle} button>
           {this.props.rooms.room_name}
           </ListItem>
