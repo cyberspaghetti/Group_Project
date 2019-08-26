@@ -1,0 +1,10 @@
+.request-image{
+    display: flex;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #3ea7f1;
+    margin-top: 2vh;
+}
