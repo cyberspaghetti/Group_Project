@@ -1,27 +1,61 @@
 .login-container {
-    height: 100vh;
+  /* background: #52586d; */
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
     width: 100vw;
-    background: #52586d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+  height: 325px;
+  width: 450px;
+  background: #313442;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  padding-right: 50px;
+  border: 1px solid white;
+}
+
+.dude-container {
+  height: 100%;
+  width: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.astroBoi {
+  height: 280px;
+  width: 280px;
+  animation: MoveUpDown 4s linear infinite;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 70px;
   }
-  
-  .login-box {
-    height: 325px;
-    width: 475px;
-    background: #313442;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
+  50% {
+    bottom: 110px;
   }
-  .dude-container {
-    height: 100%;
-    width: 50%;
-    background: transparent;
-  }
-  
-  .button-container {
-    display: flex;
-  }
+}
+
+.button-container {
+  display: flex;
+}

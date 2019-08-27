@@ -7,6 +7,8 @@ import {
   friendRequests
 } from "../../ducks/friendReducer";
 
+import './FriendReqMap.css'
+
 class FriendReqMap extends Component {
   componentDidMount = () => {
     this.props.friendRequests(this.props.user.user.user_id);
@@ -20,21 +22,19 @@ class FriendReqMap extends Component {
   };
 
   render() {
-    console.log("props", this.props);
+    console.log("1freindreqmap", this.props);
     if (this.props.requests) {
       return (
         <section>
           {this.props.requests.map(obj => {
             return (
-              <div>
-                <Request obj={obj} />
-              </div>
+                <Request  obj={obj}  className='req-map'/>
             );
           })}
         </section>
       );
     } else {
-      return <div>loading</div>;
+      return <div className='friends-container'>loading</div>;
     }
   }
 }
