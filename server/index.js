@@ -23,8 +23,13 @@ massive(process.env.CONNECTION_STRING)
       app.listen(SERVER_PORT, () => {
         console.log('server is listening on', {SERVER_PORT})
       }))
+
       //sockets---------
+
 app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
+
+
+
 io.on("connection", socket => {
   console.log("CONNECTED TO SOCKET");
   socket.on("enter room", async data => {
@@ -68,8 +73,10 @@ io.on("connection", socket => {
   });
 });
 //socket ----------------------
+
   })
   .catch(err => console.log("massive-err", err));
+
 app.use(json());
 app.use(
   session({
@@ -159,6 +166,7 @@ app.get("/api/users", uc.getUsers);
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
+app.delete('/api/deleteFriendTwo/:userId', fc.deleteFriendTwo)
 
 app.post("/api/addFriend", fc.addFriend);
 app.get('/api/friendRequests/:user_id', fc.friendRequests)
