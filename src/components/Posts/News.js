@@ -107,5 +107,5 @@ function mapStateToProps(state) {
 }
 export default connect(
   mapStateToProps,
-  { createPost }
+  { createPost, editPost }
 )(News);

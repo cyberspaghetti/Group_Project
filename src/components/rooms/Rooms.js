@@ -42,21 +42,26 @@ const roomListStyle = {
 function Rooms(props) {
   const classes = useStyles();
 
+  // tying to get server name for rooms
+
+  // const serverName = props.server.serverUsers.filter(server => {
+  //   if(props.selectedServer === server.server_id){
+  //     return server.server_name
+  //   } 
+  // })
+
+
   return (
     <div className="rooms-container">
       <div className="server-name">
-        {props.server.serverUsers.map(server => {
-          return (
-            <Button
-              classes={{
-                root: classes.root,
-                label: classes.label
-              }}
-            >
-              {server.server_name}
-            </Button>
-          );
-        })}
+        <Button
+          classes={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
+          {'WHAAAT'}
+        </Button>
       </div>
 
       <div className="text-channel-container">
@@ -87,6 +92,4 @@ function mapStateToProps(state) {
   return { user: state.user, server: state.server };
 }
 
-export default connect(
-  mapStateToProps,
-)(Rooms);
+export default connect(mapStateToProps)(Rooms);
