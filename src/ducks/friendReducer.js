@@ -24,7 +24,7 @@ export const getFriends = user_id => {
 
 export function addFriend(user_id, friend_id) {
   let data = axios
-    .put(`/api/addFriend`, { user_id, friend_id })
+    .post(`/api/addFriend`, { user_id, friend_id })
     .then(res => res.data);
   return {
     payload: data
@@ -91,7 +91,7 @@ export default function(state = initialState, action) {
     case GET_FRIENDS + "_PENDING":
       return { ...state };
     case ADD_FRIEND + "_FULFILLED":
-      return { ...state, friends: payload.friends, friends2: payload.friends2 };
+      return { ...state, requests: payload };
     case DELETE_FRIEND + "_FULFILLED":
         console.log('payloadeyeyy', payload)
       return {

@@ -7,6 +7,8 @@ import {
   friendRequests
 } from "../../ducks/friendReducer";
 
+
+import blueLoader from './loader-01.png'
 import './FriendReqMap.css'
 
 class FriendReqMap extends Component {
@@ -34,7 +36,7 @@ class FriendReqMap extends Component {
         </section>
       );
     } else {
-      return <div className='friends-container'>loading</div>;
+      return <img src={blueLoader} className='blue-loader'/>
     }
   }
 }

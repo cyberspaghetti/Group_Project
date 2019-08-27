@@ -5,6 +5,7 @@ import { rejectFriend, acceptFriend } from '../../ducks/friendReducer'
 
 import "./Request.css";
 
+
 class Request extends Component {
   render() {
     console.log("353", this.props.obj);

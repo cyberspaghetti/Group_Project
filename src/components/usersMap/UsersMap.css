@@ -1,0 +1,6 @@
+.users-container{
+    height: 20vh;
+    overflow-y: auto;
+}
+
+.users-container::-webkit-scrollbar { width: 0 !important }

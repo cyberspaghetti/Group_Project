@@ -29,15 +29,15 @@ class ServerMap extends Component {
   }
 
 //   componentDidUpdate(prevProps, prevState) {
-//     if (prevProps.server.servers !== this.props.server.servers) {
+//     if (prevProps.server.serverUsers !== this.props.server.serverUsers) {
 //         console.log('are we hittin dis')
-//         this.render()
+//         this.props.getUserServers(this.props.user.user.user_id)
 //     }
 // }
 
   render() {
     let servers = 'loading'
-    if (this.props.server.servers) {
+    if (this.props.server.serverUsers) {
       return (
         <div className="hero-container">
           <ListItem button style={newsIconStyle}>
