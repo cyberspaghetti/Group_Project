@@ -24,14 +24,16 @@ class FriendsMap extends Component {
 
     render() {
         let friends = 'loading'
+        var count = 0
         if (this.props.friends) {
             friends = this.props.friends.friends.map(friends => {
+                count++
                 return (
-                    <Friends friends={friends} key={friends.friend_id} className='friend-container' remove={this.remove} />
+                    <Friend friends={friends} key={`${friends.friend_id}-${count}`} className='friend-container' remove={this.remove} />
                 )
             })
         }
-        
+
         return (
             <div className='friends-container'>{friends}
             </div>
