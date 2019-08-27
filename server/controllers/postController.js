@@ -4,7 +4,6 @@ module.exports = {
     const db = req.app.get("db");
     let newsPosts = await db.get_all_news_posts();
     res.send(newsPosts);
-    console.log('is this fuckig',newsPosts);
   },
 
   async getPostByUserId(req, res){

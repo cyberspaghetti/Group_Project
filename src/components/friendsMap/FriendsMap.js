@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Friends from '../friends/Friends'
+import Friends2 from '../friends2/Friends2'
 import { getFriends, removeFriend } from '../../ducks/friendReducer';
 
+import './FriendsMap.css'
 
 // this component maps over ./Friend which are the friends of the specific user
 class FriendsMap extends Component {
@@ -13,9 +15,10 @@ class FriendsMap extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.friends.friends !== this.props.friends.friends) {
+        if (prevProps.friends !== this.props.friends) {
             this.render()
         }
+        
     }
 
     remove = (user_id, friend_id) => {
@@ -24,13 +27,20 @@ class FriendsMap extends Component {
 
     render() {
         let friends = 'loading'
+        let friends2 = 'loading'
+        console.log('lkfajfa;jf',this.props)
         if (this.props.friends) {
-            friends = this.props.friends.friends.map(friends => {
-                return (
-                    <Friends friends={friends} key={friends.friend_id} className='friend-container' remove={this.remove} />
-                )
-            })
-        }
+            return (
+                <div>
+            {friends = this.props.friends.map(friends => {
+                 return <Friends className='friend-container' friends={friends} key={friends.friend_id}  remove={this.remove} />
+                })}  
+                {friends2 = this.props.friends2 .map(friends2 => {
+                     return <Friends2  friends={friends2} key={friends2.friend_id}  remove={this.remove} />
+                    })}  
+                    </div>
+            )
+            }
         
         return (
             <div className='friends-container'>{friends}
@@ -41,7 +51,7 @@ class FriendsMap extends Component {
 }
 
 function mapStateToProps(state) {
-    return { user: state.user, friends: state.friends };
+    return { user: state.user, friends: state.friends.friends, friends2: state.friends.friends2 };
 }
 
 export default connect(
