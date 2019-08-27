@@ -16,15 +16,17 @@
 
 .display-menu{
   color: white;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  top: 600px;
-  left: 50px;
-  background: black;
+  top: 110px;
+  left: 120px;
+  background:#414656;
   width: 1450px;
   padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
 
 }
 .news-title {

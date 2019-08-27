@@ -27,15 +27,17 @@ export const getAllPosts = () => {
     };
 };
 
-export function editPost(user_id, news_post_title, news_post_image, news_post_body, news_post_date) {
+export function editPost(user_id, newsPostId, news_post_title, news_post_image, news_post_body, news_post_date) {
     let data = axios
-        .put(`/api/editPost/:newsPostId`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
+        .put(`/api/editPost/:newsPostId`, { user_id, newsPostId, news_post_title, news_post_image, news_post_body, news_post_date })
         .then(res => res.data);
     return {
         type: EDIT_POST,
         payload: data
     };
 };
+
+
 
 export function deletePost(userId, postId) {
     let data = axios.delete(`/api/deletePost/${userId}?postId=${postId}`)
@@ -65,6 +67,12 @@ export default function (state = initialState, action) {
             return { posts: payload, redirect: false, error: false };
         case CREATE_POST + '_REJECTED':
             return { ...state, error: payload };
+        case DELETE_POST + '_PENDING':
+            return { ...state, redirect: false, error: false };
+        case DELETE_POST + '_FULFILLED':
+            return { ...state, posts: payload, error: false };
+        case DELETE_POST + '_REJECTED':
+            return { ...state, redirect: true, error: payload };
         default:
             return state;
     };
