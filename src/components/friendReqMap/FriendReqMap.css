@@ -1,0 +1,6 @@
+.req-map {
+    height: 15vh;
+    overflow-y: scroll;
+  }
+  
+  .req-map::-webkit-scrollbar { width: 0 !important }

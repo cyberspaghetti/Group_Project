@@ -1,0 +1,6 @@
+.friends-container {
+  height: 25vh;
+  overflow-y: scroll;
+}
+
+.friends-container::-webkit-scrollbar { width: 0 !important }

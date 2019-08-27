@@ -10,6 +10,7 @@ import {
 
 const initialState = {
   friends: [],
+  friends2: [],
   requests: []
 };
 
@@ -31,9 +32,18 @@ export function addFriend(user_id, friend_id) {
 }
 
 export function removeFriend(userId, friendId) {
-  console.log("hit reducer", userId, friendId);
   let data = axios
     .delete(`/api/deleteFriend/${userId}?friendId=${friendId}`)
+    .then(res => res.data);
+  return {
+    type: DELETE_FRIEND,
+    payload: data
+  };
+}
+
+export function removeFriendTwo(userId, friendId) {
+  let data = axios
+    .delete(`/api/deleteFriendTwo/${userId}?friendId=${friendId}`)
     .then(res => res.data);
   return {
     type: DELETE_FRIEND,
@@ -76,13 +86,19 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_FRIENDS + "_FULFILLED":
-      return { ...state, friends: payload };
+      console.log("payload", payload);
+      return { ...state, friends: payload.friends, friends2: payload.friends2 };
     case GET_FRIENDS + "_PENDING":
       return { ...state };
     case ADD_FRIEND + "_FULFILLED":
-      return { ...state, friends: payload };
+      return { ...state, friends: payload.friends, friends2: payload.friends2 };
     case DELETE_FRIEND + "_FULFILLED":
-      return { ...state, friends: payload };
+        console.log('payloadeyeyy', payload)
+      return {
+        ...state,
+        friends: payload.friendsList,
+        friends2: payload.friends2
+      };
     case FRIEND_REQUESTS + "_FULFILLED":
       return { ...state, requests: payload };
     case REJECT_FRIEND + "_FULFILLED":
@@ -91,7 +107,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         requests: payload.requests,
-        friends: payload.updatedFriends
+        friends: payload.updatedFriends,
+        friends2: payload.friends2
       };
     default:
       return { ...state };
