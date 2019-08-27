@@ -23,3 +23,59 @@
 	align-items: center;
 	align-content: space-between;
 }
+
+.gif {
+    transition: all .2s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .gif:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform, opacity;
+    transition-property: transform, opacity;
+  }
+  .gif:hover, .gif:focus, .gif:active {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    transform: scale(1.2);
+    z-index: 1;
+  }
+  .gif:hover:before, .gif:focus:before, .gif:active:before {
+    opacity: 1;
+    z-index: 1;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  .gif:active{
+	transform: scale(1.35);
+  }
+
+  .gif {
+	position: relative;
+	border: none;
+	font-size: 28px;
+	color: #FFFFFF;
+	padding: 20px;
+	width: 200px;
+  }
+  

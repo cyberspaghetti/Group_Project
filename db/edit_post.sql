@@ -8,4 +8,5 @@ values
     ( $1, $2, $3, $4, $5 )
 
 select * from news_feed
-where user_id = $1   
+where user_id = 16
+and news_post_id = 3
