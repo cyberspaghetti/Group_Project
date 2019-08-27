@@ -130,7 +130,7 @@ function Homepage(props) {
     console.log('hit')
     setServerToggle(serverToggle === false ? true : false )
   }
-  console.log(serverToggle)
+  // console.log('props23', props)
 
   const classes = useStyles();
   const theme = useTheme();
