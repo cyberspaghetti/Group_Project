@@ -25,19 +25,19 @@ class FriendReqMap extends Component {
 
   render() {
     console.log("1freindreqmap", this.props);
-    // if (this.props.requests) {
-    //   return (
-    //     <section>
-    //       {this.props.requests.map(obj => {
-    //         return (
-    //             <Request  obj={obj}  className='req-map'/>
-    //         );
-    //       })}
-    //     </section>
-    //   );
-    // } else {
+    if (this.props.requests) {
+      return (
+        <section>
+          {this.props.requests.map(obj => {
+            return (
+                <Request  obj={obj}  className='req-map'/>
+            );
+          })}
+        </section>
+      );
+    } else {
       return <img src={blueLoader} className='blue-loader'/>
-    // }
+    }
   }
 }
 
