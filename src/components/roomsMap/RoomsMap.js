@@ -25,7 +25,7 @@ class RoomsMap extends Component {
     return (
       <section className="full-room-holder">
         {rooms = this.props.rooms.rooms.map(rooms => {
-          return <Room rooms={rooms} key={rooms.socket_room_id} selectedServer={this.props.selectedServer} selectRoom={this.props.selectRoom}/>;
+          return <Room rooms={rooms} key={rooms.socket_room_id} selectedServer={this.props.selectedServer} selectRoom={this.props.selectRoom} selectedRoom={this.props.selectedRoom}/>;
         })}
       </section>
     );

@@ -42,7 +42,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const cardButton = {
-  color: "#00B9FF"
+  fontSize: '12px',
+  color: "#00B9FF",
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between'
 };
 
 export default function Cards(props) {
@@ -70,11 +74,12 @@ export default function Cards(props) {
               {props.state.news_post_body}
             </Typography>
           </CardContent>
-        </CardActionArea>
-        <CardActions>
+        </CardActionArea >
+        <CardActions style={cardButton}>
           <Button size="small" style={cardButton}>
           Remove
           </Button>
+        {props.state.news_post_date}
         </CardActions>
       </Card>
       </Grid>

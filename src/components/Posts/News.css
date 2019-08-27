@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  top: 110px;
+  top: 180px;
   left: 120px;
   background:#414656;
   width: 1450px;
@@ -77,3 +77,27 @@
   text-align: start;
   color: black;
  }
+
+ @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    
+    .display-menu{
+      color: white;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-content: flex-start;
+      top: 140px;
+      left: 73px;
+      background:#414656;
+      width: 580px;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 1;
+      overflow: auto;
+    }
+}

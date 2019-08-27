@@ -76,6 +76,7 @@ function Rooms(props) {
             <RoomsMap
               selectedServer={props.selectedServer}
               selectRoom={props.selectRoom}
+              selectedRoom={props.selectedRoom}
             />
           </ListItem>
         </List>
