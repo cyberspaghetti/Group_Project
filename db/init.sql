@@ -16,7 +16,7 @@ CREATE TABLE "servers"
 (
 	"server_id" serial,
 	"server_name" varchar(40),
-	"server_image" varchar(40),
+	"server_image" varchar,
 	"user_id" integer,
 	CONSTRAINT "servers_pk" PRIMARY KEY ("server_id")
 )
