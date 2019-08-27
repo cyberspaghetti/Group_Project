@@ -28,9 +28,8 @@ module.exports = {
   async addFriend(req, res) {
     let { user_id, friend_id } = req.body;
     const db = req.app.get("db");
-    let friendsList = await db.add_friend([user_id, +friend_id]);
-    let friends2 = await db.get_friends_two(+user_id)
-    res.send({friendsList, friends2});
+    let requests = await db.add_friend([user_id, +friend_id]);
+    res.send(requests);
   },
 
   async friendRequests(req, res) {
