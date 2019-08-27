@@ -78,7 +78,6 @@ class ServerRegistration extends Component {
 function mapStateToProps(state) {
   return { server: state.server, user: state.user };
 }
-
 export default connect(
   mapStateToProps,
   { serverRegister }

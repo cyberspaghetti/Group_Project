@@ -5,9 +5,11 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import "./landingpage.css";
+import background from "./LandingPageFinal-01.png";
+import astroBoi from "./astronautMascot2.svg";
 
 const buttonStyle = {
-  background: "#7e8699",
+  background: "#00b9ff",
   color: "#ffffff"
 };
 
@@ -25,10 +27,12 @@ class LandingPage extends Component {
   render() {
     if (this.props.user.loggedIn) return <Redirect to="/home/0/0" />;
     return (
-      <div className="login-container">
+      <div>
+        <img src={background} alt="" className="background" />
         <Box component="span" m={1} className="login-box">
-          <Button />
-          <div className="dude-container" />
+          <div className="dude-container">
+            <img src={astroBoi} alt="" className="astroBoi" />
+          </div>
           <div className="button-container">
             <Button
               style={buttonStyle}

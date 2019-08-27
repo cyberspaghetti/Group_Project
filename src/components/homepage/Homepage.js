@@ -102,7 +102,7 @@ const addButtonStyle = {
 };
 
 const buttonStyle = {
-  background: "#7e8699",
+  background: "#00b9ff",
   color: "#ffffff",
   position: "absolute",
   right: "30px",
