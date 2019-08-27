@@ -3,7 +3,7 @@ import {
   SERVER_REGISTRATION,
   GET_SERVER,
   GET_SERVERS,
-  GET_SERVER_USERS,
+  GET_USER_SERVER,
   DELETE_SERVER_USER,
   ADD_SERVER_USER,
   LOGOUT_SERVER,
@@ -18,6 +18,26 @@ const initialState = {
   redirect: false,
   name: "",
 };
+
+export const getUserServers = (user_id) => {
+  console.log('hit getUserServer')
+  let data = axios.get(`/api/serverUsers/${user_id}`)
+  .then(res => res.data)
+  return {
+    type: GET_USER_SERVER,
+    payload: data
+  }
+}
+
+export const addServerUser = (user_id, server_id) => {
+  console.log('hit server reducer', user_id, server_id);
+  let data = axios.put("/api/addUserToServer", {user_id, server_id})
+  .then(res => res.data)
+  return {
+    type: ADD_SERVER_USER,
+    payload: data
+  }
+}
 
 export const serverRegister = (server_name, server_image, user_id) => {
   console.log('hit in server register')
@@ -75,6 +95,10 @@ export default function(state = initialState, action) {
       };
     case GET_ROOM_NAME + "_FULFILLED":
       return { ...state, name: payload };
+    case ADD_SERVER_USER + "_FULFILLED":
+      return {...state, serverUsers: payload}
+    case GET_USER_SERVER + '_FULFILLED':
+      return {...state, serverUsers: payload}
     default:
       return state;
   }

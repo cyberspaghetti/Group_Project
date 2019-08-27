@@ -1,28 +1,21 @@
 require("dotenv").config();
-
 const express = require("express");
 const { json } = require("body-parser");
 const session = require("express-session");
 const massive = require("massive");
-
 const scc = require("./controllers/serverChannelController");
 const uc = require("./controllers/userController");
 const rc = require("./controllers/roomController");
 const fc = require("./controllers/friendsController");
 const pc = require("./controllers/postController");
-
 //sockets
 const socket = require("socket.io");
-
 //passport stuff/auth0-----------------------------------------------------------------------
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 let returnStr = "/";
-
 const { SERVER_PORT } = process.env;
-
 const app = express();
-
 massive(process.env.CONNECTION_STRING)
   .then(db => {
     app.set("db", db)
@@ -51,7 +44,6 @@ io.on("connection", socket => {
     socket.join(selectedRoom);
     io.in(selectedRoom).emit("room entered", messages);
   });
-
   //send messages
   socket.on("send message", async data => {
     const { selectedRoom, selectedServer, message, sender } = data;
@@ -64,7 +56,6 @@ io.on("connection", socket => {
     console.log("messages", messages);
     io.to(data.selectedRoom).emit("message sent", messages);
   });
-
   socket.on("delete message", async data => {
     const { socket_message_id, selectedRoom, selectedServer } = data;
     console.log("snitch", socket_message_id, selectedRoom, selectedServer);
@@ -76,7 +67,6 @@ io.on("connection", socket => {
     );
     io.to(data.selectedRoom).emit("message sent", messages);
   });
-
   //disconnected
   socket.on("disconnect", () => {
     console.log("Disconnected from room");
@@ -98,10 +88,8 @@ app.use(
     }
   })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(
   new Auth0Strategy(
     {
@@ -134,22 +122,18 @@ passport.use(
     }
   )
 );
-
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
-
 passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
-
 app.get("/api/getUser", (req, res, next) => {
   if (req.user) {
     res.status(200).json(req.user);
     // call steven so he can have a look
   } else res.sendStatus(500);
 });
-
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
@@ -159,19 +143,15 @@ app.get(
     res.redirect(`http://localhost:3000/#/`);
   }
 );
-
 app.get(`/api/logout`, (req, res) => {
   req.logout();
-
   let returnTo = "http://localhost:3000/";
-
   res.redirect(
     `https://${process.env.DOMAIN}/v2/logout?returnTo=${returnTo}&client_id=${
     process.env.CLIENT_ID
     }`
   );
 });
-
 app.post("/api/redirect", (req, res, next) => {
   returnStr = req.body.place;
   res.status(200).send(returnStr);
@@ -198,7 +178,7 @@ app.put('/api/acceptFriend', fc.acceptFriend)
 app.get("/api/getAllPosts", pc.getAllPosts);
 app.post("/api/createPost", pc.createPost);
 // app.put("/api/editPost/:newsPostId", pc.createPost);
-app.delete("/api/deletePost/:serverId", pc.deletePost);
+app.delete("/api/deletePost/:userId", pc.deletePost);
 
 //Server Channel Endpoints
 app.post("/api/createServer", scc.createServer);
@@ -206,11 +186,10 @@ app.get("/api/server/:id", scc.getUserServer);
 app.get("/api/serverName/:id", scc.getServerName);
 app.delete("/api/deleteServerUser/:userId", scc.deleteServerUser);
 app.get("/api/servers", scc.getServers);
-app.get("/api/serverUsers/:serverId", scc.getServerUsers);
+app.get("/api/serverUsers/:user_id", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
 //room Endpoints
 app.post(`/api/createRoom`, rc.createRoom);
 app.get(`/api/getRooms/:server_id`, rc.getRooms);
-
 

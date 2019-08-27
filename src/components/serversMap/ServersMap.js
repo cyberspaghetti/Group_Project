@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import SpecificServer from "../specificServer/SpecificServer";
 import List from "@material-ui/core/List";
 import ListItem from '@material-ui/core/ListItem'
-import { getAllServers } from "../../ducks/serverReducer";
+import { getAllServers, getUserServers } from "../../ducks/serverReducer";
 import "../homepage/homepage.css";
 import newsIconLogo from './astronaut1largeTransparent.png'
 
@@ -24,9 +24,9 @@ const listStyle = {
 class ServerMap extends Component {
  
   // neeed to change to specific users to grab server
-  componentDidMount() {
-    console.log('hit component did')
-    this.props.getAllServers()
+  componentDidMount = () => {
+    console.log('hit component did', this.props.server.servers.server_name)
+    this.props.getUserServers(this.props.user.user.user_id)
   }
 
 //   componentDidUpdate(prevProps, prevState) {
@@ -48,7 +48,7 @@ class ServerMap extends Component {
               <div>News</div>
             </div>
           </ListItem>
-          {servers = this.props.server.servers.map(servers => {
+          {servers = this.props.server.serverUsers.map(servers => {
             return (<List style={listStyle}>
               <SpecificServer servers={servers} key={servers.server_id} selectServer={this.props.selectServer} className="server_list" />
             </List>
@@ -70,5 +70,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getAllServers }
+  { getAllServers, getUserServers }
 )(ServerMap);
