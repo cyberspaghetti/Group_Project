@@ -2,8 +2,15 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Gif from './gif'
 import './gif.css'
+import Button from '@material-ui/core/Button'
+import { height } from '@material-ui/system';
+import { Typography } from '@material-ui/core';
 
-
+const buttonStyle = {
+    background: "#00b9ff",
+    color: "#ffffff",
+    marginLeft: '5px'
+  };
 export default class GifSearch extends Component {
     constructor(props) {
         super(props)
@@ -37,10 +44,10 @@ export default class GifSearch extends Component {
         return (
             <div>
                 <div className='search'>
-                    <div>Image/Gif</div>
+                    <Typography variant='h5' >Gif Search</Typography>
                     <div>
                     <input onChange={this.handleChange} value={search} name='search' />
-                    <button onClick={this.search}>search</button>
+                    <Button style={buttonStyle} onClick={this.search}>search</Button>
                     </div>
                 </div>
                     <div className='gif-container'>{gifs.data.data.map(gifs => {
