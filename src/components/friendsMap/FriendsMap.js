@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Friend from '../friends/Friends'
+import Friends from '../friends/Friends'
 import { getFriends, removeFriend } from '../../ducks/friendReducer';
 
 
@@ -9,29 +9,25 @@ class FriendsMap extends Component {
 
 
     componentDidMount() {
-        console.log('hit comp');
         this.props.getFriends(this.props.user.user.user_id)
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.friends.friends !== this.props.friends.friends) {
-            console.log('are we hittin dis')
             this.render()
         }
     }
 
     remove = (user_id, friend_id) => {
-        console.log(user_id, friend_id);
         this.props.removeFriend(user_id, friend_id)
     }
 
     render() {
-        console.log('9999999999999', this.props)
         let friends = 'loading'
         if (this.props.friends) {
             friends = this.props.friends.friends.map(friends => {
                 return (
-                    <Friend friends={friends} key={friends.friend_id} className='friend-container' remove={this.remove} />
+                    <Friends friends={friends} key={friends.friend_id} className='friend-container' remove={this.remove} />
                 )
             })
         }

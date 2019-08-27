@@ -31,9 +31,12 @@ module.exports = {
   },
 
   getServerUsers: async (req, res, next) => {
-    const dbInstance = req.app.get("db");
-    const { id } = req.params;
-    let data = await dbInstance.get_server_users(+req.params.serverId);
+    console.log('hit')
+    const db = req.app.get("db");
+    const { user_id } = req.params;
+    console.log(req.params);
+    let data = await db.get_server_by_user_id(+user_id);
+    console.log('dta',data)
     res.send(data);
   },
 
@@ -63,9 +66,10 @@ module.exports = {
   },
 
   async addServerUser(req, res) {
-    let { userId, serverId } = req.body;
+    let { user_id, server_id } = req.body;
+    console.log('hit controller add', user_id, server_id)
     const db = req.app.get("db");
-    let serverUsers = await db.add_server_user([userId, +serverId]);
+    let serverUsers = await db.add_server_user([+user_id, +server_id]);
     res.send(serverUsers);
   },
 

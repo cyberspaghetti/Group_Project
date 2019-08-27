@@ -1,0 +1,25 @@
+.gif{
+    height: 125px;
+    width: 125px;
+    padding: 5px;
+
+}
+.span-input{
+    border: solid 1px black;
+}
+.gif-container{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+}
+.search{
+    padding-top: 10px;
+    display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: space-between;
+}
