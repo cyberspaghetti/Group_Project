@@ -17,6 +17,10 @@ class ServerRegistration extends Component {
     };
   }
 
+  handleCancel = () => {
+    this.props.addServer()
+  }
+
   handleServerChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -54,6 +58,9 @@ class ServerRegistration extends Component {
           />
           <Button style={buttonStyle} onClick={this.registerServer}>
             Register
+          </Button>
+          <Button style={buttonStyle} onClick={this.handleCancel}>
+            Cancel
           </Button>
           <div>
             <SearchServer />
