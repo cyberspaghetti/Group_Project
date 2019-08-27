@@ -143,7 +143,7 @@ app.get("/api/server/:id", scc.getUserServer);
 app.get("/api/serverName/:id", scc.getServerName);
 app.delete("/api/deleteServerUser/:userId", scc.deleteServerUser);
 app.get("/api/servers", scc.getServers);
-app.get("/api/serverUsers/:serverId", scc.getServerUsers);
+app.get("/api/serverUsers/:user_id", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
 //room Endpoints
