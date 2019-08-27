@@ -76,12 +76,16 @@ class News extends Component {
         </div>
         {display_menu
           ?
+          <div className= 'background'>
+
           <div className='display-menu'>
             <Typography variant='h5' className='display-info-container'>
               Title
             <input onChange={this.handleChange} name="news_post_title" className="input-title" value={news_post_title}></input>
               Message
               <input name="news_post_body" class="input-body" onChange={this.handleChange} value={news_post_body}></input>
+              Image Url
+              <input name="news_post_image" class="input-body" onChange={this.handleChange} value={news_post_image}></input>
               <Button style={buttonStyle}onClick={this.createPost}>Create Post</Button><Button style={buttonStyle} onClick={this.showPostMenu}>Cancel</Button>
               <Cardedit state={this.state}/>
             </Typography>
@@ -89,6 +93,7 @@ class News extends Component {
               <GifSearch grabGif={this.grabGif} />
             </div>
           </div>
+        </div>
           :
           <Button style={buttonStyle} onClick={this.showPostMenu}> create post </Button>
         }
