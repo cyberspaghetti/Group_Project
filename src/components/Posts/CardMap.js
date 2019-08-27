@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Cards from './Card'
-import { getAllPosts } from '../../ducks/postReducer';
+import { getAllPosts, deletePost } from '../../ducks/postReducer';
 import './News.css'
 
 
@@ -11,30 +11,48 @@ class PostsMap extends Component {
     constructor() {
         super()
         this.state = {
-            posts: []
+            posts: [],
+
         }
     }
-// change to people in the server
-    componentDidMount() {
-        this.props.getAllPosts()
-        .then(res => {
-            this.setState({ posts: res.value });
+
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) {
+            this.setState({
+                posts: this.props.posts.posts
+            }, () => {
             })
+        }
+    }
+
+    componentDidMount = () => {
+        this.props.getAllPosts()
+        this.setState({ posts: this.props.posts.posts })
+    }
+
+    removePost = (userId, news_post_id) => {
+        console.log(userId, news_post_id)
+        this.props.deletePost(userId, news_post_id)
+        this.componentDidUpdate()
+
     }
 
     render() {
-        let { posts } = this.state
+        console.log('props cardsmap', this.props)
+        let posts = 'loading'
+        console.log('weare looking here', posts);
+        if (this.props.posts.posts)
+            return (
+                <section className="cards-container">
+                    {posts = this.props.posts.posts.map(posts => {
+                        return <Cards posts={posts} key={`${this.props.posts.posts.news_post_id}-post`} post={this.props.posts.posts} removePost={this.removePost} />;
+                    })}
+                </section>
+            );
         return (
-                <div className='cards-container'>{posts.map(posts => {
-                return (
-                    <Cards posts={posts} key={posts.id}  />
-                )
-            })}
-            </div>
-            
+            <div>{posts}</div>
         )
     }
-
 }
 
 function mapStateToProps(state) {
@@ -43,5 +61,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { getAllPosts }
+    { getAllPosts, deletePost }
 )(PostsMap);

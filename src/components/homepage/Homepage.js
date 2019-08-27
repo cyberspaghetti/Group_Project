@@ -102,7 +102,7 @@ const addButtonStyle = {
 };
 
 const buttonStyle = {
-  background: "#7e8699",
+  background: "#00b9ff",
   color: "#ffffff",
   position: "absolute",
   right: "30px",
@@ -130,7 +130,7 @@ function Homepage(props) {
     console.log('hit')
     setServerToggle(serverToggle === false ? true : false )
   }
-  console.log(serverToggle)
+  // console.log('props23', props)
 
   const classes = useStyles();
   const theme = useTheme();
@@ -260,15 +260,15 @@ function Homepage(props) {
             onChange={e => changeNewRoom(e.target.value)}
 
             />
-            <Button onClick={() =>  props.createRoom(newRoom, props.match.params.selectedServer, props.match.params.selectRoomcreateRoom).then(toggle())}>SUBMIT</Button> 
+            <Button onClick={() =>  props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id).then(toggle())}>SUBMIT</Button> 
             <Button onClick={toggle} style={buttonStyle}>
               CANCEL
             </Button>
           </section>
         </section>
       ) : null}
-
       <FriendsList />
+      
     </div>
   );
 }

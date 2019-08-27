@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 400,
     minWidth: 400,
-    height: 360
+    height: 360,
+    margin: 4
   },
   media: {
     height: 200
@@ -48,29 +49,30 @@ export default function Cards(props) {
   const [spacing, setSpacing] = React.useState(2)
   const classes = useStyles();
   const theme = useTheme();
-  console.log('cards',props);
+  console.log('cards EDITITITITITITTITI',props);
   return (
     <div>
       <Grid items className={classes.root} spacing={2}>
         <Grid items justify='center' spacing={spacing}>
       <Card className={classes.card}>
         <CardActionArea>
+          Preview
           <CardMedia
             className={classes.media}
-            image={props.posts.news_post_image}
+            image={props.state.news_post_image}
             title="image"
           />
-          <CardContent >
+          <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {props.posts.news_post_title}
+              {props.state.news_post_title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.posts.news_post_body}
+              {props.state.news_post_body}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" style={cardButton} onClick={() => props.removePost(props.posts.user_id, props.posts.news_post_id)}>
+          <Button size="small" style={cardButton}>
           Remove
           </Button>
         </CardActions>

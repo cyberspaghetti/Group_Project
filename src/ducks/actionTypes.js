@@ -23,6 +23,10 @@ export const GET_FRIENDS = 'GET_FRIENDS'
 export const ADD_FRIEND = 'ADD_FRIEND'
 export const DELETE_FRIEND = 'DELETE_FRIEND'
 
+export const FRIEND_REQUESTS = 'FRIEND_REQUESTS'
+export const REJECT_FRIEND = 'REJECT_FRIEND'
+export const ACCEPT_FRIEND = 'ACCEPT_FRIEND'
+
 //sockets
 export const GET_ROOM_NAME = "GET_ROOM_NAME";
 //Post action types

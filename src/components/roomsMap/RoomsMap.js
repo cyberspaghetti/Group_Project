@@ -19,7 +19,7 @@ class RoomsMap extends Component {
   };
   // <RoomsMap selectRoom={this.selectRoom} selectedServer={this.selectedServer}/>
   render() {
-    console.log('props in rooms',this.props)
+   
     let rooms = 'loading'
     if(this.props.rooms.rooms)
     return (
