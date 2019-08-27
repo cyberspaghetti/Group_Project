@@ -47,7 +47,9 @@ class PostsMap extends Component {
                     {posts = this.props.posts.posts.map(posts => {
                         return <Cards posts={posts} key={`${this.props.posts.posts.news_post_id}-post`} post={this.props.posts.posts} removePost={this.removePost} />;
                     })}
+
                 </section>
+                
             );
         return (
             <div>{posts}</div>

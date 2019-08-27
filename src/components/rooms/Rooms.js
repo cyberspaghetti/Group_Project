@@ -40,7 +40,7 @@ const roomListStyle = {
 
 export default function Rooms(props) {
   const classes = useStyles();
-
+ console.log('props for params', props);
   return (
     <div className="rooms-container">
       <div className="server-name">
@@ -66,6 +66,7 @@ export default function Rooms(props) {
             <RoomsMap
               selectedServer={props.selectedServer}
               selectRoom={props.selectRoom}
+              selectedRoom={props.selectedRoom}
             />
           </ListItem>
         </List>
