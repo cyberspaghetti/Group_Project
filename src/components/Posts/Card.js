@@ -42,7 +42,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const cardButton = {
-  color: "#00B9FF"
+  fontSize: '12px',
+  color: "#00B9FF",
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+};
+const titl = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center'
 };
 
 export default function Cards(props) {
@@ -62,7 +71,7 @@ export default function Cards(props) {
             title="image"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" >
               {props.posts.news_post_title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -70,10 +79,11 @@ export default function Cards(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions style={cardButton}>
           <Button size="small" style={cardButton} onClick={() => props.removePost(props.posts.user_id, props.posts.news_post_id)}>
           Remove
           </Button>
+          {props.posts.news_post_date}
         </CardActions>
       </Card>
       </Grid>
