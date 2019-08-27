@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Friend from '../friends/Friends'
+import Friends from '../friends/Friends'
 import { getFriends, removeFriend } from '../../ducks/friendReducer';
 
 

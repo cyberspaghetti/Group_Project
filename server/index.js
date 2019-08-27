@@ -159,14 +159,12 @@ app.get("/api/users", uc.getUsers);
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
-//under construction
-// app.put("/api/addFriend/:user_id", fc.addFriend);
-app.post(`/api/addFriend`, fc.addFriend)
-// app.get('/api/friendRequests/:user_id', fc.friendRequests)
-// app.delete('/api/rejectFriend:user_friend_junction', fc.rejectFriend)
-// app.put('/api/acceptFriend', fc.acceptFriend)
-//-------------
 
+app.post("/api/addFriend", fc.addFriend);
+app.get('/api/friendRequests/:user_id', fc.friendRequests)
+app.delete('/api/rejectFriend/:user_friend_junction', fc.rejectFriend)
+app.put('/api/acceptFriend', fc.acceptFriend)
+//-------------
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
@@ -180,7 +178,7 @@ app.get("/api/server/:id", scc.getUserServer);
 app.get("/api/serverName/:id", scc.getServerName);
 app.delete("/api/deleteServerUser/:userId", scc.deleteServerUser);
 app.get("/api/servers", scc.getServers);
-app.get("/api/serverUsers/:serverId", scc.getServerUsers);
+app.get("/api/serverUsers/:user_id", scc.getServerUsers);
 app.put("/api/addUserToServer", scc.addServerUser);
 
 //room Endpoints
