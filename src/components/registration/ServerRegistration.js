@@ -4,77 +4,80 @@ import { serverRegister } from '../../ducks/serverReducer';
 import Button from "@material-ui/core/Button";
 import "./serverRegistration.css";
 import SearchServer from "./SearchServer";
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-class ServerRegistration extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            server_name: '',
-            server_image: ''
-        }
-    }
-    
-    
-  
-    handleServerChange = e => {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-      };
+const useStyles = makeStyles(theme => ({
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+  dense: {
+    marginTop: 19,
+  }
+}))
 
-  handleCancel = () => {
-    this.props.addServer()
+function ServerRegistration(props) {
+  const classes = useStyles();
+  const [inputName, registerName] = React.useState("");
+  const [inputImage, registerImage] = React.useState("");
+    
+
+  function handleCancel(){
+    props.addServer()
   }
 
-  handleServerChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+  function registerServer(){
+    let { user_id } = props.user.user;
+    props.serverRegister(inputName, inputImage, user_id);
+    props.addServer();
   };
 
-  registerServer = () => {
-    let { server_name, server_image } = this.state;
-    let { user_id } = this.props.user.user;
-    this.props.serverRegister(server_name, server_image, user_id);
-    this.props.addServer();
+  const buttonStyle = {
+    background: "#7e8699",
+    color: "white",
+    height: '30px'
   };
-
-  render() {
-    let { server_image, server_name } = this.state;
-
-    const buttonStyle = {
-      background: "#7e8699",
-      color: "white"
-    };
-    return (
-      <div className="server-registration-container">
+  return(
+    <div className="server-registration-container">
         <div className="border-of-component">
           <title>Register server</title>
-          <h1>Server Name</h1>
-          <input
-            onChange={this.handleServerChange}
-            value={server_name}
-            name="server_name"
+          <div className='server-input-btn-container'>
+          <div>
+          <TextField
+          id="standard-dense"
+          label="Server Name"
+          className={clsx(classes.textField, classes.dense)}
+          margin="dense"
+            onChange={e => registerName(e.target.value)} 
           />
-          <h1>Server Image</h1>
-          <input
-            value={server_image}
-            onChange={this.handleServerChange}
-            name="server_image"
+          </div>
+          <div>
+          <TextField
+            id="standard-dense"
+            label="Server Image"
+            className={clsx(classes.textField, classes.dense)}
+            margin="dense"
+            onChange={e => registerImage(e.target.value)} 
           />
-          <Button style={buttonStyle} onClick={this.registerServer}>
+          </div>
+          <Button style={buttonStyle} onClick={registerServer}>
             Register
           </Button>
-          <Button style={buttonStyle} onClick={this.handleCancel}>
-            Cancel
+          <Button style={buttonStyle} onClick={handleCancel}>
+            Exit
           </Button>
-          <div>
+          </div>
+          <div className='search-server'>
             <SearchServer />
           </div>
         </div>
       </div>
-    );
-  }
+  )
 }
-// onClick={handleDrawerOpen}
+
 function mapStateToProps(state) {
   return { server: state.server, user: state.user };
 }

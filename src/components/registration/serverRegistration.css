@@ -15,4 +15,6 @@
     background: #313442;
     z-index: 10000;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
 }
