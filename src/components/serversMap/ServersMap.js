@@ -25,7 +25,6 @@ class ServerMap extends Component {
  
   // neeed to change to specific users to grab server
   componentDidMount = () => {
-    console.log('hit component did', this.props.server.servers.server_name)
     this.props.getUserServers(this.props.user.user.user_id)
   }
 
