@@ -6,7 +6,8 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import FriendsMap from "../friendsMap/FriendsMap";
 import FriendReqMap from "../friendReqMap/FriendReqMap";
-import "./friendsList.css";
+
+import './friendslist.css'
 
 const useStyles = makeStyles({
   root: {
