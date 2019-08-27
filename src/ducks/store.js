@@ -7,12 +7,14 @@ import userReducer from "./userReducer";
 import serverReducer from "./serverReducer";
 import friendReducer from './friendReducer'
 import roomReducer from './roomReducer'
+import postReducer from './postReducer'
 
 const rootReducer = combineReducers({
   user: userReducer,
   friends: friendReducer,
   server: serverReducer,
-  rooms: roomReducer
+  rooms: roomReducer,
+  posts: postReducer
   
 });
 

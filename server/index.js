@@ -23,12 +23,6 @@ const { SERVER_PORT } = process.env;
 
 const app = express();
 
-massive(process.env.CONNECTION_STRING)
-  .then(db => {
-    app.set("db", db);
-  })
-  .catch(err => console.log("massive-err", err));
-
 app.use(json());
 
 app.use(
@@ -53,7 +47,7 @@ passport.use(
       clientSecret: process.env.CLIENT_SECRET,
       callbackURL: "/api/login"
     },
-    function(accessToken, refreshToken, extraParams, profile, done) {
+    function (accessToken, refreshToken, extraParams, profile, done) {
       console.log(profile);
       app
         .get("db")
@@ -79,11 +73,11 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
@@ -111,7 +105,7 @@ app.get(`/api/logout`, (req, res) => {
 
   res.redirect(
     `https://${process.env.DOMAIN}/v2/logout?returnTo=${returnTo}&client_id=${
-      process.env.CLIENT_ID
+    process.env.CLIENT_ID
     }`
   );
 });
@@ -129,13 +123,18 @@ app.get("/api/users", uc.getUsers);
 
 //Friend Endpoints
 app.get("/api/getFriends/:user_id", fc.getFriends);
-app.put("/api/addFriend/:user_id", fc.addFriend);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
+
+app.post("/api/addFriend", fc.addFriend);
+app.get('/api/friendRequests/:user_id', fc.friendRequests)
+app.delete('/api/rejectFriend/:user_friend_junction', fc.rejectFriend)
+app.put('/api/acceptFriend', fc.acceptFriend)
+//-------------
 
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
-app.put("/api/createPost/:serverId", pc.createPost);
-app.put("/api/editPost/:newsPostId", pc.createPost);
+app.post("/api/createPost", pc.createPost);
+// app.put("/api/editPost/:newsPostId", pc.createPost);
 app.delete("/api/deletePost/:serverId", pc.deletePost);
 
 //Server Channel Endpoints
@@ -156,9 +155,17 @@ app.get(`/api/getRooms/:server_id`, rc.getRooms);
 app.get("/api/getRoomName/:socket_room_id", scc.getRoomName);
 
 const io = socket(
-  app.listen(SERVER_PORT, () => {
-    console.log("server is listening on", { SERVER_PORT });
-  })
+
+  massive(process.env.CONNECTION_STRING)
+    .then(db => {
+      app.set("db", db);
+
+      app.listen(SERVER_PORT, () => {
+        console.log("server is listening on", { SERVER_PORT });
+      })
+    })
+    .catch(err => console.log("massive-err", err))
+
 );
 
 io.on("connection", socket => {
@@ -191,10 +198,14 @@ io.on("connection", socket => {
 
   socket.on("delete message", async data => {
     const { socket_message_id, selectedRoom, selectedServer } = data;
-    console.log('snitch', socket_message_id, selectedRoom, selectedServer )
+    console.log("snitch", socket_message_id, selectedRoom, selectedServer);
     const db = app.get("db");
-    let messages = await db.delete_message(+socket_message_id, selectedRoom, +selectedServer);
-    io.to(data.selectedRoom).emit('message sent', messages)
+    let messages = await db.delete_message(
+      +socket_message_id,
+      selectedRoom,
+      +selectedServer
+    );
+    io.to(data.selectedRoom).emit("message sent", messages);
   });
 
   //disconnected

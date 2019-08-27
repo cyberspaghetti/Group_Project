@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { serverRegister } from "../../ducks/serverReducer";
-import { Redirect, Link } from "react-router-dom";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { serverRegister } from '../../ducks/serverReducer';
 import Button from "@material-ui/core/Button";
 import "./serverRegistration.css";
 import SearchServer from "./SearchServer";
 
 class ServerRegistration extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      server_name: "",
-      server_image: ""
-    };
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            server_name: '',
+            server_image: ''
+        }
+    }
+    
+    
+  
+    handleServerChange = e => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+      };
 
   handleCancel = () => {
     this.props.addServer()
