@@ -9,8 +9,8 @@
 }
 
 .background {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .login-box {
@@ -25,7 +25,13 @@
   top: 40%;
   left: 40%;
   padding-right: 50px;
-  border: 1px solid white;
+  border: 1px solid #00b9ff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.login-box:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .dude-container {

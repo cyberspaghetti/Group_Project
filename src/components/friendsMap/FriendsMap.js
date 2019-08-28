@@ -29,7 +29,7 @@ class FriendsMap extends Component {
             friends = this.props.friends.friends.map(friends => {
                 count++
                 return (
-                    <Friend friends={friends} key={`${friends.friend_id}-${count}`} className='friend-container' remove={this.remove} />
+                    <Friends friends={friends} key={`${friends.friend_id}-${count}`} className='friend-container' remove={this.remove} />
                 )
             })
         }
