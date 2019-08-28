@@ -24,7 +24,7 @@ class Friend2 extends Component {
     let { friends } = this.props;
     return (
       <div className="specific-user-holder">
-        <img src={friends.user_image} className="request-image" />
+        <img src={friends.user_image} className="request-image2" />
         <section className="pics-name">
           <div>{friends.user_name}</div>
           <Button
