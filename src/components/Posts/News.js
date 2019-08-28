@@ -4,7 +4,7 @@ import "./News.css";
 import { createPost, editPost } from "../../ducks/postReducer";
 import { Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import GifSearch from "../gifSearch/gifSearch";
+import GifSearch from "../gifSearch/GifSearch";
 import { stringify } from "querystring";
 import Cardedit from "./Cardedit";
 import Button from "@material-ui/core/Button";
@@ -69,7 +69,7 @@ class News extends Component {
     return (
       <div className="news-background">
         <div className="news-title">
-          <Typography variant="h4">News</Typography>
+          <Typography variant="h4">Galactic News</Typography>
         </div>
         <section className="create-post-container">
           {display_menu ? (

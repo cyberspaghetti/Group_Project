@@ -44,7 +44,7 @@ class ServerMap extends Component {
             <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
               <img src={newsIconLogo}
                 alt="" className="news-icon" />
-              <div>News</div>
+              <div>Galactic News</div>
             </div>
           </ListItem>
           {servers = this.props.server.serverUsers.map(servers => {

@@ -10,6 +10,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.join-server-text {
+  margin-left: 80px;
+  font-size: 1rem;
+  color: white;
+  height: '55px';
+  width: 100%;
+  overflow-X: 'hidden'
+}
+
+.join-server-text2 {
+  margin-left: 80px;
+  font-size: 1rem;
+  color: #313442;
+  height: '55px';
+  width: 100%;
+  overflow-X: 'hidden'
+}
+
 .background{
   height: 100vh;
   width: 100vw;

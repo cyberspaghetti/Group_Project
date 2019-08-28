@@ -98,7 +98,9 @@ const useStyles = makeStyles(theme => ({
 
 const addButtonStyle = {
   background: "#00B9FF",
-  color: "white"
+  color: "white",
+  position: "absolute",
+  left: '10px',
 };
 
 const buttonStyle = {
@@ -229,6 +231,13 @@ function Homepage(props) {
          aria-label="add">
        <AddIcon></AddIcon>
        </Fab>
+       {open
+      ?
+        (<h4 className='join-server-text'>Join/Make a server</h4>)
+        :
+        (<h4 className='join-server-text2'>{".                 "}</h4>)
+    }
+       
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
