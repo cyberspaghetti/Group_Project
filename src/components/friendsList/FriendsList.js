@@ -44,9 +44,7 @@ export default function FriendsList() {
       </div>
 
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
           <UsersMap />
-        </ListItem>
       </List>
 
       <div className="friends-list-title">
@@ -60,9 +58,7 @@ export default function FriendsList() {
         </Button>
       </div>
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
           <FriendsMap />
-        </ListItem>
       </List>
 
       <div className="friends-list-title">
@@ -77,9 +73,7 @@ export default function FriendsList() {
       </div>
 
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
          <FriendReqMap />
-        </ListItem>
       </List>
     </div>
   );
