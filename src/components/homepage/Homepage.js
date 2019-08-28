@@ -128,7 +128,7 @@ function Homepage(props) {
 
   function addServer() {
     console.log('hit')
-    setServerToggle(serverToggle === false ? true : false )
+    setServerToggle(serverToggle === false ? true : false)
   }
   // console.log('props23', props)
 
@@ -166,6 +166,7 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
+  console.log('homepageeeeeeeeeee', props)
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -217,18 +218,18 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
-              <ChevronLeftIcon style={chevronStyle} />
-            )}
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
           </IconButton>
         </div>
         <Divider />
         <div className="add-server-btn">
-        <Fab
-         style={addButtonStyle}
-         onClick={addServer}
-         aria-label="add">
-       <AddIcon></AddIcon>
-       </Fab>
+          <Fab
+            style={addButtonStyle}
+            onClick={addServer}
+            aria-label="add">
+            <AddIcon></AddIcon>
+          </Fab>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -240,13 +241,13 @@ function Homepage(props) {
       {props.match.params.selectedServer == 0 ? (
         <News />
       ) : (
-        <Rooms
-          selectedServer={props.match.params.selectedServer}
-          selectedRoom={props.match.params.selectedRoom}
-          selectRoom={selectRoom}
-          toggle={toggle}
-        />
-      )}
+          <Rooms
+            selectedServer={props.match.params.selectedServer}
+            selectedRoom={props.match.params.selectedRoom}
+            selectRoom={selectRoom}
+            toggle={toggle}
+          />
+        )}
       {serverToggle
         ?
         <ServerRegistration addServer={addServer} />
@@ -256,11 +257,11 @@ function Homepage(props) {
         <section className="dark-dash">
           <section className={`add-room`}>
 
-            <input 
-            onChange={e => changeNewRoom(e.target.value)}
+            <input
+              onChange={e => changeNewRoom(e.target.value)}
 
             />
-            <Button onClick={() =>  props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id).then(toggle())}>SUBMIT</Button> 
+            <Button onClick={() => props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id).then(toggle())}>SUBMIT</Button>
             <Button onClick={toggle} style={buttonStyle}>
               CANCEL
             </Button>
@@ -268,7 +269,7 @@ function Homepage(props) {
         </section>
       ) : null}
       <FriendsList />
-      
+
     </div>
   );
 }

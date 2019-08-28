@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { CREATE_POST, GET_ALL_POSTS, EDIT_POST, DELETE_POST } from './actionTypes';
+import { CREATE_POST, GET_ALL_POSTS, EDIT_POST, DELETE_POST, GET_POST } from './actionTypes';
 
 const initialState = {
-    post: {},
+    post: [],
     posts: [],
     error: false,
     redirect: false
@@ -37,6 +37,15 @@ export function editPost(user_id, newsPostId, news_post_title, news_post_image, 
     };
 };
 
+export function getPost(postId) {
+    console.log('hit reducer', postId);
+    let data = axios.get(`/api/post/${postId}` )
+        .then(res => res.data)
+    return {
+        type: GET_POST,
+        payload: data
+    };
+};
 
 
 export function deletePost(userId, postId) {
@@ -56,6 +65,12 @@ export default function (state = initialState, action) {
         case GET_ALL_POSTS + '_FULFILLED':
             return { ...state, posts: payload, error: false };
         case GET_ALL_POSTS + '_REJECTED':
+            return { ...state, redirect: true, error: payload };
+        case GET_POST + '_PENDING':
+            return { ...state, redirect: false, error: false };
+        case GET_POST + '_FULFILLED':
+            return { ...state, post: payload, error: false };
+        case GET_POST + '_REJECTED':
             return { ...state, redirect: true, error: payload };
         case EDIT_POST + '_PENDING':
             return { ...state, redirect: false, error: false };
