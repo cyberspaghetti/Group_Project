@@ -182,7 +182,7 @@ app.put("/api/acceptFriend", fc.acceptFriend);
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
 app.post("/api/createPost", pc.createPost);
-// app.put("/api/editPost/:newsPostId", pc.createPost);
+app.get("/api/post/:postId", pc.getPost);
 app.delete("/api/deletePost/:userId", pc.deletePost);
 
 //Server Channel Endpoints
