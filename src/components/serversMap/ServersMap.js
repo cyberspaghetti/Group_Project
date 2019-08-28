@@ -23,55 +23,46 @@ const listStyle = {
 // this component maps over ./server which are the servers that are apart of the specific user
 // the specific user id is grabbed from redux
 class ServerMap extends Component {
- constructor(){
-   super()
-   this.state={
-    server: [],
-   }
- }
+  constructor() {
+    super()
+    this.state = {
+      servers: [],
+      loading: true
+    }
+  }
 
 
   // neeed to change to specific users to grab server
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.getUserServers(this.props.user.user.user_id)
-    this.setState({server: this.props.server.serverUsers});
+
   }
 
-//   componentDidUpdate(prevProps, prevState) {
-//     if (this.props.server !== prevProps.server) {
-//         this.props.getUserServers(this.props.user.user.user_id)
-//         this.setState({server: this.props.server.serverUsers}, () => {
-//        console.log('th', this.props) })
-//     }
-// }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.servers !== this.props.server.serverUsers) {
+      this.setState({ servers: this.props.server.serverUsers, loading: false })
+    }
+  }
 
   render() {
-
+    console.log('hello there', this.state)
     console.log('props for the servers', this.props)
-    let servers = 'loading'
-    if (this.props.server.serverUsers.length) {
-      return (
-        <div className="hero-container">
-          <ListItem button style={newsIconStyle}>
-            <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
-              <img src={newsIconLogo}
-                alt="" className="news-icon" />
-              <div>News</div>
-            </div>
-          </ListItem>
-          {servers = this.props.server.serverUsers.map(servers => {
-            return (<List style={listStyle}>
-              <SpecificServer servers={servers} key={servers.server_id} selectServer={this.props.selectServer} className="server_list" />
-            </List>
-            )
-          })}
-        </div>
-      )
-    }
-    return (
-      <div className='friends-container'>{servers}
+    let servers ='loading'
+    if (this.state.loading && this.state.servers) {
+      return <div>shizz is loadin'</div>
+    } else if (!this.state.loading) {
+      return <div>
+      {servers = this.state.servers.map(servers => {
+        return (<List style={listStyle}>
+          <SpecificServer servers={servers} key={servers.server_id} selectServer={this.props.selectServer} className="server_list" />
+        </List>
+        )
+      })}
       </div>
-    )
+    } else {
+      return <div>Something went wrong</div>
+    }
+    
   }
 }
 
