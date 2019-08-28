@@ -129,8 +129,9 @@ function Homepage(props) {
   const [serverToggle, setServerToggle] = React.useState(false);
 
   function addServer() {
-    console.log("hit");
-    setServerToggle(serverToggle === false ? true : false);
+    console.log('hit')
+    setServerToggle(serverToggle === false ? true : false)
+
   }
   // console.log('props23', props)
 
@@ -168,6 +169,7 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
+  console.log('homepageeeeeeeeeee', props)
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -217,8 +219,8 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
-              <ChevronLeftIcon style={chevronStyle} />
-            )}
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
           </IconButton>
         </div>
         <Divider />
@@ -235,7 +237,6 @@ function Homepage(props) {
         :
         (<h4 className='join-server-text2'>{".                 "}</h4>)
     }
-       
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
