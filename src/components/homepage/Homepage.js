@@ -33,7 +33,7 @@ import { Link } from "react-router-dom";
 
 import headerLogo from "./sigularityHeaderLogo-01.svg";
 
-const drawerWidth = 240;
+const drawerWidth = 285;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -231,7 +231,7 @@ function Homepage(props) {
        </Fab>
        {open
       ?
-        (<h4 className='join-server-text'>Join/Make a server</h4>)
+        (<h4 className='join-server-text'>Join / Make A Server</h4>)
         :
         (<h4 className='join-server-text2'>{".                 "}</h4>)
     }

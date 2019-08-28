@@ -58,7 +58,7 @@ function SearchServer(props) {
        />
        <span className="highlight" />
        <span className="bar" />
-       <label className="label">search</label>
+       <label className="label">Search</label>
      </div>
      <div className="over-flow">
        {props.server.servers
