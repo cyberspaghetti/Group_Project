@@ -31,9 +31,9 @@ class FriendsMap extends Component {
         console.log('lkfajfa;jf',this.props)
         if (this.props.friends) {
             return (
-                <div>
+                <div className='friend-map-hold'>
             {friends = this.props.friends.map(friends => {
-                 return <Friends className='friend-container' friends={friends} key={friends.friend_id}  remove={this.remove} />
+                 return <Friends friends={friends} key={friends.friend_id}  remove={this.remove} />
                 })}  
                 {friends2 = this.props.friends2 .map(friends2 => {
                      return <Friends2  friends={friends2} key={friends2.friend_id}  remove={this.remove} />

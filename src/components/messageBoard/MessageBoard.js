@@ -171,7 +171,6 @@ class MessageBoard extends Component {
                       <button className="put-socket" onClick={this.edit}>
                         Edit Message
                       </button>
-                      
                     </section>
                   </section>
                 );
@@ -213,8 +212,13 @@ class MessageBoard extends Component {
             value={this.state.messageInput}
             onChange={this.handleInput}
             className="message-input"
+            onKeyDown={ev => {
+              if (ev.key === "Enter") {
+                
+                this.sendMessage();
+              }
+            }}
           />
-          <button onClick={this.sendMessage}>Send</button>
         </div>
       </div>
     );

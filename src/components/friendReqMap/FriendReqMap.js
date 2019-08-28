@@ -24,13 +24,13 @@ class FriendReqMap extends Component {
   };
 
   render() {
-    console.log("1freindreqmap", this.props);
+    
     if (this.props.requests) {
       return (
         <section>
           {this.props.requests.map(obj => {
             return (
-                <Request  obj={obj}  className='req-map'/>
+                <Request  obj={obj}  className='friend-req'/>
             );
           })}
         </section>

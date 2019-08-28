@@ -1,11 +1,11 @@
-.req-map {
-    height: 15vh;
+.friend-req {
+    height: 5vh;
     overflow-y: scroll;
   }
 
 .blue-loader{
   animation: rotation 2s infinite linear;
-  height: 5vh;
+  height: 1vh;
 }
 
 .rotate {

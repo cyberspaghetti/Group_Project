@@ -6,8 +6,15 @@ import {
   removeFriendTwo
 } from "../../ducks/friendReducer";
 
+import Button from '@material-ui/core/Button'
 import "./Friends.css";
 //this is the component for the user it grabs props from the parent module that uses it and displays the specific user information
+
+const listItemStyle = {
+  color: "#ccc",
+  fontSize: ".9rem"
+};
+
 class Friend extends Component {
   constructor(props) {
     super(props);
@@ -18,22 +25,24 @@ class Friend extends Component {
   }
 
   render() {
-    console.log("hitmepapa");
     let { friends } = this.props;
     return (
-      <div className="image-container">
+      <div className="specific-user-holder">
         <img src={friends.user_image} className="request-image" />
-        <div>{friends.user_name}</div>
-        <button
-          onClick={() =>
-            this.props.removeFriendTwo(
-              this.props.friends.user_id,
-              this.props.friends.friend_id
-            )
-          }
-        >
-          remove
-        </button>
+        <section className="pics-name">
+          <div>{friends.user_name}</div>
+          <Button
+          style={listItemStyle}
+            onClick={() =>
+              this.props.removeFriendTwo(
+                this.props.friends.user_id,
+                this.props.friends.friend_id
+              )
+            }
+          >
+            remove
+          </Button>
+        </section>
       </div>
     );
   }

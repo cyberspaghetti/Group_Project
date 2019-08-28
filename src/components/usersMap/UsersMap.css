@@ -1,5 +1,6 @@
 .users-container{
     height: 20vh;
+    width: 15vw;
     overflow-y: auto;
 }
 
