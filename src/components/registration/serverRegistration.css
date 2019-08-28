@@ -31,6 +31,8 @@
     overflow-y: auto;
     padding-right: 20px;
    }
+   .over-flow::-webkit-scrollbar { width: 0 !important }
+
    .server-input-btn-container {
     height: 50%;
    }
