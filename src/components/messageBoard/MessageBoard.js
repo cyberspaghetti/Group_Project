@@ -3,12 +3,19 @@ import { connect } from "react-redux";
 import axios from "axios";
 import io from "socket.io-client";
 
+import Delete from "@material-ui/icons/Delete";
+
 import Divider from "@material-ui/core/Divider";
 
 import { getUsers } from "../../ducks/userReducer";
 import { getRoomName } from "../../ducks/serverReducer";
 
 import "./messageBoard.css";
+
+const style = {
+  color: " #00b9ff",
+  fontSize: "1.5rem"
+};
 
 class MessageBoard extends Component {
   constructor() {
@@ -74,8 +81,7 @@ class MessageBoard extends Component {
     });
   };
 
-  sendMessage = (e) => {
-    e.preventDefault();
+  sendMessage = () => {
     this.socket.emit("send message", {
       message: this.state.messageInput,
       selectedRoom: this.state.room,
@@ -161,14 +167,15 @@ class MessageBoard extends Component {
                         </section>
                       )}
 
-                      <button
+                      <Delete
+                      style={style}
                         className="put-socket"
                         onClick={() =>
                           this.deleteMessage(messageObj.socket_message_id)
                         }
                       >
                         Delete
-                      </button>
+                      </Delete>
                       <button className="put-socket" onClick={this.edit}>
                         Edit Message
                       </button>
@@ -206,7 +213,7 @@ class MessageBoard extends Component {
           })}
         </section>
 
-        <form className="message-footer">
+        <div className="message-footer">
           <input
             type="text"
             name="messageInput"
