@@ -6,14 +6,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.background {
+ }
+ .background {
     width: 100vw;
     height: 100vh;
-}
-
-.login-box {
+ }
+ .login-box {
   height: 325px;
   width: 450px;
   background: #313442;
@@ -25,28 +23,25 @@
   top: 40%;
   left: 40%;
   padding-right: 50px;
-  border: 1px solid white;
-}
-
-.dude-container {
+  border: 1px solid #00b9ff;
+ }
+ .dude-container {
   height: 100%;
   width: 50%;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.astroBoi {
+ }
+ .astroBoi {
   height: 280px;
   width: 280px;
   animation: MoveUpDown 4s linear infinite;
   position: absolute;
   left: 0;
   bottom: 0;
-}
-
-@keyframes MoveUpDown {
+ }
+ @keyframes MoveUpDown {
   0%,
   100% {
     bottom: 70px;
@@ -54,8 +49,7 @@
   50% {
     bottom: 110px;
   }
-}
-
-.button-container {
+ }
+ .button-container {
   display: flex;
-}
+ }
