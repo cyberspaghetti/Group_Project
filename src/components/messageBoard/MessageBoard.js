@@ -81,8 +81,7 @@ class MessageBoard extends Component {
     });
   };
 
-  sendMessage = (e) => {
-    e.preventDefault();
+  sendMessage = () => {
     this.socket.emit("send message", {
       message: this.state.messageInput,
       selectedRoom: this.state.room,
@@ -214,7 +213,7 @@ class MessageBoard extends Component {
           })}
         </section>
 
-        <form className="message-footer">
+        <div className="message-footer">
           <input
             type="text"
             name="messageInput"
