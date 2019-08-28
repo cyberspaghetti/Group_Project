@@ -8,6 +8,7 @@ import {
   ADD_SERVER_USER,
   LOGOUT_SERVER,
   GET_ROOM_NAME,
+  EDIT_MESSAGE
 } from "./actionTypes";
 
 const initialState = {

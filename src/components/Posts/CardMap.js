@@ -25,7 +25,8 @@ class PostsMap extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount(){
+        console.log('highlight');
         this.props.getAllPosts()
         this.setState({ posts: this.props.posts.posts })
     }
@@ -38,9 +39,8 @@ class PostsMap extends Component {
     }
 
     render() {
-        console.log('props cardsmap', this.props)
+        console.log('prosp in broken', this.props);
         let posts = 'loading'
-        console.log('weare looking here', posts);
         if (this.props.posts.posts)
             return (
                 <section className="cards-container">

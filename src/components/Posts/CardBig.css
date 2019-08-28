@@ -1,0 +1,18 @@
+.c{
+    z-index: 1;
+    position: absolute;
+}
+.background{
+    height: 100vh;
+    width: 100vw;
+    background-color: #414656;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+.blue{
+    color:#00b9ff
+}

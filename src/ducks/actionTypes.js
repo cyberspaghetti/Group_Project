@@ -18,6 +18,8 @@ export const GET_SERVER_NAME = "GET_SERVER_NAME";
 export const GET_ROOMS = "GET_ROOMS";
 export const CREATE_ROOM = "CREATE_ROOM";
 
+export const EDIT_MESSAGE = 'EDIT_MESSAGE'
+
 //friend action types
 export const GET_FRIENDS = 'GET_FRIENDS'
 export const ADD_FRIEND = 'ADD_FRIEND'
@@ -34,3 +36,4 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const CREATE_POST = 'CREATE_POST'
+export const GET_POST = 'GET_POST'
