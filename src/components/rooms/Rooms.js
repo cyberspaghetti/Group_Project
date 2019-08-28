@@ -60,7 +60,7 @@ function Rooms(props) {
             label: classes.label
           }}
         >
-          {'WHAAAT'}
+          {'WAAAAT'}
         </Button>
       </div>
 
