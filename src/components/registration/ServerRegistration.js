@@ -92,9 +92,9 @@ function ServerRegistration(props) {
   );
 }
 function mapStateToProps(state) {
-  return { server: state.server, user: state.user };
+ return { server: state.server, user: state.user };
 }
 export default connect(
-  mapStateToProps,
-  { serverRegister }
+ mapStateToProps,
+ { serverRegister }
 )(ServerRegistration);

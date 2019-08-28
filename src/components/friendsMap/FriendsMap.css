@@ -1,0 +1,6 @@
+.friend-map-hold{
+  height: 20vh;
+  overflow-y: scroll;
+}
+
+.friend-map-hold::-webkit-scrollbar { width: 0 !important }

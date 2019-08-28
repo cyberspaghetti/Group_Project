@@ -16,10 +16,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   card: {
-    maxWidth: 387,
-    minWidth: 387,
-    height: 400,
-    margin: 8
+    maxWidth: 400,
+    minWidth: 400,
+    height: 360,
+    marginBottom: "100px",
+    marginLeft: "80px"
   },
   media: {
     height: 200
@@ -55,8 +56,16 @@ const extraCardStyle = {
 };
 
 const cardButton = {
+  fontSize: '12px',
   color: "#00B9FF",
-  display: 'flex'
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+};
+const titl = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center'
 };
 
 export default function Cards(props) {
@@ -87,19 +96,11 @@ export default function Cards(props) {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button
-                size="small"
-                style={cardButton}
-                onClick={() =>
-                  props.removePost(
-                    props.posts.user_id,
-                    props.posts.news_post_id
-                  )
-                }
-              >
+            <CardActions style={cardButton}>
+              <Button size="small" style={cardButton} onClick={() => props.removePost(props.posts.user_id, props.posts.news_post_id)}>
                 Remove
-              </Button>
+          </Button>
+              {props.posts.news_post_date}
             </CardActions>
           </Card>
         </Grid>

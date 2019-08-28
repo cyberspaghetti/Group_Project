@@ -8,13 +8,11 @@ import GifSearch from "../gifSearch/gifSearch";
 import { stringify } from "querystring";
 import Cardedit from "./Cardedit";
 import Button from "@material-ui/core/Button";
-
 const buttonStyle = {
   background: "#00b9ff",
   color: "#ffffff",
   marginTop: "20px"
 };
-
 class News extends Component {
   constructor() {
     super();
@@ -27,28 +25,23 @@ class News extends Component {
       display_edit: false
     };
   }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.prevState != this.state) this.render();
   }
-
   date = () => {
     let date = new Date();
     let dateToString = date.toLocaleDateString();
     return this.setState({ news_post_date: `${dateToString}` });
   };
-
   showPostMenu = () => {
     this.setState({ display_menu: !this.state.display_menu });
   };
-
   handleChange = e => {
     console.log("handle", e);
     let { name, value } = e.target;
     this.setState({ [name]: value });
     this.date();
   };
-
   createPost = () => {
     let user_id = this.props.user.user.user_id;
     console.log("thisstate in function create", user_id);
@@ -67,11 +60,9 @@ class News extends Component {
     );
     this.showPostMenu();
   };
-
   grabGif = gif => {
     this.setState({ news_post_image: gif });
   };
-
   render() {
     let { news_post_body, news_post_title, news_post_image } = this.state;
     let { display_menu, display_edit } = this.state;
@@ -89,8 +80,7 @@ class News extends Component {
                     onChange={this.handleChange}
                     name="news_post_title"
                     value={news_post_title}
-                    required
-                  />
+                  required/>
                   <span className="highlight" />
                   <span className="bar" />
                   <label className="label">Title</label>
@@ -100,8 +90,7 @@ class News extends Component {
                     name="news_post_body"
                     onChange={this.handleChange}
                     value={news_post_body}
-                    required
-                  />
+                    required/>
                   <span class="highlight" />
                   <span class="bar" />
                   <label className="label">Content</label>
@@ -123,7 +112,7 @@ class News extends Component {
           ) : (
             <Button style={buttonStyle} onClick={this.showPostMenu}>
               {" "}
-              post something{" "}
+              Add Some News{" "}
             </Button>
           )}
         </section>
@@ -135,7 +124,6 @@ class News extends Component {
     );
   }
 }
-
 function mapStateToProps(state) {
   return { posts: state.posts, user: state.user };
 }

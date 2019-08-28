@@ -7,6 +7,10 @@ import {
   friendRequests
 } from "../../ducks/friendReducer";
 
+
+import blueLoader from './loader-01.png'
+import './FriendReqMap.css'
+
 class FriendReqMap extends Component {
   componentDidMount = () => {
     this.props.friendRequests(this.props.user.user.user_id);
@@ -20,21 +24,19 @@ class FriendReqMap extends Component {
   };
 
   render() {
-    console.log("props", this.props);
+    
     if (this.props.requests) {
       return (
         <section>
           {this.props.requests.map(obj => {
             return (
-              <div>
-                <Request obj={obj} />
-              </div>
+                <Request  obj={obj}  className='friend-req'/>
             );
           })}
         </section>
       );
     } else {
-      return <div>loading</div>;
+      return <img src={blueLoader} className='blue-loader'/>
     }
   }
 }

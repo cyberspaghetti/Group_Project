@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import UsersMap from '../usersMap/UsersMap'
 import FriendsMap from "../friendsMap/FriendsMap";
 import FriendReqMap from "../friendReqMap/FriendReqMap";
 
@@ -43,9 +44,7 @@ export default function FriendsList() {
       </div>
 
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
-          Placeholder
-        </ListItem>
+          <UsersMap />
       </List>
 
       <div className="friends-list-title">
@@ -59,9 +58,7 @@ export default function FriendsList() {
         </Button>
       </div>
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
           <FriendsMap />
-        </ListItem>
       </List>
 
       <div className="friends-list-title">
@@ -76,9 +73,7 @@ export default function FriendsList() {
       </div>
 
       <List className="channel-names-container">
-        <ListItem style={listItemStyle} button>
          <FriendReqMap />
-        </ListItem>
       </List>
     </div>
   );

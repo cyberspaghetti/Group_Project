@@ -9,6 +9,7 @@ import List from "@material-ui/core/List";
 import { Link, Route } from "react-router-dom";
 import { getThemeProps } from "@material-ui/styles";
 import MessageBoard from "../messageBoard/MessageBoard";
+import { connect } from "react-redux";
 
 import RoomsMap from "../roomsMap/RoomsMap";
 
@@ -38,8 +39,17 @@ const roomListStyle = {
   width: "100%"
 };
 
-export default function Rooms(props) {
+function Rooms(props) {
   const classes = useStyles();
+
+  // tying to get server name for rooms
+
+  // const serverName = props.server.serverUsers.filter(server => {
+  //   if(props.selectedServer === server.server_id){
+  //     return server.server_name
+  //   } 
+  // })
+
 
   return (
     <div className="rooms-container">
@@ -50,10 +60,10 @@ export default function Rooms(props) {
             label: classes.label
           }}
         >
-          {props.selectedServer}
+          {'WHAAAT'}
         </Button>
       </div>
-      
+
       <div className="text-channel-container">
         <div className="text-channels-title">
           {`TEXT CHANNELS`}
@@ -66,6 +76,7 @@ export default function Rooms(props) {
             <RoomsMap
               selectedServer={props.selectedServer}
               selectRoom={props.selectRoom}
+              selectedRoom={props.selectedRoom}
             />
           </ListItem>
         </List>
@@ -77,3 +88,9 @@ export default function Rooms(props) {
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return { user: state.user, server: state.server };
+}
+
+export default connect(mapStateToProps)(Rooms);

@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  removeFriend,
-  getFriends,
-  removeFriendTwo
-} from "../../ducks/friendReducer";
+import { removeFriend, getFriends } from "../../ducks/friendReducer";
 
-import Button from '@material-ui/core/Button'
-import "./Friends.css";
+import Button from "@material-ui/core/Button";
+import "./Friends2.css";
 //this is the component for the user it grabs props from the parent module that uses it and displays the specific user information
 
 const listItemStyle = {
@@ -15,7 +11,7 @@ const listItemStyle = {
   fontSize: ".9rem"
 };
 
-class Friend extends Component {
+class Friend2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,9 +28,9 @@ class Friend extends Component {
         <section className="pics-name">
           <div>{friends.user_name}</div>
           <Button
-          style={listItemStyle}
+            style={listItemStyle}
             onClick={() =>
-              this.props.removeFriendTwo(
+              this.props.remove(
                 this.props.friends.user_id,
                 this.props.friends.friend_id
               )
@@ -53,5 +49,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { removeFriend, getFriends, removeFriendTwo }
-)(Friend);
+  { removeFriend, getFriends }
+)(Friend2);

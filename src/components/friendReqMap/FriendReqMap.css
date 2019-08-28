@@ -1,0 +1,25 @@
+.friend-req {
+    height: 5vh;
+    overflow-y: scroll;
+  }
+
+.blue-loader{
+  animation: rotation 2s infinite linear;
+  height: 1vh;
+}
+
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+  
+  .req-map::-webkit-scrollbar { width: 0 !important }
+
