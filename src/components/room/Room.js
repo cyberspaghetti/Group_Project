@@ -4,8 +4,16 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import './Room.css'
 const singleRoomStyle = {
-  padding: '5px 100px 5px 35px',
-  width: '300px'
+  // padding: '5px 100px 5px 35px',
+  width: '300px',
+  height: '30px',
+  margin: '0px',
+  paddingTop: '0px',
+}
+
+const textChannelNameStyle = {
+  margin: '0px',
+
 }
 
  class Room extends Component {
@@ -31,11 +39,11 @@ const singleRoomStyle = {
     return (
       <div className='space' >
         <section className='specific-room' onClick={() => this.props.selectRoom(this.props.selectedServer, this.props.rooms.socket_room_id)}>
-          <ListItem style={singleRoomStyle} onClick={this.showShowName}>
+          <ListItem button style={singleRoomStyle} onClick={this.showShowName}>
              {userChannelShow
           ?
           <div>
-          <h1>{this.props.rooms.room_name}</h1>
+          <h1 style={textChannelNameStyle}>{this.props.rooms.room_name}</h1>
           <div classname='room-user'>  
           <div className='online'>
           </div >

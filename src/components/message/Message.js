@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import axios from "axios";
 import io from "socket.io-client";
-
 import Delete from "@material-ui/icons/Delete";
 import Edit from "@material-ui/icons/Edit";
 import Save from "@material-ui/icons/Save";
-
 import Divider from "@material-ui/core/Divider";
-
 import { getUsers } from "../../ducks/userReducer";
 import { getRoomName } from "../../ducks/serverReducer";
-
 import "../messageBoard/messageBoard.css";
-
 const style = {
   color: " #00b9ff",
   fontSize: "1.5rem"
 };
-
 const style2 = {
   color: " #00b9ff",
   fontSize: "1.5rem",
@@ -28,19 +21,16 @@ const style2 = {
 class Message extends Component {
   constructor() {
     super();
-
     this.state = {
       editing: false,
       editingInput: ""
     };
   }
-
   componentDidMount = () => {
     this.setState({
       editingInput: this.props.messageObj.message
     });
   };
-
   edit = () => {
     if (this.state.editing) {
       this.setState({
@@ -52,12 +42,10 @@ class Message extends Component {
       });
     }
   };
-
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-
   saveChanges = () => {
     this.props.editMessage(
       this.props.messageObj.socket_message_id,
@@ -65,7 +53,6 @@ class Message extends Component {
     );
     this.edit();
   };
-
   render() {
     // eslint-disable-next-line no-lone-blocks
     console.log("this.state", this.props.messageObj);
@@ -78,12 +65,10 @@ class Message extends Component {
               className="messaging-picture"
               src={this.props.user.user.user_image}
             />
-
             <section className="messaging-sender">
               {" "}
               {this.props.user.user.user_name} {""}{" "}
             </section>
-
             {this.state.editing ? (
               <div className='save-input'>
                 <input
@@ -102,7 +87,6 @@ class Message extends Component {
                 {this.props.messageObj.message}
               </section>
             )}
-
             <Delete
               style={style}
               className="put-socket"
@@ -133,7 +117,6 @@ class Message extends Component {
               {" "}
               {correctPerson.user_name} {""}{" "}
             </section>
-
             <section className="message-color">
               {" "}
               {this.props.messageObj.message}{" "}
@@ -144,13 +127,11 @@ class Message extends Component {
     }
   }
 }
-
 function mapStateToProps(state) {
   return {
     user: state.user
   };
 }
-
 export default connect(
   mapStateToProps,
   { getRoomName, getUsers }
