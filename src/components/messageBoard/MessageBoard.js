@@ -145,7 +145,7 @@ class MessageBoard extends Component {
         {/* <div className="message-footer"> */}
 
         {this.state.room ? (
-          <div className="group">
+          <div className="group2">
             {" "}
             <input
               type="text"
@@ -160,9 +160,9 @@ class MessageBoard extends Component {
               }}
               required
             />
-            <span className="highlight" />
-            <span className="bar" />
-            <label className="label">Message</label>
+            <span className="highlight2" />
+            <span className="bar2" />
+            <label className="label2">Message</label>
           </div>
         ) : null}
 
