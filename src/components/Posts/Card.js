@@ -8,12 +8,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Grid from '@material-ui/core/Grid'
+import Grid from "@material-ui/core/Grid";
 import "./News.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   card: {
     maxWidth: 400,
@@ -39,8 +39,21 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 150
+  },
+  cardHover: {
+    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+    transition: "all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)",
+    "&:hover": {
+      boxShadow:
+        "0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)"
+    }
   }
 }));
+
+const extraCardStyle = {
+  overflowY: "auto",
+  padding: "5px 15px"
+};
 
 const cardButton = {
   fontSize: '12px',
@@ -56,23 +69,26 @@ const titl = {
 };
 
 export default function Cards(props) {
-  const [spacing, setSpacing] = React.useState(2)
+  const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
   const theme = useTheme();
-  console.log('cards', props);
+  // console.log('cards',props);
   return (
     <div>
       <Grid items className={classes.root} spacing={2}>
-        <Grid items justify='center' spacing={spacing}>
-          <Card className={classes.card}>
+        <Grid items justify="center" spacing={spacing}>
+          <Card
+            className={`${classes.card} ${classes.cardHover}`}
+            style={extraCardStyle}
+          >
             <CardActionArea>
               <CardMedia
                 className={classes.media}
                 image={props.posts.news_post_image}
                 title="image"
               />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" >
+              <CardContent style={extraCardStyle}>
+                <Typography gutterBottom variant="h5" component="h2">
                   {props.posts.news_post_title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

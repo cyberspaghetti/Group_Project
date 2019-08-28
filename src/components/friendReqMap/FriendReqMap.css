@@ -5,7 +5,8 @@
 
 .blue-loader{
   animation: rotation 2s infinite linear;
-  height: 1vh;
+  height: 10px;
+  width: 10px;
 }
 
 .rotate {

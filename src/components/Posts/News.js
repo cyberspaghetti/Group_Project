@@ -4,7 +4,7 @@ import "./News.css";
 import { createPost, editPost } from "../../ducks/postReducer";
 import { Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import GifSearch from "../gifSearch/GifSearch";
+import GifSearch from "../gifSearch/gifSearch";
 import { stringify } from "querystring";
 import Cardedit from "./Cardedit";
 import Button from "@material-ui/core/Button";

@@ -32,29 +32,15 @@ export default function FriendsList() {
   const classes = useStyles();
   return (
     <div className="friends-list-container">
-      <div className="friends-list-title">
+
+<div className="friends-list-title">
         <Button
           classes={{
             root: classes.root,
             label: classes.label
           }}
         >
-          {`New Friends`}
-        </Button>
-      </div>
-
-      <List className="channel-names-container">
-          <UsersMap />
-      </List>
-
-      <div className="friends-list-title">
-        <Button
-          classes={{
-            root: classes.root,
-            label: classes.label
-          }}
-        >
-          {`Your Friends`}
+          {`Launch Crew`}
         </Button>
       </div>
       <List className="channel-names-container">
@@ -68,7 +54,24 @@ export default function FriendsList() {
             label: classes.label
           }}
         >
-          {`Friend Requests`}
+          {`All Explorers`}
+        </Button>
+      </div>
+
+      <List className="channel-names-container">
+          <UsersMap />
+      </List>
+
+    
+
+      <div className="friends-list-title">
+        <Button
+          classes={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
+          {`Interstellar Invites`}
         </Button>
       </div>
 
