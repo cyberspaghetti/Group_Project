@@ -31,6 +31,8 @@ import Button from "@material-ui/core/Button";
 import FriendsList from "../friendsList/FriendsList";
 import { Link } from "react-router-dom";
 
+import headerLogo from "./sigularityHeaderLogo-01.svg";
+
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
@@ -121,14 +123,12 @@ const chevronStyle = {
   color: "white"
 };
 
-
-
 function Homepage(props) {
-  const [serverToggle, setServerToggle] = React.useState(false)
+  const [serverToggle, setServerToggle] = React.useState(false);
 
   function addServer() {
-    console.log('hit')
-    setServerToggle(serverToggle === false ? true : false )
+    console.log("hit");
+    setServerToggle(serverToggle === false ? true : false);
   }
   // console.log('props23', props)
 
@@ -137,7 +137,7 @@ function Homepage(props) {
   const [open, setOpen] = React.useState(false);
   const [toggleState, setToggleState] = React.useState("off");
 
-  const [newRoom, changeNewRoom] = React.useState('')
+  const [newRoom, changeNewRoom] = React.useState("");
 
   function toggle() {
     console.log("hit the toggle");
@@ -187,9 +187,7 @@ function Homepage(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Singularity
-            </Typography>
+            <img src={headerLogo} alt="" className="header-logo" />
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>
               Logout
@@ -223,12 +221,9 @@ function Homepage(props) {
         </div>
         <Divider />
         <div className="add-server-btn">
-        <Fab
-         style={addButtonStyle}
-         onClick={addServer}
-         aria-label="add">
-       <AddIcon></AddIcon>
-       </Fab>
+          <Fab style={addButtonStyle} onClick={addServer} aria-label="add">
+            <AddIcon />
+          </Fab>
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />
@@ -247,20 +242,24 @@ function Homepage(props) {
           toggle={toggle}
         />
       )}
-      {serverToggle
-        ?
-        <ServerRegistration addServer={addServer} />
-        :
-        null}
+      {serverToggle ? <ServerRegistration addServer={addServer} /> : null}
       {toggleState === "on" ? (
         <section className="dark-dash">
           <section className={`add-room`}>
-
-            <input 
-            onChange={e => changeNewRoom(e.target.value)}
-
-            />
-            <Button onClick={() =>  props.createRoom(newRoom, props.match.params.selectedServer, props.user.user.user_id).then(toggle())}>SUBMIT</Button> 
+            <input onChange={e => changeNewRoom(e.target.value)} />
+            <Button
+              onClick={() =>
+                props
+                  .createRoom(
+                    newRoom,
+                    props.match.params.selectedServer,
+                    props.user.user.user_id
+                  )
+                  .then(toggle())
+              }
+            >
+              SUBMIT
+            </Button>
             <Button onClick={toggle} style={buttonStyle}>
               CANCEL
             </Button>
@@ -268,7 +267,6 @@ function Homepage(props) {
         </section>
       ) : null}
       <FriendsList />
-      
     </div>
   );
 }
