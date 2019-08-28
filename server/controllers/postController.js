@@ -43,4 +43,12 @@ module.exports = {
     res.send(updatedUser);
   },
 
+  async getPost(req, res) {
+    let { postId } = req.params
+    const db = req.app.get('db');
+    let post = await db.get_single_card(
+      +postId)
+    res.send(post);
+  },
+
 }

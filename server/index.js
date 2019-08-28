@@ -167,7 +167,6 @@ app.get("/api/users", uc.getUsers);
 app.get("/api/getFriends/:user_id", fc.getFriends);
 app.delete("/api/deleteFriend/:userId", fc.deleteFriend);
 app.delete('/api/deleteFriendTwo/:userId', fc.deleteFriendTwo)
-
 app.post("/api/addFriend", fc.addFriend);
 app.get('/api/friendRequests/:user_id', fc.friendRequests)
 app.delete('/api/rejectFriend/:user_friend_junction', fc.rejectFriend)
@@ -177,7 +176,7 @@ app.put('/api/acceptFriend', fc.acceptFriend)
 //Post EndPoints
 app.get("/api/getAllPosts", pc.getAllPosts);
 app.post("/api/createPost", pc.createPost);
-// app.put("/api/editPost/:newsPostId", pc.createPost);
+app.get("/api/post/:postId", pc.getPost);
 app.delete("/api/deletePost/:userId", pc.deletePost);
 
 //Server Channel Endpoints
