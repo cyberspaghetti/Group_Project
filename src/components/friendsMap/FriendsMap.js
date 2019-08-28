@@ -28,7 +28,6 @@ class FriendsMap extends Component {
     render() {
         let friends = 'loading'
         let friends2 = 'loading'
-        console.log('lkfajfa;jf',this.props)
         if (this.props.friends) {
             return (
                 <div className='friend-map-hold'>

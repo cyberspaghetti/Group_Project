@@ -69,7 +69,7 @@ class News extends Component {
     return (
       <div className="news-background">
         <div className="news-title">
-          <Typography variant="h4">News</Typography>
+          <Typography variant="h4">Galactic News</Typography>
         </div>
         <section className="create-post-container">
           {display_menu ? (

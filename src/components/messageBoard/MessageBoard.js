@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import axios from "axios";
 import io from "socket.io-client";
 
+import Delete from "@material-ui/icons/Delete";
+
 import Divider from "@material-ui/core/Divider";
 
 import { getUsers } from "../../ducks/userReducer";
 import { getRoomName } from "../../ducks/serverReducer";
+
+import Message from "../message/Message";
 
 import "./messageBoard.css";
 
@@ -20,8 +24,7 @@ class MessageBoard extends Component {
       messageInput: "",
       room: 0,
 
-      editing: false,
-      editingInput: ""
+      server: 0
     };
   }
 
@@ -52,7 +55,8 @@ class MessageBoard extends Component {
         .then(
           this.setState(
             {
-              room: this.props.selectedRoom
+              room: this.props.selectedRoom,
+              server: this.props.selectedServer
             },
             () => {
               if (this.state.room !== 0) {
@@ -75,10 +79,16 @@ class MessageBoard extends Component {
   };
 
   sendMessage = () => {
+    console.log(
+      "sent",
+      this.state.messageInput,
+      this.state.room,
+      this.state.server
+    );
     this.socket.emit("send message", {
       message: this.state.messageInput,
       selectedRoom: this.state.room,
-      selectedServer: this.props.selectedServer,
+      selectedServer: this.state.server,
       sender: this.props.user.user.user_id
     });
     this.setState({
@@ -86,26 +96,21 @@ class MessageBoard extends Component {
     });
   };
 
-  edit = () => {
-    if (this.state.editing) {
-      this.setState({
-        editing: false
-      });
-    } else if (!this.state.editing) {
-      this.setState({
-        editing: true
-      });
-    }
-  };
-
-  saveChanges = () => {};
-
   deleteMessage = socket_message_id => {
     console.log("hit");
     this.socket.emit("delete message", {
       socket_message_id,
       selectedRoom: this.state.room,
       selectedServer: this.props.selectedServer
+    });
+  };
+
+  editMessage = (socket_message_id, editingInput) => {
+    this.socket.emit("edit message", {
+      socket_message_id: socket_message_id,
+      message: editingInput,
+      room_id: this.state.room,
+      server_id: this.state.server
     });
   };
 
@@ -125,101 +130,43 @@ class MessageBoard extends Component {
       <div className="text-channel-containerz">
         <section className="mapped-message-holder">
           {this.state.messages.map(messageObj => {
-            // eslint-disable-next-line no-lone-blocks
-            {
-              if (messageObj.user_id == this.props.user.user.user_id) {
-                return (
-                  <section className="messages">
-                    <section className="message-layer2">
-                      <Divider />
-                      <img
-                        className="messaging-picture"
-                        src={this.props.user.user.user_image}
-                      />
-
-                      <section className="messaging-sender">
-                        {" "}
-                        {this.props.user.user.user_name} {""}{" "}
-                      </section>
-
-                      {this.state.editing ? (
-                        <div>
-                          <input
-                            type="text"
-                            name="messageInput"
-                            value={this.state.editingInput}
-                            onChange={this.handleInput}
-                            className="edit-input"
-                          />
-                          <button onClick={this.saveChanges}>Save</button>
-                        </div>
-                      ) : (
-                        <section className="message-color">
-                          {" "}
-                          {messageObj.message}
-                        </section>
-                      )}
-
-                      <button
-                        className="put-socket"
-                        onClick={() =>
-                          this.deleteMessage(messageObj.socket_message_id)
-                        }
-                      >
-                        Delete
-                      </button>
-                      <button className="put-socket" onClick={this.edit}>
-                        Edit Message
-                      </button>
-                    </section>
-                  </section>
-                );
-              } else {
-                let correctPerson = this.props.user.users.find(function(
-                  element
-                ) {
-                  return element.user_id == messageObj.user_id;
-                });
-                return (
-                  <section className="messages">
-                    <section className="message-layer2">
-                      <Divider />
-                      <img
-                        className="messaging-picture"
-                        src={correctPerson.user_image}
-                      />
-                      <section className="messaging-sender-not-user">
-                        {" "}
-                        {correctPerson.user_name} {""}{" "}
-                      </section>
-
-                      <section className="message-color">
-                        {" "}
-                        {messageObj.message}{" "}
-                      </section>
-                    </section>
-                  </section>
-                );
-              }
-            }
+            return (
+              <Message
+                messageObj={messageObj}
+                deleteMessage={this.deleteMessage}
+                selectedRoom={this.state.selectedRoom}
+                selectedServer={this.state.selectedServer}
+                editMessage={this.editMessage}
+              />
+            );
           })}
         </section>
 
-        <div className="message-footer">
-          <input
-            type="text"
-            name="messageInput"
-            value={this.state.messageInput}
-            onChange={this.handleInput}
-            className="message-input"
-            onKeyDown={ev => {
-              if (ev.key === "Enter") {
-                
-                this.sendMessage();
-              }
-            }}
-          />
-        </div>
+        {/* <div className="message-footer"> */}
+
+        {this.state.room ? (
+          <div className="group2">
+            {" "}
+            <input
+              type="text"
+              name="messageInput"
+              autocomplete="off"
+              value={this.state.messageInput}
+              onChange={this.handleInput}
+              onKeyDown={ev => {
+                if (ev.key === "Enter") {
+                  this.sendMessage();
+                }
+              }}
+              required
+            />
+            <span className="highlight2" />
+            <span className="bar2" />
+            <label className="label2">Message</label>
+          </div>
+        ) : null}
+
+        {/* </div> */}
       </div>
     );
   }

@@ -4,12 +4,12 @@
 }
 
 .image-request{
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     margin-left: 60px;
     border-style: solid;
-    border-color: #3ea7f1;
+    border-color: #dda0dd;
     margin-top: 2vh;   
 }
 

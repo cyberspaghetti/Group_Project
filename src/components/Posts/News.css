@@ -1,7 +1,11 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 .news-background {
   background: #52586d;
   min-height: 100vh;
-  width: 85.1vw;
+  width: 82.9vw;
   position: absolute;
   left: 72px;
   top: 64px;
@@ -30,7 +34,7 @@
  }
  .news-title {
   display: flex;
-  width: 100%;
+  width: 82.4vw;
   justify-content: center;
   padding: 19px 0px;
   color: white;
@@ -44,6 +48,12 @@
  }
  .cards-container {
   width: 100%;
+  justify-content: center;
+  padding: 5px 0px;
+}
+
+.cards-container {
+  width: 82.5vw;
   display: flex;
   margin-top: 20px;
   flex-wrap: wrap;
