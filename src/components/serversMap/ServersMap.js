@@ -28,12 +28,12 @@ class ServerMap extends Component {
     this.props.getUserServers(this.props.user.user.user_id)
   }
 
-//   componentDidUpdate(prevProps, prevState) {
-//     if (prevProps.server.serverUsers !== this.props.server.serverUsers) {
-//         console.log('are we hittin dis')
-//         this.props.getUserServers(this.props.user.user.user_id)
-//     }
-// }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.server.servers.length !== this.props.server.servers.length) {
+        console.log('are we hittin dis')
+        this.props.getUserServers(this.props.user.user.user_id)
+    }
+}
 
   render() {
     let servers = 'loading'
