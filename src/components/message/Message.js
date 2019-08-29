@@ -105,13 +105,14 @@ class Message extends Component {
         </section>
       );
     } else {
-      let correctPerson = this.props.user.user.find(function(element) {
+      let correctPerson = this.props.user.users.find( element => {
         return element.user_id == this.props.messageObj.user_id;
       });
       return (
         <section className="messages">
           <section className="message-layer2">
             <Divider />
+            <div>{console.log(correctPerson)}</div>
             <img className="messaging-picture" src={correctPerson.user_image} />
             <section className="messaging-sender-not-user">
               {" "}
