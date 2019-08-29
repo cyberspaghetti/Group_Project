@@ -8,6 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
+import './searchServer.css'
+
+
 const typographyStyle = {
  color: "white",
  borderBottom: "1px solid #00b9ff"
@@ -33,19 +36,16 @@ const useStyles = makeStyles(theme => ({
 function SearchServer(props) {
  const classes = useStyles();
  const [ServerName, Searched] = React.useState("");
- console.log("kkkk", props);
  useEffect(() => {
    props.getAllServers();
  }, []);
  function handleJoinServer(user_id, server_id) {
-   console.log("hit handleJoin", user_id, server_id);
    props.addServerUser(user_id, server_id);
  }
  const buttonStyle = {
    background: "#00b9ff",
    color: "white"
  };
- console.log('in the server handle', props);
  return (
    <div className="over-flow-parent">
      <Typography style={typographyStyle} variant="h5">

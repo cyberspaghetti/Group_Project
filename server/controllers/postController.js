@@ -13,7 +13,6 @@ module.exports = {
   },
 
   async deletePost(req, res) {
-    console.log('hit delete post', req.query, req.params);
     let { userId } = req.params;
     let { postId } = req.query
     const db = req.app.get('db');

@@ -80,7 +80,6 @@ class MessageBoard extends Component {
     });
   };
   deleteMessage = socket_message_id => {
-    console.log("hit");
     this.socket.emit("delete message", {
       socket_message_id,
       selectedRoom: this.state.room,

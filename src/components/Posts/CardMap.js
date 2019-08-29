@@ -26,20 +26,17 @@ class PostsMap extends Component {
     }
 
     componentDidMount(){
-        console.log('highlight');
         this.props.getAllPosts()
         this.setState({ posts: this.props.posts.posts })
     }
 
     removePost = (userId, news_post_id) => {
-        console.log(userId, news_post_id)
         this.props.deletePost(userId, news_post_id)
         this.componentDidUpdate()
 
     }
 
     render() {
-        console.log('prosp in broken', this.props);
         let posts = 'loading'
         if (this.props.posts.posts)
             return (

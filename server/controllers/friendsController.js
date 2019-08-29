@@ -8,6 +8,7 @@ module.exports = {
   },
 
   async deleteFriend(req, res) {
+    console.log(req.params)
     let { userId } = req.params;
     let { friendId } = req.query;
     const db = req.app.get("db");
@@ -18,10 +19,11 @@ module.exports = {
 
   async deleteFriendTwo(req, res) {
     let { userId } = req.params;
+    console.log(req.params)
     let { friendId } = req.query;
     const db = req.app.get("db");
-    let friendsList = await db.delete_friend([+userId, +friendId]);
-    let friends2 = await db.get_friends_two(+friendId)
+    let friendsList = await db.delete_friend_two([+userId, +friendId]);
+    let friends2 = await db.get_friends(+friendId)
     res.send({friendsList, friends2});
   },
 

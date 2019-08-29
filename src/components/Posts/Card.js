@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import "./News.css";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import './card.css'
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -73,7 +73,6 @@ export default function Cards(props) {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
   const theme = useTheme();
-  // console.log('cards',props);
   return (
     <div>
       <Grid items className={classes.root} spacing={2}>

@@ -21,7 +21,6 @@ const initialState = {
 };
 
 export const getUserServers = (user_id) => {
-  console.log('hit getUserServer')
   let data = axios.get(`/api/serverUsers/${user_id}`)
   .then(res => res.data)
   return {
@@ -31,7 +30,6 @@ export const getUserServers = (user_id) => {
 }
 
 export const addServerUser = (user_id, server_id) => {
-  console.log('hit server reducer', user_id, server_id);
   let data = axios.put("/api/addUserToServer", {user_id, server_id})
   .then(res => res.data)
   return {
@@ -41,7 +39,6 @@ export const addServerUser = (user_id, server_id) => {
 }
 
 export const serverRegister = (server_name, server_image, user_id) => {
-  console.log('hit in server register')
   let data = axios
     .post("/api/createServer", { server_name, server_image, user_id })
     .then(res => res.data);
@@ -77,7 +74,6 @@ export default function(state = initialState, action) {
     case GET_SERVERS + "_PENDING":
       return { ...state, redirect: false, error: false };
     case GET_SERVERS + "_FULFILLED":
-      console.log('server payload',payload);
       return { ...state, servers: payload, error: false };
     case GET_SERVERS + "_REJECTED":
       return { ...state, redirect: true, error: payload };

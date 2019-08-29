@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export const createPost = (user_id, news_post_title, news_post_image, news_post_body, news_post_date) => {
-    console.log('create post reducer hit', user_id, news_post_title, news_post_image, news_post_body, news_post_date)
     let data = axios
         .post(`/api/createPost`, { user_id, news_post_title, news_post_image, news_post_body, news_post_date })
         .then(res => res.data);
@@ -38,7 +37,6 @@ export function editPost(user_id, newsPostId, news_post_title, news_post_image, 
 };
 
 export function getPost(postId) {
-    console.log('hit reducer', postId);
     let data = axios.get(`/api/post/${postId}` )
         .then(res => res.data)
     return {

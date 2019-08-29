@@ -35,7 +35,6 @@ const textChannelNameStyle = {
   }
 
   render() {
-    console.log('preveprops n rooms', this.props)
     let { userChannelShow }= this.state
     return (
       <div className='space' >
