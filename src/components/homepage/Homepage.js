@@ -33,7 +33,7 @@ import { Link } from "react-router-dom";
 
 import headerLogo from "./sigularityHeaderLogo-01.svg";
 
-const drawerWidth = 285;
+const drawerWidth = 305;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"

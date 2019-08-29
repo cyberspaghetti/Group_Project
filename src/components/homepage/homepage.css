@@ -123,7 +123,7 @@
 
 .add-room{
   margin-top: 20vh;
-  z-index: 10000;
+  z-index: 9999;
   position: absolute;
   font-size: 50px;
   width: 25vw;
