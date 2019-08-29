@@ -12,7 +12,8 @@ const singleRoomStyle = {
 }
 
 const textChannelNameStyle = {
-  margin: '0px',
+  margin: '10px',
+  fontSize: '15px'
 
 }
 
@@ -42,8 +43,8 @@ const textChannelNameStyle = {
           <ListItem button style={singleRoomStyle} onClick={this.showShowName}>
              {userChannelShow
           ?
-          <div>
-          <h1 style={textChannelNameStyle}>{this.props.rooms.room_name}</h1>
+          <div className=''>
+          <div className='name-of-server'>{this.props.rooms.room_name}</div>
           <div classname='room-user'>  
           <div className='online'>
           </div >

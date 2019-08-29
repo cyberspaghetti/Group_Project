@@ -56,7 +56,7 @@ class Message extends Component {
   render() {
     // eslint-disable-next-line no-lone-blocks
     console.log("this.state", this.props);
-    if (this.props.messageObj.user_id !== this.props.user.user.user_id) {
+    if (this.props.messageObj.user_id == this.props.user.user.user_id) {
       return (
         <section className="messages">
           <section className="message-layer2">
