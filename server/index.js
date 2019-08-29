@@ -8,6 +8,7 @@ const uc = require("./controllers/userController");
 const rc = require("./controllers/roomController");
 const fc = require("./controllers/friendsController");
 const pc = require("./controllers/postController");
+const path = require('path')
 //sockets
 const socket = require("socket.io");
 //passport stuff/auth0-----------------------------------------------------------------------
