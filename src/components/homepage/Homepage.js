@@ -33,7 +33,7 @@ import { Link } from "react-router-dom";
 
 import headerLogo from "./sigularityHeaderLogo-01.svg";
 
-const drawerWidth = 240;
+const drawerWidth = 285;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -100,7 +100,9 @@ const useStyles = makeStyles(theme => ({
 
 const addButtonStyle = {
   background: "#00B9FF",
-  color: "white"
+  color: "white",
+  position: "absolute",
+  left: '10px',
 };
 
 const buttonStyle = {
@@ -124,8 +126,9 @@ function Homepage(props) {
   const [serverToggle, setServerToggle] = React.useState(false);
 
   function addServer() {
-    console.log("hit");
-    setServerToggle(serverToggle === false ? true : false);
+    console.log('hit')
+    setServerToggle(serverToggle === false ? true : false)
+
   }
   // console.log('props23', props)
 
@@ -163,6 +166,7 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
+  console.log('homepageeeeeeeeeee', props)
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -212,15 +216,24 @@ function Homepage(props) {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon style={chevronStyle} />
             ) : (
-              <ChevronLeftIcon style={chevronStyle} />
-            )}
+                <ChevronLeftIcon style={chevronStyle} />
+              )}
           </IconButton>
         </div>
         <Divider />
         <div className="add-server-btn">
-          <Fab style={addButtonStyle} onClick={addServer} aria-label="add">
-            <AddIcon />
-          </Fab>
+        <Fab
+         style={addButtonStyle}
+         onClick={addServer}
+         aria-label="add">
+       <AddIcon></AddIcon>
+       </Fab>
+       {open
+      ?
+        (<h4 className='join-server-text'>Join / Make A Server</h4>)
+        :
+        (<h4 className='join-server-text2'>{".                 "}</h4>)
+    }
         </div>
         <Divider />
         <ServersMap selectServer={selectServer} />

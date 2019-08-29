@@ -8,6 +8,7 @@ import {
   ADD_SERVER_USER,
   LOGOUT_SERVER,
   GET_ROOM_NAME,
+  EDIT_MESSAGE
 } from "./actionTypes";
 
 const initialState = {
@@ -81,7 +82,7 @@ export default function(state = initialState, action) {
     case GET_SERVERS + "_REJECTED":
       return { ...state, redirect: true, error: payload };
     case SERVER_REGISTRATION + "_FULFILLED":
-      return { servers: payload, redirect: false, error: false };
+      return {...state, servers: payload, redirect: false, error: false };
     case SERVER_REGISTRATION + "_REJECTED":
       return { ...state, error: payload };
     case LOGOUT_SERVER + "_FULFILLED":

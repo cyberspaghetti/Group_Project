@@ -6,21 +6,17 @@
   left: 15vw;
   overflow: hidden;
 }
-
 .mapped-message-holder {
-  margin-top: 10vh;
+  margin-top: 4vh;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   height: 80vh;
 }
-
 .mapped-message-holder::-webkit-scrollbar { width: 0 !important }
-
 .messaging-picture {
   width: 55px;
   height: 55px;
-
   border-radius: 50%;
   float: left;
   margin-left: 10px;
@@ -28,7 +24,6 @@
   margin-top: 1vh;
   margin-bottom: 2px;
 }
-
 .messaging-sender {
   display: flex;
   color: #00b9ff;
@@ -37,7 +32,6 @@
   font-size: 15px;
   margin-top: 1vh;
 }
-
 .messaging-sender-not-user {
   display: flex;
   color: #dda0dd;
@@ -45,40 +39,152 @@
   letter-spacing: 1px;
   font-size: 20px;
 }
-
 .messages {
   /* margin-bottom: 1.5vh; */
 }
-
 .message-color {
   margin-left: 5vw;
   font-size: 15px;
+  width: 30vw;
   color: rgb(200, 201, 202);
 }
-
 .message-footer {
   background-position: 0% 0%;
   position: fixed;
   height: 8vh;
-  width: 73.9vw;
+  width: 66.3vw;
   bottom: 0pt;
   background-color: #52586d;
 }
-
 .message-input {
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
+  
   align-items: center;
   margin-top: 1vh;
   background-attachment: scroll;
-  height: 4vh;
+  height: 4.5vh;
   width: 50vw;
   background-color: rgb(101, 108, 133);
   border: 0px solid;
+  margin: 0 auto;
+  border-radius: 5px;
   color: rgb(200, 201, 202);
 }
-
 .put-socket{
   float: right;
+  top: 0;
 }
+.put-socket:hover{
+  cursor: pointer;
+}
+.group2 {
+  position: relative;
+  margin-left: 26vw;
+  margin-bottom: 40px;
+ }
+ input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  color: white;
+ }
+ input:focus {
+  outline: none;
+ }
+ /* LABEL ======================================= */
+ .label2 {
+  color: white;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 20px;
+  transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  transition: 0.2s ease all;
+ }
+ /* active state */
+ input:focus ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #00b9ff;
+ }
+ /* BOTTOM BARS ================================= */
+ .bar2 {
+  position: relative;
+  display: block;
+  width: 300px;
+ }
+ .bar:before,
+ .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #00b9ff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+ }
+ .bar:before {
+  left: 50%;
+ }
+ .bar:after {
+  right: 50%;
+ }
+ /* active state */
+ input:focus ~ .bar:before,
+ input:focus ~ .bar:after {
+  width: 50%;
+ }
+ /* HIGHLIGHTER ================================== */
+ .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+ }
+ /* active state */
+ input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+ }
+ /* ANIMATIONS ================ */
+ @-webkit-keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+ }
+ @-moz-keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+ }
+ @keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+ }

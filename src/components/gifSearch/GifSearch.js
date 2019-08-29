@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Gif from "./gif";
-import "./gif.css";
-import Button from "@material-ui/core/Button";
-import { height } from "@material-ui/system";
-import { Typography } from "@material-ui/core";
+import React, { Component } from 'react'
+import axios from 'axios'
+import Gif from './gif'
+import './gif.css'
+import Button from '@material-ui/core/Button'
+import { height } from '@material-ui/system';
+import { Typography } from '@material-ui/core';
+
 const buttonStyle = {
- background: "#00b9ff",
- color: "white"
-};
+    background: "#00b9ff",
+    color: "#ffffff",
+    marginLeft: '5px'
+  };
 export default class GifSearch extends Component {
  constructor(props) {
    super(props);
@@ -26,7 +28,7 @@ export default class GifSearch extends Component {
    let { search } = this.state;
    axios
      .get(
-       'http://api.giphy.com/v1/gifs/search?q=${search}&api_key=4YfuzIBXGL7xgZfoNJuNN2NVfZPoRjFD&limit=24'
+       `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=4YfuzIBXGL7xgZfoNJuNN2NVfZPoRjFD&limit=24`
      )
      .then(res => {
        this.setState({ gifs: res, search: "" });

@@ -45,6 +45,7 @@ function SearchServer(props) {
    background: "#00b9ff",
    color: "white"
  };
+ console.log('in the server handle', props);
  return (
    <div className="over-flow-parent">
      <Typography style={typographyStyle} variant="h5">
@@ -58,7 +59,7 @@ function SearchServer(props) {
        />
        <span className="highlight" />
        <span className="bar" />
-       <label className="label">search</label>
+       <label className="label">Search</label>
      </div>
      <div className="over-flow">
        {props.server.servers

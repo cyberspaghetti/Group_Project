@@ -10,6 +10,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import "./News.css";
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 400,
     height: 360,
     marginBottom: "100px",
-    marginLeft: "80px"
+    marginLeft: "85px"
   },
   media: {
     height: 200
@@ -67,7 +69,6 @@ const titl = {
   flexDirection: 'row',
   justifyContent: 'center'
 };
-
 export default function Cards(props) {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
@@ -82,13 +83,15 @@ export default function Cards(props) {
             style={extraCardStyle}
           >
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={props.posts.news_post_image}
-                title="image"
-              />
-              <CardContent style={extraCardStyle}>
-                <Typography gutterBottom variant="h5" component="h2">
+              <Link to={`/card/${props.posts.news_post_id}`}>
+                <CardMedia
+                  className={classes.media}
+                  image={props.posts.news_post_image}
+                  title="image"
+                />
+              </Link>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2" >
                   {props.posts.news_post_title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -108,3 +111,5 @@ export default function Cards(props) {
     </div>
   );
 }
+
+
