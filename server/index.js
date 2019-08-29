@@ -16,6 +16,12 @@ const Auth0Strategy = require("passport-auth0");
 let returnStr = "/";
 const { SERVER_PORT } = process.env;
 const app = express();
+
+app.use(express.static(__dirname + "/../build"));
+app.get("*", (req, res) => {
+ res.sendFile(path.join(__dirname, "../build/index.html"));
+});
+
 massive(process.env.CONNECTION_STRING)
   .then(db => {
     app.set("db", db);
