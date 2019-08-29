@@ -30,7 +30,6 @@ class ServerMap extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.server.servers.length !== this.props.server.servers.length) {
-        console.log('are we hittin dis')
         this.props.getUserServers(this.props.user.user.user_id)
     }
 }

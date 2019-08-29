@@ -18,7 +18,6 @@ class FriendReqMap extends Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.requests !== this.props.requests) {
-      console.log("are we hittin dat");
       this.render();
     }
   };

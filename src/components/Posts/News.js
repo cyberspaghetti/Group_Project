@@ -37,14 +37,12 @@ class News extends Component {
     this.setState({ display_menu: !this.state.display_menu });
   };
   handleChange = e => {
-    console.log("handle", e);
     let { name, value } = e.target;
     this.setState({ [name]: value });
     this.date();
   };
   createPost = () => {
     let user_id = this.props.user.user.user_id;
-    console.log("thisstate in function create", user_id);
     let {
       news_post_title,
       news_post_image,

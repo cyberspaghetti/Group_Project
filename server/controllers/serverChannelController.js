@@ -31,12 +31,9 @@ module.exports = {
   },
 
   getServerUsers: async (req, res, next) => {
-    console.log('hit')
     const db = req.app.get("db");
     const { user_id } = req.params;
-    console.log(req.params);
     let data = await db.get_server_by_user_id(+user_id);
-    console.log('dta',data)
     res.send(data);
   },
 
@@ -47,7 +44,6 @@ module.exports = {
       .then(servers => res.status(200).send(servers))
       .catch(err => {
         res.status(500).send({ errorMessage: "getAllServers is broken" });
-        console.log(err);
       });
   },
 
@@ -67,7 +63,6 @@ module.exports = {
 
   async addServerUser(req, res) {
     let { user_id, server_id } = req.body;
-    console.log('hit controller add', user_id, server_id)
     const db = req.app.get("db");
     let serverUsers = await db.add_server_user([+user_id, +server_id]);
     res.send(serverUsers);

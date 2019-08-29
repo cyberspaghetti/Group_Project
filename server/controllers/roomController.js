@@ -15,7 +15,5 @@ module.exports = {
     res.send(serverRooms);
   }
 
-  //   joining rooms, sending messages, getting
-  //   messages and exiting room will all be
-  //   done using sockets
+
 };

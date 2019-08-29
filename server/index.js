@@ -52,7 +52,6 @@ massive(process.env.CONNECTION_STRING)
         let messages = await db.get_messages(selectedRoom, selectedServer);
         if (messages.length <= 1)
         io.to(selectedRoom).emit("room entered", messages);
-        console.log("messages", messages);
         io.to(data.selectedRoom).emit("message sent", messages);
       });
       socket.on("delete message", async data => {

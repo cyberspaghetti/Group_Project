@@ -126,11 +126,9 @@ function Homepage(props) {
   const [serverToggle, setServerToggle] = React.useState(false);
 
   function addServer() {
-    console.log('hit')
     setServerToggle(serverToggle === false ? true : false)
 
   }
-  // console.log('props23', props)
 
   const classes = useStyles();
   const theme = useTheme();
@@ -140,7 +138,6 @@ function Homepage(props) {
   const [newRoom, changeNewRoom] = React.useState("");
 
   function toggle() {
-    console.log("hit the toggle");
     setToggleState(toggleState === "off" ? "on" : "off");
   }
 
@@ -166,7 +163,6 @@ function Homepage(props) {
   }
 
   if (!props.user.loggedIn) return <Redirect to="/" />;
-  console.log('homepageeeeeeeeeee', props)
   return (
     <div className={classes.root}>
       <CssBaseline />
