@@ -189,3 +189,16 @@
   text-align: start;
   color: black;
  } */
+
+
+ .background-one{
+   position: absolute;
+  z-index: 9999;
+  background-color: rgba(39, 39, 39, 0.9);
+  top: 0;
+  left: 0%;
+  width: 10000000px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+ }
