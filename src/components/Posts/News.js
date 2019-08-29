@@ -65,12 +65,14 @@ class News extends Component {
     let { news_post_body, news_post_title, news_post_image } = this.state;
     let { display_menu, display_edit } = this.state;
     return (
+      
       <div className="news-background">
         <div className="news-title">
           <Typography variant="h4">Galactic News</Typography>
         </div>
         <section className="create-post-container">
           {display_menu ? (
+        <div className='background-one'>
             <div className="display-menu">
               <form className="display-info-container">
                 <div className="group">
@@ -78,7 +80,7 @@ class News extends Component {
                     onChange={this.handleChange}
                     name="news_post_title"
                     value={news_post_title}
-                  required/>
+                    required/>
                   <span className="highlight" />
                   <span className="bar" />
                   <label className="label">Title</label>
@@ -107,6 +109,7 @@ class News extends Component {
                 <GifSearch grabGif={this.grabGif} />
               </div>
             </div>
+              </div>
           ) : (
             <Button style={buttonStyle} onClick={this.showPostMenu}>
               {" "}
