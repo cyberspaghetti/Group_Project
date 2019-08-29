@@ -74,7 +74,7 @@ class MessageBoard extends Component {
     });
   };
 
-  sendMessage = (e) => {
+  sendMessage = e => {
     e.preventDefault();
     this.socket.emit("send message", {
       message: this.state.messageInput,
@@ -215,12 +215,11 @@ class MessageBoard extends Component {
             className="message-input"
             onKeyDown={ev => {
               if (ev.key === "Enter") {
-                
                 this.sendMessage();
               }
             }}
           />
-        </div>
+        </form>
       </div>
     );
   }

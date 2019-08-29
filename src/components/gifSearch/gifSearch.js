@@ -55,7 +55,7 @@ export default class GifSearch extends Component {
            </div>
            <div className="gif-search-button">
              <Button style={buttonStyle} onClick={this.search}>
-               rummage thru database
+               rummage thru gifs
              </Button>
            </div>
          </div>

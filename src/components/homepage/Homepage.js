@@ -105,10 +105,7 @@ const addButtonStyle = {
 
 const buttonStyle = {
   background: "#00b9ff",
-  color: "#ffffff",
-  position: "absolute",
-  right: "30px",
-  top: "15px"
+  color: "#ffffff"
 };
 
 const listItemStyle = {
@@ -187,7 +184,7 @@ function Homepage(props) {
           >
             <MenuIcon />
           </IconButton>
-            <img src={headerLogo} alt="" className="header-logo" />
+          <img src={headerLogo} alt="" className="header-logo" />
           <div className="logout-parent">
             <Button variant="contained" style={buttonStyle} onClick={logout}>
               Logout
@@ -246,23 +243,31 @@ function Homepage(props) {
       {toggleState === "on" ? (
         <section className="dark-dash">
           <section className={`add-room`}>
-            <input onChange={e => changeNewRoom(e.target.value)} />
-            <Button
-              onClick={() =>
-                props
-                  .createRoom(
-                    newRoom,
-                    props.match.params.selectedServer,
-                    props.user.user.user_id
-                  )
-                  .then(toggle())
-              }
-            >
-              SUBMIT
-            </Button>
-            <Button onClick={toggle} style={buttonStyle}>
-              CANCEL
-            </Button>
+            <div className="homepage-group">
+              <input onChange={e => changeNewRoom(e.target.value)} required />
+              <span className="highlight" />
+              <span className="bar" />
+              <label className="label">Room Name</label>
+            </div>
+            <div className="make-room-btn-container">
+              <Button
+                style={buttonStyle}
+                onClick={() =>
+                  props
+                    .createRoom(
+                      newRoom,
+                      props.match.params.selectedServer,
+                      props.user.user.user_id
+                    )
+                    .then(toggle())
+                }
+              >
+                Go For It
+              </Button>
+              <Button onClick={toggle} style={buttonStyle}>
+                Cancel That
+              </Button>
+            </div>
           </section>
         </section>
       ) : null}
