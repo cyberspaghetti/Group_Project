@@ -58,13 +58,11 @@ class CardBig extends Component{
 }
 
 componentDidMount = () => {
-    console.log('hit comp', this.props.match.params.cardId)
     this.props.getPost(this.props.match.params.cardId)
     this.setState({ post: this.props.posts.posts })
 }
 
 render(){
-  console.log('cards', this.props);
   if (this.props.posts.post[0]){
       return (
           <div className='background'>

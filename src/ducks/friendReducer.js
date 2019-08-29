@@ -86,15 +86,14 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_FRIENDS + "_FULFILLED":
-      console.log("payload", payload);
       return { ...state, friends: payload.friends, friends2: payload.friends2 };
     case GET_FRIENDS + "_PENDING":
       return { ...state };
     case ADD_FRIEND + "_FULFILLED":
       return { ...state, requests: payload };
     case DELETE_FRIEND + "_FULFILLED":
-        console.log('payloadeyeyy', payload)
-      return {
+        console.log(payload);  
+    return {
         ...state,
         friends: payload.friendsList,
         friends2: payload.friends2
@@ -104,9 +103,10 @@ export default function(state = initialState, action) {
     case REJECT_FRIEND + "_FULFILLED":
       return { ...state, requests: payload };
     case ACCEPT_FRIEND + "_FULFILLED":
+      console.log(payload);
       return {
         ...state,
-        requests: payload.requests,
+        requests: payload.updatedRequests,
         friends: payload.updatedFriends,
         friends2: payload.friends2
       };

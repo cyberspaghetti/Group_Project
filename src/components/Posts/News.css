@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .news-background {
@@ -10,29 +10,29 @@
   left: 72px;
   top: 64px;
   overflow-y: auto;
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     justify-content: space-around;
-     align-items: center;
-     align-content: flex-start;
- }
- .display-menu{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: flex-start;
+}
+.display-menu {
   color: white;
   position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   top: 120px;
-  left: 160px;
+  left: 260px;
   background: #52586d;
   width: 70vw;
   padding: 30px;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 10001;
   height: 81vh;
- }
- .news-title {
+}
+.news-title {
   display: flex;
   width: 82.8vw;
   justify-content: center;
@@ -40,16 +40,15 @@
   color: white;
   background: #3d4251;
   border-bottom: 1px solid #00b9ff;
- }
- .create-post-container {
+}
+.create-post-container {
   display: flex;
   width: 100%;
   justify-content: center;
   padding: 5px 0px;
- }
- .cards-container {
+}
+.cards-container {
   width: 100%;
-  justify-content: center;
   padding: 5px 0px;
 }
 
@@ -58,126 +57,144 @@
   display: flex;
   margin-top: 20px;
   flex-wrap: wrap;
- }
- .visit-server-btn {
+}
+.visit-server-btn {
   margin-bottom: 5px;
- }
- .display-info-container{
+}
+.display-info-container {
   display: flex;
   color: white;
-     flex-direction: column;
-     flex-wrap: nowrap;
-     align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
   align-content: stretch;
   text-align: center;
- }
- .gif-search-container{
+}
+.gif-search-container {
   width: 100%;
   display: flex;
   justify-content: center;
- }
- .news-button-container {
+}
+.news-button-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 98%;
   margin-bottom: 70px;
- }
- /* form starting stylings ------------------------------- */
- .group {
-  position:relative;
-  margin-bottom:40px;
- }
- input {
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid white;
+}
+/* form starting stylings ------------------------------- */
+.group {
+  position: relative;
+  margin-bottom: 40px;
+}
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid white;
   background: transparent;
   color: white;
- }
- input:focus{
-  outline:none;
+}
+input:focus {
+  outline: none;
   border: none;
- }
- /* LABEL ======================================= */
- .label {
+}
+/* LABEL ======================================= */
+.label {
   color: white;
   font-size: 18px;
-  font-weight:normal;
+  font-weight: normal;
   position: absolute;
-  pointer-events:none;
-  left:5px;
-  top:20px;
-  transition:0.2s ease all;
-  transition:0.2s ease all;
-  transition:0.2s ease all;
- }
- /* active state */
- input:focus ~ label, input:valid ~ label {
+  pointer-events: none;
+  left: 5px;
+  top: 20px;
+  transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+/* active state */
+input:focus ~ label,
+input:valid ~ label {
   top: -20px;
-  font-size:14px;
-  color:#00b9ff;
- }
- /* BOTTOM BARS ================================= */
- .bar     {
-  position:relative;
-  display:block;
-  width:300px;
- }
- .bar:before, .bar:after     {
-  content:'';
-  height:2px;
-  width:0;
-  bottom:1px;
-  position:absolute;
-  background:#00b9ff;
-  transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -webkit-transition:0.2s ease all;
- }
- .bar:before {
-  left:50%;
- }
- .bar:after {
-  right:50%;
- }
- /* active state */
- input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
- }
- /* HIGHLIGHTER ================================== */
- .highlight {
-  position:absolute;
-  height:60%;
-  width:100px;
-  top:25%;
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
- }
- /* active state */
- input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
- }
- /* ANIMATIONS ================ */
- @-webkit-keyframes inputHighlighter {
-     from { background:#00b9ff; }
-  to     { width:0; background:transparent; }
- }
- @-moz-keyframes inputHighlighter {
-     from { background:#00b9ff; }
-  to     { width:0; background:transparent; }
- }
- @keyframes inputHighlighter {
-     from { background:#00b9ff; }
-  to     { width:0; background:transparent; }
- }
- /* .input-title{
+  font-size: 14px;
+  color: #00b9ff;
+}
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #00b9ff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: #00b9ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+/* .input-title{
  background-color: white;
  width: 175px;
  color: black;
@@ -189,3 +206,14 @@
   text-align: start;
   color: black;
  } */
+
+.background-one {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(39, 39, 39, 0.9);
+  width: 2000px;
+  min-height: 100vh;
+  display: flex;
+}

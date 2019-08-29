@@ -19,7 +19,6 @@ export default class SpecificServer extends Component {
   }
 
   render() {
-    console.log('this props in specific server', this.props)
     return (
       <ListItem
         button

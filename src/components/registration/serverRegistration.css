@@ -1,65 +1,63 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .server-registration-container {
-  
-    width: 99vw;
-    height: 100vh;
-    z-index: 9999;
-    background-color: rgba(39, 39, 39, 0.8);
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-   .add-server-container {
-    width: 60vw;
-    height: 60vh;
-    background: #52586d;
-    z-index: 10000;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-    padding: 30px;
-   }
-   .server-btn-container {
-    display: flex;
-    justify-content: space-between;
-   }
-   .over-flow {
-    height: 390px;
-    overflow-y: auto;
-    padding-right: 20px;
-   }
-   .over-flow::-webkit-scrollbar { width: 0 !important }
+  width: 99vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: rgba(39, 39, 39, 0.8);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-server-container {
+  width: 61vw;
+  height: 60vh;
+  background: #52586d;
+  z-index: 10000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
+.server-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+.over-flow {
+  height: 390px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
 
-   .server-input-btn-container {
-    height: 50%;
-   }
-   .dude-container2 {
-    height: 400px;
-    width: 100%;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-   .astroBoi2 {
-    height: 200px;
-    width: 200px;
-    animation: MoveUpDown 4s linear infinite;
-    position: relative;
-   }
-   @keyframes MoveUpDown {
-    0%,
-    100% {
-      bottom: 70px;
-    }
-    50% {
-      bottom: 110px;
-    }
-   }
-   .button-container {
-    display: flex;
-   }
+.server-input-btn-container {
+  height: 50%;
+}
+.dude-container2 {
+  height: 400px;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.astroBoi2 {
+  height: 200px;
+  width: 200px;
+  animation: MoveUpDown 4s linear infinite;
+  position: relative;
+}
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 70px;
+  }
+  50% {
+    bottom: 110px;
+  }
+}
+.button-container {
+  display: flex;
+}
