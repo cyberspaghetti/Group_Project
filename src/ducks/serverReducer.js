@@ -82,7 +82,7 @@ export default function(state = initialState, action) {
     case GET_SERVERS + "_REJECTED":
       return { ...state, redirect: true, error: payload };
     case SERVER_REGISTRATION + "_FULFILLED":
-      return { servers: payload, redirect: false, error: false };
+      return {...state, servers: payload, redirect: false, error: false };
     case SERVER_REGISTRATION + "_REJECTED":
       return { ...state, error: payload };
     case LOGOUT_SERVER + "_FULFILLED":

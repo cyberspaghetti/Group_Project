@@ -45,6 +45,7 @@ function SearchServer(props) {
    background: "#00b9ff",
    color: "white"
  };
+ console.log('in the server handle', props);
  return (
    <div className="over-flow-parent">
      <Typography style={typographyStyle} variant="h5">

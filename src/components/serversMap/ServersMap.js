@@ -6,7 +6,6 @@ import ListItem from '@material-ui/core/ListItem'
 import { getAllServers, getUserServers } from "../../ducks/serverReducer";
 import "../homepage/homepage.css";
 import newsIconLogo from './astronaut1largeTransparent.png'
-import { regExpLiteral } from "@babel/types";
 
 const newsIconStyle = {
   padding: '0px',
@@ -23,40 +22,29 @@ const listStyle = {
 // this component maps over ./server which are the servers that are apart of the specific user
 // the specific user id is grabbed from redux
 class ServerMap extends Component {
- constructor(){
-   super()
-   this.state={
-    server: [],
-   }
- }
-
-
+ 
   // neeed to change to specific users to grab server
   componentDidMount = () => {
     this.props.getUserServers(this.props.user.user.user_id)
-    this.setState({server: this.props.server.serverUsers});
   }
 
-//   componentDidUpdate(prevProps, prevState) {
-//     if (this.props.server !== prevProps.server) {
-//         this.props.getUserServers(this.props.user.user.user_id)
-//         this.setState({server: this.props.server.serverUsers}, () => {
-//        console.log('th', this.props) })
-//     }
-// }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.server.servers.length !== this.props.server.servers.length) {
+        console.log('are we hittin dis')
+        this.props.getUserServers(this.props.user.user.user_id)
+    }
+}
 
   render() {
-
-    console.log('props for the servers', this.props)
     let servers = 'loading'
-    if (this.props.server.serverUsers.length) {
+    if (this.props.server.serverUsers) {
       return (
         <div className="hero-container">
           <ListItem button style={newsIconStyle}>
             <div className='menu-news' onClick={() => this.props.selectServer(0, 0)}>
               <img src={newsIconLogo}
                 alt="" className="news-icon" />
-              <div>Galactic News</div>
+              <div>News</div>
             </div>
           </ListItem>
           {servers = this.props.server.serverUsers.map(servers => {

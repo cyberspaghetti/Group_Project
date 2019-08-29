@@ -24,7 +24,7 @@
   flex-direction: row;
   justify-content: space-around;
   top: 120px;
-  left: 127px;
+  left: 160px;
   background: #52586d;
   width: 70vw;
   padding: 30px;
@@ -34,11 +34,12 @@
  }
  .news-title {
   display: flex;
-  width: 82.4vw;
+  width: 82.8vw;
   justify-content: center;
   padding: 19px 0px;
   color: white;
-  background: #3d4251
+  background: #3d4251;
+  border-bottom: 1px solid #00b9ff;
  }
  .create-post-container {
   display: flex;
